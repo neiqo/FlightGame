@@ -1,9 +1,14 @@
 const submit = document
   .querySelector("#submit")
   .addEventListener("click", function () {
-    let planet = document.querySelector("#planet").value.toLowerCase();
-    console.log(planet);
-    fetchdata(planet);
+    let input = document.querySelector("#planet").value.toLowerCase();
+    console.log(input);
+    fetchdata(input);
+    if (input in planets) {
+      fetchplanet(input);
+    } else {
+      fetchmoon(input);
+    }
   });
 
 const planets = [
@@ -27,43 +32,82 @@ function fetchdata(id) {
     })
     .then((data) => {
       // Handle the data here
-      console.log(data);
+      //console.log(data);
     });
 }
 
-const apiUrl =
-  "https://en.wikipedia.org/w/api.php?action=query&origin=*&prop=extracts&format=json&titles=earth";
+function fetchplanet(id) {
+  fetch(
+    `https://en.wikipedia.org/w/api.php?action=query&origin=*&prop=extracts&format=json&titles=${id}`
+  )
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Extract relevant content
+      const pages = data.query.pages;
+      const pageId = Object.keys(pages)[0]; // Assuming there's only one page in the response
+      const extract = pages[pageId].extract;
 
-fetch(apiUrl)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then((data) => {
-    // Extract relevant content
-    const pages = data.query.pages;
-    const pageId = Object.keys(pages)[0]; // Assuming there's only one page in the response
-    const extract = pages[pageId].extract;
+      // Display the extracted content
+      // console.log(pages);
+      // console.log(extract);
+      // console.log(Object.keys(pages)[0]);
 
-    // Display the extracted content
-    // console.log(pages);
-    // console.log(extract);
-    // console.log(Object.keys(pages)[0]);
+      // Now you can further process or display the content as needed
 
-    // Now you can further process or display the content as needed
+      const spansWithIds = extract
+        .split("<span ")
+        .filter((span) => span.includes('id="'));
 
-    const spansWithIds = extract
-      .split("<span ")
-      .filter((span) => span.includes('id="'));
+      for (let i = 0; i < spansWithIds.length; i++) {
+        let matches = spansWithIds[i].match(/<p>.*?<\/p>/g);
+        console.log(spansWithIds[i]);
+        console.log(matches);
+      }
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+    });
+}
 
-    for (let i = 0; i < spansWithIds.length; i++) {
-      let matches = spansWithIds[i].match(/<p>.*?<\/p>/g);
-      console.log(spansWithIds);
-      console.log(matches);
-    }
-  })
-  .catch((error) => {
-    console.error("Fetch error:", error);
-  });
+function fetchmoon(id) {
+  fetch(
+    `https://en.wikipedia.org/w/api.php?action=query&origin=*&prop=extracts&format=json&titles=${id}_(moon)`
+  )
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Extract relevant content
+      const pages = data.query.pages;
+      const pageId = Object.keys(pages)[0]; // Assuming there's only one page in the response
+      const extract = pages[pageId].extract;
+
+      // Display the extracted content
+      // console.log(pages);
+      // console.log(extract);
+      // console.log(Object.keys(pages)[0]);
+
+      // Now you can further process or display the content as needed
+
+      const spansWithIds = extract
+        .split("<span ")
+        .filter((span) => span.includes('id="'));
+
+      for (let i = 0; i < spansWithIds.length; i++) {
+        let matches = spansWithIds[i].match(/<p>.*?<\/p>/g);
+        console.log(spansWithIds[i]);
+        console.log(matches);
+      }
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+    });
+}
