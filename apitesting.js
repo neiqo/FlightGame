@@ -68,6 +68,7 @@ function fetchplanet(id) {
         console.log(spansWithIds[i]);
         console.log(matches);
       }
+      updateContent(extract);
     })
     .catch((error) => {
       console.error("Fetch error:", error);
@@ -106,8 +107,13 @@ function fetchmoon(id) {
         console.log(spansWithIds[i]);
         console.log(matches);
       }
+      updateContent(extract);
     })
     .catch((error) => {
       console.error("Fetch error:", error);
     });
+}
+
+function updateContent(content) {
+  document.getElementById("content").innerHTML = content;
 }
