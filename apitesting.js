@@ -1,16 +1,3 @@
-const submit = document
-  .querySelector("#submit")
-  .addEventListener("click", function () {
-    let input = document.querySelector("#planet").value.toLowerCase();
-    console.log(input);
-    fetchdata(input);
-    if (input in planets) {
-      fetchplanet(input);
-    } else {
-      fetchmoon(input);
-    }
-  });
-
 const planets = [
   "mercury",
   "venus",
@@ -21,6 +8,19 @@ const planets = [
   "uranus",
   "neptune",
 ];
+
+const submit = document
+  .querySelector("#submit")
+  .addEventListener("click", function () {
+    let input = document.querySelector("#planet").value.trim().toLowerCase();
+    console.log(input);
+    fetchdata(input);
+    if (planets.includes(input)) {
+      fetchplanet(input);
+    } else {
+      fetchmoon(input);
+    }
+  });
 
 function fetchdata(id) {
   fetch(`https://api.le-systeme-solaire.net/rest/bodies/${id}`)
