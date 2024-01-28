@@ -1,12 +1,12 @@
 const planets = [
-  "mercury",
-  "venus",
-  "earth",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
+  "earth", // level 1
+  "venus", // level 2
+  "mercury", // level 3
+  "mars", // level 4
+  "jupiter", // level 5
+  "saturn", // level 6
+  "uranus", // level 7
+  "neptune", // level 8
 ];
 
 function fetchdata(id) {
