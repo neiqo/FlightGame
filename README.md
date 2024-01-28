@@ -6,7 +6,18 @@ Our idea is to create a gamified learning experience about our solar system wher
 [Github Pages Link](https://neiqo.github.io/SolarQuest/)
 
 # Desktop wireframe:
+
 ![Desktop Wireframe](https://i.imgur.com/kASCA5O.png)
 
 # Mobile Wireframe
+
 ![Mobile Wireframe](https://i.imgur.com/TYhnh6W.png)
+
+# Frameworks
+
+<h3>Bootstrap</h3>
+<p>
+  <a href="https://getbootstrap.com/">
+    <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" alt="Bootstrap logo" width="200" height="165">
+  </a>
+</p>
