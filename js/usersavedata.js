@@ -20,3 +20,11 @@ window.onload = function () {
     window.location.href = "login.html";
   }
 };
+
+function logout() {
+  // Clear session data
+  sessionStorage.removeItem("currentUser");
+
+  // Redirect to login page
+  window.location.href = "login.html";
+}
