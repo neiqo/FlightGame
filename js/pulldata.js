@@ -9,19 +9,6 @@ const planets = [
   "neptune",
 ];
 
-const submit = document
-  .querySelector("#submit")
-  .addEventListener("click", function () {
-    let input = document.querySelector("#planet").value.trim().toLowerCase();
-    console.log(input);
-    fetchdata(input);
-    if (planets.includes(input)) {
-      fetchplanet(input);
-    } else {
-      fetchmoon(input);
-    }
-  });
-
 function fetchdata(id) {
   fetch(`https://api.le-systeme-solaire.net/rest/bodies/${id}`)
     .then((response) => {
@@ -32,7 +19,7 @@ function fetchdata(id) {
     })
     .then((data) => {
       // Handle the data here
-      //console.log(data);
+      console.log(data);
     });
 }
 
@@ -53,12 +40,6 @@ function fetchplanet(id) {
       const extract = pages[pageId].extract;
 
       // Display the extracted content
-      // console.log(pages);
-      // console.log(extract);
-      // console.log(Object.keys(pages)[0]);
-
-      // Now you can further process or display the content as needed
-
       const spansWithIds = extract
         .split("<span ")
         .filter((span) => span.includes('id="'));
@@ -92,17 +73,11 @@ function fetchmoon(id) {
       const extract = pages[pageId].extract;
 
       // Display the extracted content
-      // console.log(pages);
-      // console.log(extract);
-      // console.log(Object.keys(pages)[0]);
-
-      // Now you can further process or display the content as needed
-
       const spansWithIds = extract
         .split("<span ")
         .filter((span) => span.includes('id="'));
 
-      for (let i = 0; i < spansWithIds.length; i++) {
+      for (let i = 0; spansWithIds.length; i++) {
         let matches = spansWithIds[i].match(/<p>.*?<\/p>/g);
         console.log(spansWithIds[i]);
         console.log(matches);
@@ -116,4 +91,13 @@ function fetchmoon(id) {
 
 function updateContent(content) {
   document.getElementById("content").innerHTML = content;
+}
+
+// fetch data about the player current planet based on usersavedata
+function fetchDataForCurrentPlanet(planetName) {
+  if (planets.includes(planetName)) {
+    fetchplanet(planetName);
+  } else {
+    fetchmoon(planetName);
+  }
 }
