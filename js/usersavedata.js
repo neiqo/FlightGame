@@ -25,6 +25,6 @@ function logout() {
   // Clear session data
   sessionStorage.removeItem("currentUser");
 
-  // Redirect to login page
-  window.location.href = "login.html";
+  // Redirect to home page
+  window.location.href = "index.html";
 }
