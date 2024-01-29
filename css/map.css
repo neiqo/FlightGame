@@ -1,0 +1,118 @@
+html,
+body {
+  background-color: black;
+}
+
+.solar-system {
+  position: relative;
+  width: 780px;
+  height: 780px;
+  margin: auto;
+  overflow: hidden;
+}
+
+#sun-planet,
+.orbit,
+.orbit + div,
+.orbit + div > div {
+  position: absolute;
+}
+#sun-planet,
+.orbit,
+.orbit + div {
+  top: 50%;
+  left: 50%;
+}
+.orbit + div > div {
+  top: 0;
+  left: 50%;
+}
+.orbit,
+.orbit + div div,
+#earth-planet {
+  border-radius: 50%;
+}
+
+.mercury-orbit,
+.mercury-spin {
+  width: 280px;
+  height: 280px;
+  margin-left: -140px;
+  margin-top: -140px;
+}
+
+.orbit {
+  border: 1px dashed white;
+}
+
+#sun-planet {
+  height: 200px;
+  width: 200px;
+  background-color: #fae20a;
+  margin-top: -100px;
+  margin-left: -100px;
+  border-radius: 50%;
+  box-shadow: 0 0 84px orange;
+}
+
+#mercury-planet {
+  margin-top: 50.5px;
+  margin-left: -18.5px;
+  height: 40px;
+  width: 72px;
+  border-radius: 50%;
+  /*background-color: #a65e22;*/
+  background-size: cover;
+}
+
+.earth-orbit,
+.earth-spin {
+  width: 500px;
+  height: 500px;
+  margin-left: -250px;
+  margin-top: -250px;
+}
+
+#earth-planet {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 50px;
+  width: 50px;
+  margin-left: -25px;
+  margin-top: -25px;
+  border-radius: 50%;
+  box-shadow: 0 0 34px #3a4385;
+}
+
+#moon {
+  margin-top: -6px;
+  margin-left: -6px;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 14px #3a4385;
+}
+.moon-orbit,
+.moon-spin {
+  height: 90px;
+  width: 90px;
+  margin-top: -45px;
+  margin-left: -45px;
+  border-color: #447;
+}
+
+@keyframes spin-right {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.mercury-spin {
+  animation: spin-right 8.8s linear infinite;
+}
+
+.earth-spin {
+  animation: spin-right 36.5s linear infinite;
+}
