@@ -1,8 +1,6 @@
 const user = JSON.parse(sessionStorage.getItem("currentUser"));
 let userfuel = user.savedata.fuel;
 const quizPlanet = user.savedata.current_planet;
-console.log(user._id);
-console.log(quizPlanet);
 
 document.addEventListener("DOMContentLoaded", function () {
   // fetch quiz data for the current quiz planet

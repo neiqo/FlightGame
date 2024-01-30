@@ -10,17 +10,14 @@ const planets = [
 ];
 
 function fetchdata(id) {
-  fetch(`https://api.le-systeme-solaire.net/rest/bodies/${id}`)
-    .then((response) => {
+  fetch(`https://api.le-systeme-solaire.net/rest/bodies/${id}`).then(
+    (response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       return response.json();
-    })
-    .then((data) => {
-      // Handle the data here
-      console.log(data);
-    });
+    }
+  );
 }
 
 function fetchplanet(id) {
@@ -46,8 +43,6 @@ function fetchplanet(id) {
 
       for (let i = 0; i < spansWithIds.length; i++) {
         let matches = spansWithIds[i].match(/<p>.*?<\/p>/g);
-        console.log(spansWithIds[i]);
-        console.log(matches);
       }
       updateContent(extract);
     })

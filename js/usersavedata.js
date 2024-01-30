@@ -31,7 +31,9 @@ window.onload = function () {
       titleDisplay.textContent = user.savedata.title;
     }
 
-    fetchDataForCurrentPlanet(user.savedata.current_planet);
+    if (typeof fetchDataForCurrentPlanet === "function") {
+      fetchDataForCurrentPlanet(user.savedata.current_planet);
+    }
   } else {
     // Redirect to login page if no session data
     window.location.href = "login.html";
