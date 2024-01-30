@@ -37,3 +37,10 @@ window.onload = function () {
     window.location.href = "login.html";
   }
 };
+
+function logout() {
+  // clear session data
+  sessionStorage.removeItem("currentUser");
+  // redirect to landing page
+  window.location.href = "index.html";
+}
