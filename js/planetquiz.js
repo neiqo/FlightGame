@@ -181,6 +181,8 @@ function displayQuizResult() {
   // update on document the number of correct ansers
   const correctCountElement = document.getElementById("correct-count");
   correctCountElement.textContent = correctAnswersCount;
+  const totalQuestions = document.getElementById("questions-count");
+  totalQuestions.textContent = currentQuestionIndex;
 }
 function planetCheck() {
   let newPlanet = quizPlanet;
@@ -341,7 +343,7 @@ function displayLeaderboard(leaderboard) {
       const leaderboardItem = document.createElement("li");
       leaderboardItem.textContent = `${index + 1}. ${
         entry.username
-      } - Correct Answers: ${entry.correct_answers}`;
+      } - Correct Answers: ${entry.correct_answers}/${currentQuestionIndex}`;
       leaderboardList.appendChild(leaderboardItem);
     });
     leaderboardSection.appendChild(leaderboardList);
