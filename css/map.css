@@ -5,19 +5,19 @@ body {
 
 .solar-system {
   position: relative;
-  width: 780px;
-  height: 780px;
+  width: 1600px;
+  height: 1600px;
   margin: auto;
   overflow: hidden;
 }
 
-#sun-planet,
+#sun,
 .orbit,
 .orbit + div,
 .orbit + div > div {
   position: absolute;
 }
-#sun-planet,
+#sun,
 .orbit,
 .orbit + div {
   top: 50%;
@@ -35,34 +35,44 @@ body {
 
 .mercury-orbit,
 .mercury-spin {
-  width: 280px;
-  height: 280px;
-  margin-left: -140px;
-  margin-top: -140px;
+  width: 240px;
+  height: 240px;
+  margin-left: -120px;
+  margin-top: -120px;
 }
 
 .orbit {
   border: 1px dashed white;
 }
 
-#sun-planet {
-  height: 200px;
-  width: 200px;
-  background-color: #fae20a;
-  margin-top: -100px;
-  margin-left: -100px;
+#sun {
+  height: 350px;
+  width: 350px;
+  margin-top: -155px;
+  margin-left: -174px;
   border-radius: 50%;
-  box-shadow: 0 0 84px orange;
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.sun-spin {
+  width: 500px;
+  height: 500px;
+  margin-left: 137.5px;
+  margin-top: 140px;
 }
 
 #mercury-planet {
-  margin-top: 50.5px;
+  margin-top: 25.5px;
   margin-left: -18.5px;
-  height: 40px;
-  width: 72px;
+  height: 70px;
+  width: 70px;
   border-radius: 50%;
   /*background-color: #a65e22;*/
   background-size: cover;
+  box-shadow: 0 0 34px #3a4385;
 }
 
 .earth-orbit,
@@ -73,8 +83,24 @@ body {
   margin-top: -250px;
 }
 
+#venus-planet {
+  margin-top: 150px;
+  margin-left: -20px;
+  height: 40px;
+  width: 40px;
+  box-shadow: 0 0 34px #3a4385;
+}
+
+.venus-orbit,
+.venus-spin {
+  margin-top: -185px;
+  margin-left: -185px;
+  width: 370px;
+  height: 370px;
+}
+
 #earth-planet {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 50%;
   height: 50px;
@@ -85,22 +111,84 @@ body {
   box-shadow: 0 0 34px #3a4385;
 }
 
-#moon {
-  margin-top: -6px;
-  margin-left: -6px;
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
-  background: white;
-  box-shadow: 0 0 14px #3a4385;
+#mars-planet {
+  margin-top: 240px;
+  margin-left: -16px;
+  height: 50px;
+  width: 50px;
+  box-shadow: 0 0 34px #3a4385;
 }
-.moon-orbit,
-.moon-spin {
-  height: 90px;
-  width: 90px;
+
+.mars-orbit,
+.mars-spin {
+  width: 600px;
+  height: 600px;
+  margin-left: -300px;
+  margin-top: -300px;
+}
+
+#jupiter-planet {
+  margin-top: -40px;
+  margin-left: 450px;
+  height: 150px;
+  width: 175px;
+  box-shadow: 0 0 34px #3a4385;
+}
+
+.jupiter-orbit,
+.jupiter-spin {
+  width: 750px;
+  height: 750px;
+  margin-left: -375px;
+  margin-top: -375px;
+}
+
+#saturn-planet {
   margin-top: -45px;
-  margin-left: -45px;
-  border-color: #447;
+  margin-left: 450px;
+  height: 90px;
+  width: 180px;
+  box-shadow: 0 0 34px #3a4385;
+}
+
+.saturn-orbit,
+.saturn-spin {
+  width: 900px;
+  height: 900px;
+  margin-left: -450px;
+  margin-top: -450px;
+}
+
+#uranus-planet {
+  margin-top: -60px;
+  margin-left: 450px;
+  height: 120px;
+  width: 135px;
+  box-shadow: 0 0 34px #3a4385;
+}
+
+.uranus-orbit,
+.uranus-spin {
+  width: 1050px;
+  height: 1050px;
+  margin-left: -525px;
+  margin-top: -530px;
+}
+
+#neptune-planet {
+  margin-top: -70px;
+  margin-left: 450px;
+  height: 150px;
+  width: 145px;
+  box-shadow: 0 0 34px #3a4385;
+}
+
+.neptune-orbit,
+.neptune-spin {
+  width: 1200px;
+  height: 1200px;
+  margin-left: -600px;
+  margin-top: -600px;
 }
 
 @keyframes spin-right {
@@ -115,4 +203,28 @@ body {
 
 .earth-spin {
   animation: spin-right 36.5s linear infinite;
+}
+
+.venus-spin {
+  animation: spin-right 22s linear infinite;
+}
+
+.mars-spin {
+  animation: spin-right 30s linear infinite;
+}
+
+.jupiter-spin {
+  animation: spin-right 100s linear infinite;
+}
+
+.saturn-spin {
+  animation: spin-right 100s linear infinite;
+}
+
+.uranus-spin {
+  animation: spin-right 120s linear infinite;
+}
+
+.neptune-spin {
+  animation: spin-right 140s linear infinite;
 }
