@@ -1,16 +1,18 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // get user save data and its current planet
-  const user = JSON.parse(sessionStorage.getItem("currentUser"));
-  const currentPlanet = user.savedata.current_planet;
+const user = JSON.parse(sessionStorage.getItem("currentUser"));
+let userfuel = user.savedata.fuel;
+const quizPlanet = user.savedata.current_planet;
+console.log(user._id);
+console.log(quizPlanet);
 
-  // fetch quiz data for the current planet
+document.addEventListener("DOMContentLoaded", function () {
+  // fetch quiz data for the current quiz planet
   fetch(
-    `https://solarquest-81a1.restdb.io/rest/quiz?quiz-planet=${currentPlanet}`,
+    `https://solarquest-92b0.restdb.io/rest/quiz?q={"quiz-planet":"${quizPlanet}"}`,
     {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "x-apikey": "65ab680be8b7cbe259ce52fd",
+        "x-apikey": "65b71e655a960f6cc37795a0",
       },
     }
   )
@@ -99,8 +101,6 @@ function submitAnswer(question) {
     return;
   }
 
-  const user = JSON.parse(sessionStorage.getItem("currentUser"));
-
   // store selected answers if dont have any answer in the array
   if (!user.quizAnswers) {
     user.quizAnswers = [];
@@ -118,6 +118,9 @@ function submitAnswer(question) {
   // add count to answerscount if answer is correct
   if (isCorrect) {
     correctAnswersCount++;
+    userfuel++;
+    console.log(correctAnswersCount);
+    console.log(userfuel);
   }
 
   // prompt if correct or not
@@ -135,17 +138,13 @@ function getSelectedOptionIndex() {
 function nextQuestion() {
   currentQuestionIndex++;
 
-  // get quiz questions for planet rn
-  const user = JSON.parse(sessionStorage.getItem("currentUser"));
-  const currentPlanet = user.savedata.current_planet;
-
   fetch(
-    `https://solarquest-81a1.restdb.io/rest/quiz?quiz-planet=${currentPlanet}`,
+    `https://solarquest-92b0.restdb.io/rest/quiz?q={"quiz-planet":"${quizPlanet}"}`,
     {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "x-apikey": "65ab680be8b7cbe259ce52fd",
+        "x-apikey": "65b71e655a960f6cc37795a0",
       },
     }
   )
@@ -185,23 +184,101 @@ function displayQuizResult() {
   const correctCountElement = document.getElementById("correct-count");
   correctCountElement.textContent = correctAnswersCount;
 }
+function planetCheck() {
+  let newPlanet = quizPlanet;
+  const planets = [
+    "earth", // level 1
+    "venus", // level 2
+    "mercury", // level 3
+    "mars", // level 4
+    "jupiter", // level 5
+    "saturn", // level 6
+    "uranus", // level 7
+    "neptune", // level 8
+  ];
+  // Check if the user has enough fuel (at least 2) to change the planet
+  if (userfuel >= 2) {
+    // Change the user's current planet to the next one
+
+    const newPlanetIndex = planets.indexOf(newPlanet);
+    if (newPlanetIndex < planets.length - 1) {
+      newPlanet = planets[newPlanetIndex + 1];
+      console.log(newPlanet);
+    } else {
+      // If the user is already on the last planet, go back to the first one (loop)
+      currentPlanet = planets[0];
+    }
+    return newPlanet;
+  } else {
+    // If the user doesn't have enough fuel, prompt and redirect
+    displayQuizResult();
+    alert("You don't have enough knowledge to proceed to the next planet!");
+    window.location.href = "explore.html"; // Redirect to explore.html
+    return;
+  }
+}
+
+function fetchPlayer() {
+  const newPlanet = planetCheck();
+
+  // Log the newPlanet value to check if it's correct
+  console.log("New Planet:", newPlanet);
+
+  fetch(`https://solarquest-92b0.restdb.io/rest/players/${user._id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "x-apikey": "65b71e655a960f6cc37795a0",
+    },
+    body: JSON.stringify({
+      _id: user._id,
+      password: user.password,
+      username: user.username,
+      savedata: {
+        current_planet: newPlanet,
+        level: 1,
+        fuel: 20,
+        title: "Space Cadet",
+      },
+      creationdate: user.creationdate,
+    }),
+  })
+    .then((response) => response.json())
+    .then((updatedPlayer) => {
+      // Handle the response if needed
+      console.log("Player updated:", updatedPlayer);
+
+      // Update user's data in-memory
+      user.savedata.current_planet = newPlanet;
+      user.savedata.fuel = 0;
+
+      // Save the updated user data to sessionStorage
+      sessionStorage.setItem("currentUser", JSON.stringify(user));
+
+      // Use updatedPlayer to access the updated data
+      console.log("User new planet", updatedPlayer.savedata.current_planet);
+      console.log("User new fuel", updatedPlayer.savedata.fuel);
+    })
+    .catch((error) => console.error("Error updating player:", error));
+}
 
 function submitQuiz() {
-  const user = JSON.parse(sessionStorage.getItem("currentUser"));
-  const currentPlanet = user.savedata.current_planet;
-
+  planetCheck();
+  // Prepare data for leaderboard post
   const leaderboardData = {
     username: user.username,
     correct_answers: correctAnswersCount,
-    quiz_planet: currentPlanet,
+    quiz_planet: quizPlanet,
   };
 
-  // post results to the leaderboard
-  fetch("https://solarquest-81a1.restdb.io/rest/leaderboard", {
+  console.log("Leaderboard Data:", leaderboardData); // Log the data to the console
+
+  // Post results to the leaderboard
+  fetch(`https://solarquest-92b0.restdb.io/rest/leaderboard`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-apikey": "65ab680be8b7cbe259ce52fd",
+      "x-apikey": "65b71e655a960f6cc37795a0",
     },
     body: JSON.stringify(leaderboardData),
   })
@@ -212,20 +289,28 @@ function submitQuiz() {
       return response.json();
     })
     .then(() => {
-      // fetch and display leaderboard after post
+      // after posting to leaderboard, fetch and display the leaderboard
       fetchLeaderboard();
+      fetchPlayer();
+    })
+    .catch((error) => {
+      // log error
+      console.error("Error posting to leaderboard:", error);
     });
 }
 
 function fetchLeaderboard() {
   // fetch leaderboard data
-  fetch("https://solarquest-81a1.restdb.io/rest/leaderboard", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "x-apikey": "65ab680be8b7cbe259ce52fd",
-    },
-  })
+  fetch(
+    `https://solarquest-92b0.restdb.io/rest/leaderboard?q={"quiz_planet":"${quizPlanet}"}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-apikey": "65b71e655a960f6cc37795a0",
+      },
+    }
+  )
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
