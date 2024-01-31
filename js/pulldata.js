@@ -1,26 +1,23 @@
 const planets = [
-  "mercury",
-  "venus",
-  "earth",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
+  "earth", // level 1
+  "venus", // level 2
+  "mercury", // level 3
+  "mars", // level 4
+  "jupiter", // level 5
+  "saturn", // level 6
+  "uranus", // level 7
+  "neptune", // level 8
 ];
 
 function fetchdata(id) {
-  fetch(`https://api.le-systeme-solaire.net/rest/bodies/${id}`)
-    .then((response) => {
+  fetch(`https://api.le-systeme-solaire.net/rest/bodies/${id}`).then(
+    (response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       return response.json();
-    })
-    .then((data) => {
-      // Handle the data here
-      console.log(data);
-    });
+    }
+  );
 }
 
 function fetchplanet(id) {
@@ -46,8 +43,6 @@ function fetchplanet(id) {
 
       for (let i = 0; i < spansWithIds.length; i++) {
         let matches = spansWithIds[i].match(/<p>.*?<\/p>/g);
-        console.log(spansWithIds[i]);
-        console.log(matches);
       }
       updateContent(extract);
     })
