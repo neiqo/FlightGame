@@ -70,9 +70,8 @@ body {
   height: 70px;
   width: 70px;
   border-radius: 50%;
-  /*background-color: #a65e22;*/
   background-size: cover;
-  box-shadow: 0 0 34px #3a4385;
+  box-shadow: 0 0 34px #a65e22;
 }
 
 .earth-orbit,
@@ -88,7 +87,8 @@ body {
   margin-left: -20px;
   height: 40px;
   width: 40px;
-  box-shadow: 0 0 34px #3a4385;
+  border-radius: 50%;
+  box-shadow: 0 0 34px #eecb8b;
 }
 
 .venus-orbit,
@@ -116,7 +116,8 @@ body {
   margin-left: -16px;
   height: 50px;
   width: 50px;
-  box-shadow: 0 0 34px #3a4385;
+  border-radius: 50%;
+  box-shadow: 0 0 34px #c1440e;
 }
 
 .mars-orbit,
@@ -130,9 +131,9 @@ body {
 #jupiter-planet {
   margin-top: -40px;
   margin-left: 450px;
-  height: 150px;
-  width: 175px;
-  box-shadow: 0 0 34px #3a4385;
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
 }
 
 .jupiter-orbit,
@@ -148,7 +149,6 @@ body {
   margin-left: 450px;
   height: 90px;
   width: 180px;
-  box-shadow: 0 0 34px #3a4385;
 }
 
 .saturn-orbit,
@@ -160,11 +160,11 @@ body {
 }
 
 #uranus-planet {
-  margin-top: -60px;
+  margin-top: -80px;
   margin-left: 450px;
-  height: 120px;
-  width: 135px;
-  box-shadow: 0 0 34px #3a4385;
+  height: 160px;
+  width: 170px;
+  border-radius: 50%;
 }
 
 .uranus-orbit,
@@ -180,7 +180,7 @@ body {
   margin-left: 450px;
   height: 150px;
   width: 145px;
-  box-shadow: 0 0 34px #3a4385;
+  border-radius: 50%;
 }
 
 .neptune-orbit,
@@ -214,17 +214,17 @@ body {
 }
 
 .jupiter-spin {
-  animation: spin-right 100s linear infinite;
+  animation: spin-right 60s linear infinite;
 }
 
 .saturn-spin {
-  animation: spin-right 100s linear infinite;
+  animation: spin-right 80s linear infinite;
 }
 
 .uranus-spin {
-  animation: spin-right 120s linear infinite;
+  animation: spin-right 100s linear infinite;
 }
 
 .neptune-spin {
-  animation: spin-right 140s linear infinite;
+  animation: spin-right 120s linear infinite;
 }
