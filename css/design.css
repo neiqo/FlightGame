@@ -1,6 +1,6 @@
 body {
   background-color: #a5a297;
-  width: 2400px;
+  width: auto;
 }
 
 .screen-container {
@@ -84,7 +84,7 @@ body {
   height: 300px;
   /**************/
   position: relative;
-  margin: 50px auto;
+  margin: 0 auto;
 }
 
 .lightsource {
@@ -92,7 +92,7 @@ body {
   height: 50px;
   /**************/
   position: relative;
-  margin: 0;
+  margin: 0 auto;
   /**************/
   background: #fff983;
   box-shadow: 0 0 20px #fff6b5;
