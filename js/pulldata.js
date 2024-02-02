@@ -41,9 +41,28 @@ function fetchplanet(id) {
         .split("<span ")
         .filter((span) => span.includes('id="'));
 
+      const content1 = [];
+      const content2 = [];
       for (let i = 0; i < spansWithIds.length; i++) {
+        /*
+        if (spansWithIds[i] === "See also" ||
+        spansWithIds[i] === "Gallery") {
+          return;
+        }
+        */
         let matches = spansWithIds[i].match(/<p>.*?<\/p>/g);
+        //console.log(matches);
+        content1.push(matches);
+        if (i === 1) {
+          //content2.push(matches);
+          break;
+        }
       }
+      console.log(content1.length);
+      for (let i = 0; i < content1.length; i++) {
+        console.log(content1[i]);
+      }
+
       updateContent(extract);
     })
     .catch((error) => {
