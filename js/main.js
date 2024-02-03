@@ -48,3 +48,43 @@ document.addEventListener("DOMContentLoaded", function () {
     video.play();
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Get the audio elements
+  var clickSound = document.getElementById("clickSound");
+  var mouseoverSound = document.getElementById("mouseoverSound");
+  var keyboardSound = document.getElementById("keyboardSound");
+
+  // Function to play the click sound
+  function playClickSound() {
+    clickSound.currentTime = 0; // Reset the sound to the beginning
+    clickSound.play();
+  }
+
+  // Function to play the mouseover sound
+  function playMouseoverSound() {
+    mouseoverSound.currentTime = 0; // Reset the sound to the beginning
+    mouseoverSound.play();
+  }
+
+  // Function to play the keyboard sound
+  function playKeyboardSound() {
+    keyboardSound.currentTime = 0; // Reset the sound to the beginning
+    keyboardSound.play();
+  }
+
+  // Attach the playClickSound and playMouseoverSound functions to specific buttons
+  var buttons = document.querySelectorAll("button");
+
+  buttons.forEach(function (button) {
+    button.addEventListener("click", playClickSound);
+    button.addEventListener("mouseover", playMouseoverSound);
+  });
+
+  // Attach the playKeyboardSound function to keyboard events on input elements
+  var inputElements = document.querySelectorAll("input");
+
+  inputElements.forEach(function (input) {
+    input.addEventListener("input", playKeyboardSound);
+  });
+});
