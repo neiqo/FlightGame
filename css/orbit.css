@@ -1,0 +1,47 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#planet {
+  width: 20em;
+  height: 19em;
+  background: url(/images/mercury-rectangle.jpg);
+  box-shadow: inset -2em -2em 2em #000, -0.5em -0.5em 1em #9c9696;
+  position: relative;
+  animation: rotate 30s linear infinite;
+}
+
+#planet {
+  border-radius: 50%;
+  background-repeat: repeat;
+  background-size: 200% 100%;
+}
+
+@keyframes rotate {
+  to {
+    background-position: -200% 0;
+  }
+}
+@keyframes orbit {
+  49% {
+    z-index: 1;
+  }
+  50% {
+    left: 25em;
+    z-index: -1;
+  }
+  99% {
+    z-index: -1;
+  }
+  100% {
+    left: -11em;
+    z-index: 1;
+  }
+}
