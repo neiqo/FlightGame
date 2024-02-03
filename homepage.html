@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="css/homepage.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
-  <body>
+  <body class="cockpit">
     <video autoplay loop muted plays-inline class="bg-vid">
       <source src="images/bg/earth-vid.webm" , type="video/webm" />
     </video>
@@ -41,6 +41,11 @@
         <button onclick="window.location.href='orbit.html'">Play</button>
         <button onclick="logout()">Logout</button>
       </div>
+    </div>
+
+    <div class="terminal">
+      <iframe class="main-screen" src="login.html"></iframe>
+      <iframe class="side-screen" src="credits.html"></iframe>
     </div>
 
     <!--
