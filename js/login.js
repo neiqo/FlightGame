@@ -19,7 +19,7 @@ document.getElementById("login-button").addEventListener("click", function () {
         document.getElementById("login-message").textContent =
           "Login Successful!";
         sessionStorage.setItem("currentUser", JSON.stringify(user));
-        window.location.href = "homepage.html";
+        window.parent.location.href = "homepage.html";
       } else {
         document.getElementById("login-message").textContent =
           "Invalid credentials!";

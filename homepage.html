@@ -11,8 +11,11 @@
     <link rel="stylesheet" type="text/css" href="css/homepage.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
-  <body>
-    <img class="bgimg" src="images/bg/earth-bg.png" alt="" />
+  <body class="cockpit">
+    <video autoplay loop muted plays-inline class="bg-vid">
+      <source src="images/bg/earth-vid.webm" , type="video/webm" />
+    </video>
+    <img class="bgimg" src="images/bg/cockpit.png" alt="" />
     <div class="container">
       <h1><span id="player-username-display"></span></h1>
       <div id="player-savedata-display">
@@ -38,6 +41,11 @@
         <button onclick="window.location.href='orbit.html'">Play</button>
         <button onclick="logout()">Logout</button>
       </div>
+    </div>
+
+    <div class="terminal">
+      <iframe class="main-screen" src="login.html"></iframe>
+      <iframe class="side-screen" src="credits.html"></iframe>
     </div>
 
     <!--

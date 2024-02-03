@@ -1,0 +1,90 @@
+document.addEventListener("DOMContentLoaded", function () {
+  var playButton = document.getElementById("scroll-button");
+
+  playButton.addEventListener("click", function () {
+    var terminal = document.querySelector(".terminal");
+    var terminalBottom = terminal.offsetTop + terminal.offsetHeight;
+
+    // Calculate the distance to scroll
+    var distanceToScroll = terminalBottom - window.scrollY;
+
+    // Set the scroll duration (in milliseconds)
+    var scrollDuration = 1500;
+
+    // Calculate the number of frames based on the duration
+    var frames = Math.ceil(scrollDuration / 16.67); // 60 frames per second
+
+    // Calculate the distance to scroll per frame
+    var distancePerFrame = distanceToScroll / frames;
+
+    // Perform smooth scroll animation
+    function scrollAnimation(currentFrame) {
+      if (currentFrame <= frames) {
+        window.scrollTo(0, window.scrollY + distancePerFrame);
+        currentFrame++;
+        requestAnimationFrame(function () {
+          scrollAnimation(currentFrame);
+        });
+      }
+    }
+
+    // Start the animation
+    scrollAnimation(0);
+  });
+
+  function hideInitialPage() {
+    var initialPage = document.getElementById("initialPage");
+    initialPage.style.display = "none";
+    playVideo(); // Trigger video play after hiding the initial page
+  }
+
+  document
+    .getElementById("initialPage")
+    .addEventListener("click", hideInitialPage);
+
+  function playVideo() {
+    var video = document.querySelector(".bg-vid");
+    video.muted = false;
+    video.play();
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Get the audio elements
+  var clickSound = document.getElementById("clickSound");
+  var mouseoverSound = document.getElementById("mouseoverSound");
+  var keyboardSound = document.getElementById("keyboardSound");
+
+  // Function to play the click sound
+  function playClickSound() {
+    clickSound.currentTime = 0; // Reset the sound to the beginning
+    clickSound.play();
+  }
+
+  // Function to play the mouseover sound
+  function playMouseoverSound() {
+    mouseoverSound.currentTime = 0; // Reset the sound to the beginning
+    mouseoverSound.play();
+  }
+
+  // Function to play the keyboard sound
+  function playKeyboardSound() {
+    keyboardSound.currentTime = 0; // Reset the sound to the beginning
+    keyboardSound.play();
+  }
+
+  // Attach the playClickSound and playMouseoverSound functions to specific buttons
+  var buttons = document.querySelectorAll("button");
+
+  buttons.forEach(function (button) {
+    button.addEventListener("click", playClickSound);
+    button.addEventListener("mouseover", playMouseoverSound);
+  });
+
+  // Attach the playKeyboardSound function to keyboard events on input elements
+  var inputElements = document.querySelectorAll("input");
+
+  inputElements.forEach(function (input) {
+    input.addEventListener("input", playKeyboardSound);
+  });
+});
