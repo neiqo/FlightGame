@@ -2,6 +2,7 @@
   height: 100%;
   background-color: black;
   margin: 0; /* Reset margin to ensure consistency */
+  font-family: "Electrolize", sans-serif;
 }
 
 .initial-page {
@@ -65,35 +66,32 @@ button {
   align-items: center;
 }
 
-button {
+#scroll-button {
   background-color: #f0f0f0;
   color: #000;
   box-shadow: 0px 0px 10px 0px #000;
-}
-
-button:hover {
-  box-shadow: 0px 0px 20px 0px #fff;
-}
-
-button:active {
-  box-shadow: none;
-  background-color: #bbb;
-}
-
-#scroll-button {
   position: absolute;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
+#scroll-button:hover {
+  box-shadow: 0px 0px 20px 0px #fff;
+}
+
+#scroll-button:active {
+  box-shadow: none;
+  background-color: #bbb;
+}
+
 .terminal {
   display: flex;
   position: absolute;
-  top: 96%;
-  left: 2.3%;
-  width: 95.8%;
-  height: 70%;
+  top: 95.5%;
+  left: 2.1%;
+  width: 96.2%;
+  height: 71%;
   justify-content: space-between;
   gap: 0%;
 }
@@ -101,12 +99,16 @@ button:active {
 .main-screen {
   position: relative;
   width: 72.5%;
+  border: #2f2f2f 8px solid;
+  border-radius: 25px;
 }
 
 .side-screen {
   position: relative;
-  width: 25%;
+  width: 25.2%;
   height: 77%;
+  border: #2f2f2f 6px solid;
+  border-radius: 20px;
 }
 
 .container {

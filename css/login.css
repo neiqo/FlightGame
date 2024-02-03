@@ -4,15 +4,32 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f4f4f4;
+  background-color: #075e91;
+  font-family: "Electrolize", sans-serif;
 }
 
-.login-container {
-  background: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  text-align: center;
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(12, 82, 157, 0.1);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.form-container {
+  padding: 3%;
+  background-color: #075e91;
+  border: #004080 5px solid;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  color: white;
 }
 
 input {
@@ -22,18 +39,33 @@ input {
   margin: 10px 0;
   border-radius: 5px;
   border: 1px solid #ddd;
+  background-color: #001d2e; /* Dark blue input background */
+  color: white; /* Input text color */
 }
 
-button {
+.loginpage-button {
   width: 100%;
-  padding: 10px;
+  margin-top: 2%;
+  padding: 5px;
   border: none;
   border-radius: 5px;
-  background-color: blue;
+  background-color: #004080; /* Darker blue button background */
   color: white;
   cursor: pointer;
+  justify-content: center;
 }
 
-button:hover {
-  background-color: darkblue;
+.loginpage-button:hover {
+  background-color: #002040;
+  box-shadow: 0px 0px 5px 0px #001d2e;
+}
+
+.loginpage-button:active {
+  box-shadow: none;
+  background-color: #8a2be2; /* Darker shade on active/press */
+}
+
+#login-message,
+#register-message {
+  color: white;
 }
