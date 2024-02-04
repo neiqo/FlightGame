@@ -138,3 +138,14 @@ document.addEventListener("DOMContentLoaded", function () {
     video.play();
   }
 });
+
+function explore() {
+  // Get the main-screen iframe
+  var mainScreen = document.querySelector(".main-screen");
+
+  // Set the new source for the iframe
+  mainScreen.src = "explore.html"; // Change 'explore.html' to the desired page
+
+  // Play a sound (optional)
+  document.getElementById("clickSound").play();
+}
