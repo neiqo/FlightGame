@@ -71,6 +71,47 @@ img {
   object-fit: cover;
 }
 
+#content {
+  margin: 20px auto;
+}
+
+#content label {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+label::before {
+  content: "+";
+  margin-right: 10px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+#content .dropdown {
+  padding: 0 10px;
+  line-height: 26px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s, padding 0.5s;
+}
+
+#content input[type="radio"]:checked + label + .dropdown {
+  max-height: 1000px;
+  padding: 10px 10px 20px;
+}
+
+#content input[type="radio"]:checked + label {
+  content: "-";
+}
+
 @keyframes rotate {
   to {
     background-position: -200% 0;

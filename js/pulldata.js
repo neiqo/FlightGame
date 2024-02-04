@@ -252,23 +252,30 @@ function updateContent(headers) {
     const div = document.createElement("div");
     div.className = headers[i].textContent;
 
-    const span = document.createElement("span");
-    span.innerHTML = headers[i].textContent;
+    const radio = document.createElement("input");
+    radio.name = current_planet;
+    radio.type = "radio";
+    radio.id = headers[i].textContent;
+    if (i === 0) {
+      radio.checked = true;
+    }
+    div.appendChild(radio);
 
-    div.appendChild(span);
+    const label = document.createElement("label");
+    //label.for = headers[i].textContent;
+    label.setAttribute("for", headers[i].textContent);
+    label.innerHTML = headers[i].textContent;
+
+    div.appendChild(label);
+
+    const dropdown = document.createElement("div");
+    dropdown.className = "dropdown";
 
     const p = document.createElement("p");
     p.innerHTML = findNextParagraph(headers[i]);
-    div.appendChild(p);
+    dropdown.appendChild(p);
 
     let search = current_planet + ` ` + headers[i].textContent;
-    //const image = document.createElement("img");
-    //let search = current_planet + ` ` + headers[i].textContent;
-
-    //console.log(search);
-    //image.src = fetchImages(search);
-
-    //div.appendChild(image);
 
     async function loadImage() {
       try {
@@ -284,18 +291,18 @@ function updateContent(headers) {
           image.src = imageUrl;
           image.onload = function () {
             resizeImageWithAspectRatio(image, 300);
-            image.onclick = function() {
+            image.onclick = function () {
               handleImageClick(imageUrl);
-              div.appendChild(image);
+              //dropdown.appendChild(image);
             };
-          div.appendChild(image);
-          }
+            dropdown.appendChild(image);
+          };
 
           // Set the src attribute after obtaining the image URL
 
           console.log("Image Element:", image.src);
 
-          div.appendChild(resizedimage);
+          //dropdown.appendChild(resizedimage);
         }
       } catch (error) {
         console.error("Error fetching image:", error);
@@ -304,44 +311,29 @@ function updateContent(headers) {
 
     loadImage();
 
-    // Find the next <p> element after the current span
-    //const nextParagraph = getNextParagraph(spansWithIds[i], doc);
-
-    // if (nextParagraph) {
-    //   const p = document.createElement("p");
-    //   p.innerHTML = nextParagraph.innerHTML;
-    //   div.appendChild(p);
-    // }
-
+    div.appendChild(dropdown);
     element.appendChild(div);
   }
 }
 
 async function fetchImages(search) {
-  try {
-    const response = await fetch(
-      `https://www.googleapis.com/customsearch/v1?key=AIzaSyDW7r_lVZ4EkVv_rq8h6SGxqWBq3lyazTg&cx=0364b018377bd4cf1&searchType=image&q=${search}`
-    );
+  const response = await fetch(
+    `https://www.googleapis.com/customsearch/v1?key=AIzaSyC6UOCo5PaHnSax9USYkN_e6ycE8gHFQlA&cx=0364b018377bd4cf1&searchType=image&q=${search}`
+  );
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    const result = await response.json();
-
-    const substring = "https://science.nasa.gov";
-    for (let i = 0; i < result.items.length; i++) {
-      if (result.items[i].image.contextLink.includes(substring)) {
-        return result.items[i].link;
-      }
-    }
-    return null;
-
-    //no images from nasa
-    //throw new Error('Image not found');
-  } catch (error) {
-    throw error;
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
   }
+
+  const result = await response.json();
+
+  const substring = "https://science.nasa.gov";
+  for (let i = 0; i < result.items.length; i++) {
+    if (result.items[i].image.contextLink.includes(substring)) {
+      return result.items[i].link;
+    }
+  }
+  return null;
 }
 
 function findNextParagraph(element) {
