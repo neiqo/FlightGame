@@ -44,7 +44,7 @@ window.onload = function () {
     }
   } else {
     // Redirect to login page if no session data
-    window.location.href = "login.html";
+    window.location.href = "index.html";
   }
 };
 
