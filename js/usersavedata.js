@@ -7,7 +7,7 @@ window.onload = function () {
     const usernameDisplay = document.getElementById("player-username-display");
     if (usernameDisplay) {
       //  usernameDisplay.textContent = user.username;
-      typeWriter(usernameDisplay, "Welcome, "+user.username);
+      typeWriter(usernameDisplay, user.username);
     }
 
     // Update other elements as before
