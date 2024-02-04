@@ -281,18 +281,21 @@ function updateContent(headers) {
         if (src !== null) {
           const image = document.createElement("img");
           image.id = headers[i].textContent + "img";
+          image.src = imageUrl;
           image.onload = function () {
             resizeImageWithAspectRatio(image, 300);
-            div.appendChild(image);
-          };
+            image.onclick = function() {
+              handleImageClick(imageUrl);
+              div.appendChild(image);
+            };
+          div.appendChild(image);
+          }
 
           // Set the src attribute after obtaining the image URL
-          image.src = imageUrl;
 
           console.log("Image Element:", image.src);
 
-          resizeImageWithAspectRatio(image, 300);
-          div.appendChild(image);
+          div.appendChild(resizedimage);
         }
       } catch (error) {
         console.error("Error fetching image:", error);
@@ -317,7 +320,7 @@ function updateContent(headers) {
 async function fetchImages(search) {
   try {
     const response = await fetch(
-      `https://www.googleapis.com/customsearch/v1?key=AIzaSyC5stymWLly1XZLE2vKTVSQchuijAkRJSk&cx=0364b018377bd4cf1&searchType=image&q=${search}`
+      `https://www.googleapis.com/customsearch/v1?key=AIzaSyDW7r_lVZ4EkVv_rq8h6SGxqWBq3lyazTg&cx=0364b018377bd4cf1&searchType=image&q=${search}`
     );
 
     if (!response.ok) {
@@ -378,7 +381,7 @@ function fetchDataForCurrentPlanet(planetName) {
   }
 }
 
-function resizeImageWithAspectRatio(image, newWidth) {
+async function resizeImageWithAspectRatio(image, newWidth) {
   const originalWidth = image.width;
   const originalHeight = image.height;
 
@@ -391,6 +394,7 @@ function resizeImageWithAspectRatio(image, newWidth) {
   // Set the new dimensions
   image.width = newWidth;
   image.height = newHeight;
+  return "resized";
 }
 
 /*
@@ -445,3 +449,19 @@ function fetchImages(search) {
 */
 
 //fetchImages(`earth`);
+
+function handleImageClick(imageSrc) {
+  document.querySelector(".popup-image").style.display = "block";
+  document.querySelector(".popup-image img").src = imageSrc;
+}
+
+// document.querySelectorAll("#content img").forEach((image) => {
+//   image.onclick = () => {
+//     document.querySelector(".popup-image").style.display = "block";
+//     document.querySelector(".popup-image img").src = image.getAttribute("src");
+//   };
+// });
+
+document.querySelector(".popup-image span").onclick = () => {
+  document.querySelector(".popup-image").style.display = "none";
+};
