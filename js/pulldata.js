@@ -41,37 +41,49 @@ function fetchplanet(id) {
         .split("<span ")
         .filter((span) => span.includes('id="'));
 
-      const content1 = [];
-      const content2 = [];
+      const content = [];
+
       for (let i = 0; i < spansWithIds.length; i++) {
-        /*
-        if (spansWithIds[i] === "See also" ||
-        spansWithIds[i] === "Gallery") {
-          return;
-        }
-        */
         let matches = spansWithIds[i].match(/<p>.*?<\/p>/g);
-        //console.log(matches);
-        content1.push(matches);
-        if (i === 1) {
-          //content2.push(matches);
-          break;
+        if (matches && Array.isArray(matches)) {
+          if (matches.length > 1) {
+            content.push(matches.slice(0, 2));
+          } else {
+            content.push(matches);
+          }
         }
-      }
-      console.log(content1.length);
-      for (let i = 0; i < content1.length; i++) {
-        console.log(content1[i]);
       }
 
-      updateContent(extract);
+      /*
+      for (let i = 0; i < 5; i++) {
+        console.log(content[i]);
+      }
+*/
+
+      updateContent(content, spansWithIds);
     })
+    /*
     .catch((error) => {
       console.error("Fetch error:", error);
-    });
+    })
+    */;
 }
 
-function updateContent(content) {
-  document.getElementById("content").innerHTML = content;
+function updateContent(content, spansWithIds) {
+  let element = document.getElementById("content");
+
+  for (let i = 0; i < 5; i++) {
+    const div = document.createElement('div');
+    div.className = spansWithIds[i];
+
+    for (let n = 0; n < content[i].length; n++) {
+      const p = document.createElement('p');
+      p.innerHTML = content[i][n];
+      div.appendChild(p);
+    }
+
+    element.appendChild(div);
+  }
 }
 
 // Fetch data about the player's current planet based on user savedata
