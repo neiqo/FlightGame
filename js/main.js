@@ -33,13 +33,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function hideInitialPage() {
-    var initialPage = document.getElementById("initialPage");
+    var initialPage = document.getElementById("loading-screen");
     initialPage.style.display = "none";
     playVideo(); // Trigger video play after hiding the initial page
   }
 
   document
-    .getElementById("initialPage")
+    .getElementById("loading-screen")
     .addEventListener("click", hideInitialPage);
 
   function playVideo() {
@@ -87,4 +87,54 @@ document.addEventListener("DOMContentLoaded", function () {
   inputElements.forEach(function (input) {
     input.addEventListener("input", playKeyboardSound);
   });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Wait for the DOM to be fully loaded
+
+  // Function to hide the loading screen and show the main content
+  function hideLoadingScreen() {
+    var loadingScreen = document.getElementById("loading-screen");
+    var loadingMessage = document.getElementById("loading-message");
+    var continueMessage = document.getElementById("continueMessage");
+
+    // Change the h1 to "Completed"
+    loadingMessage.textContent = "Loading Complete!";
+
+    // Display the "Press anywhere to continue" message
+    continueMessage.style.display = "block";
+
+    // Add click event listener to continue after pressing anywhere
+    document.addEventListener("click", continueAfterClick);
+
+    function continueAfterClick() {
+      document.removeEventListener("click", continueAfterClick);
+      hideInitialPage();
+    }
+
+    function continueAfterTimeout() {
+      hideInitialPage();
+    }
+  }
+
+  // Function to hide the initial loading page
+  function hideInitialPage() {
+    var initialPage = document.getElementById("loading-screen");
+    initialPage.style.display = "none";
+    playVideo(); // Trigger video play after hiding the initial page
+  }
+
+  // Add event listener to hide loading screen when video is loaded
+  var video = document.querySelector(".bg-vid");
+  video.addEventListener("loadeddata", hideLoadingScreen);
+
+  // Add event listener to hide loading screen when user clicks anywhere
+  document.addEventListener("click", hideInitialPage);
+
+  // Function to play the video
+  function playVideo() {
+    var video = document.querySelector(".bg-vid");
+    video.muted = false;
+    video.play();
+  }
 });

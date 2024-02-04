@@ -1,11 +1,10 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Electrolize", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background-color: #075e91;
-  font-family: "Electrolize", sans-serif;
 }
 
 body::before {
@@ -21,11 +20,16 @@ body::before {
 }
 
 .form-container {
-  padding: 3%;
+  padding: 4vh;
   background-color: #075e91;
-  border: #004080 5px solid;
+  border: #00ced1 5px solid;
   border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px;
+  transition: box-shadow 500ms;
+}
+
+.form-container:hover {
+  box-shadow: 0 0px 8px #00ced1;
 }
 
 h2 {
@@ -56,13 +60,13 @@ input {
 }
 
 .loginpage-button:hover {
-  background-color: #002040;
-  box-shadow: 0px 0px 5px 0px #001d2e;
+  box-shadow: 0px 0px 5px 0px #00ced1;
+  background-color: #00ced1; /* Teal or Cyan color */
 }
 
 .loginpage-button:active {
   box-shadow: none;
-  background-color: #8a2be2; /* Darker shade on active/press */
+  background-color: #002040; /* Darker shade on active/press */
 }
 
 #login-message,
