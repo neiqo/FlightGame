@@ -1,0 +1,41 @@
+#main-scr {
+  position: relative;
+  width: 65vw;
+  height: 60vh;
+  margin-right: 1vw;
+  border: #08d9dd 0.6vw solid;
+  border-radius: 4vw 1vw 1vw 11vw; /*top left, top right ,bottom right, bottom left*/
+  margin-top: auto;
+  transition: box-shadow 500ms;
+  box-shadow: 0 0 0.6vw #000000;
+}
+
+#class-terminal {
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  padding: 1vw;
+  top: 0vh;
+  left: 0vw;
+  width: 100vw;
+  height: 100vh;
+  justify-content: space-between;
+  gap: 0vh;
+}
+
+#class-buttons {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+  align-items: center;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  height: 16vh;
+  width: 100%;
+  gap: 0.5vw;
+  border: #08d9dd 0.6vw solid;
+  border-radius: 4vw 1vw 4vw 1vw; /*top left, top right ,bottom right, bottom left*/
+  background-color: rgba(8, 217, 221, 0.2);
+  transition: box-shadow 500ms;
+  box-shadow: 0 0 0.6vw #000000;
+}
