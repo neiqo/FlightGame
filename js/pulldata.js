@@ -46,42 +46,25 @@ function fetchplanet(id) {
     });
 }
 
+const spans = [];
+const paragraphs = [];
+const images = [];
+
 function updateContent(headers) {
   let element = document.getElementById("content");
 
   function processLoop(i) {
     if (i < 5) {
-      const div = document.createElement("div");
-      div.className = headers[i].textContent;
+      spans.push(headers[i].textContent);
 
-      const radio = document.createElement("input");
-      radio.name = current_planet;
-      radio.type = "radio";
-      radio.id = headers[i].textContent;
-      if (i === 0) {
-        radio.checked = true;
-      }
-      div.appendChild(radio);
-
-      const label = document.createElement("label");
-      //label.for = headers[i].textContent;
-      label.setAttribute("for", headers[i].textContent);
-      label.innerHTML = headers[i].textContent;
-
-      div.appendChild(label);
-
-      const dropdown = document.createElement("div");
-      dropdown.className = "dropdown";
-
-      const p = document.createElement("p");
       let content = "";
       content = findNextParagraph(headers[i]);
 
       if (content === "\n" || content === "") {
         content = findNextParagraph2(headers[i]);
       }
+      paragraphs.push(content);
 
-      console.log("content1:" + content);
       //Summarize content (to be uncommented)
       // if (content.length > 1000) {
       //   summarize(content)
@@ -91,10 +74,6 @@ function updateContent(headers) {
       // } else {
       //   p.innerHTML = content;
       // }
-
-      p.innerHTML = content;
-
-      dropdown.appendChild(p);
 
       let search = current_planet + ` ` + headers[i].textContent;
 
@@ -132,11 +111,16 @@ function updateContent(headers) {
 
       // loadImage();
 
-      div.appendChild(dropdown);
-      element.appendChild(div);
+      if (i === 0) {
+        document.querySelector(".planet-container span").innerHTML =
+          headers[i].textContent;
+        document.querySelector(".planet-container p").innerHTML = content;
+        //document.querySelector(".planet-container img").src = loadImage();
+      }
+
       setTimeout(() => {
         processLoop(i + 1);
-      }, 1000);
+      }, 500);
     }
   }
 
@@ -192,7 +176,6 @@ function findNextParagraph2(element) {
 
     // Move to the next sibling
     currentElement = currentElement.nextSibling;
-
   }
   // Move to the next sibling
 
@@ -261,27 +244,56 @@ document.querySelector(".popup-image span").onclick = () => {
 };
 
 async function summarize(content) {
-  const url = 'https://text-summarize-pro.p.rapidapi.com/summarizeFromText';
+  const url = "https://text-summarize-pro.p.rapidapi.com/summarizeFromText";
   const options = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'content-type': 'application/x-www-form-urlencoded',
-      'X-RapidAPI-Key': '89bd6f2afbmshdcf0abe52204ecfp1c67dajsn80d79b55e8dc',
-      'X-RapidAPI-Host': 'text-summarize-pro.p.rapidapi.com'
+      "content-type": "application/x-www-form-urlencoded",
+      "X-RapidAPI-Key": "89bd6f2afbmshdcf0abe52204ecfp1c67dajsn80d79b55e8dc",
+      "X-RapidAPI-Host": "text-summarize-pro.p.rapidapi.com",
     },
     body: new URLSearchParams({
       text: content,
-      percentage: '50'
-    })
+      percentage: "50",
+    }),
   };
 
   try {
     const response = await fetch(url, options);
     const result = await response.json();
-    
+
     console.log(result);
     return result;
   } catch (error) {
     console.error(error);
   }
+}
+
+document.getElementById("nextButton").addEventListener("click", nextPara);
+document.getElementById("prevButton").addEventListener("click", prevPara);
+
+let i = 0;
+
+function nextPara() {
+  i++;
+  if (i === 4) {
+    document.getElementById("nextButton").style.display = "none";
+  }
+  document.getElementById("prevButton").style.display = "block";
+  document.querySelector(".planet-container span").innerHTML =
+    spans[i];
+  document.querySelector(".planet-container p").innerHTML = paragraphs[i];
+  //document.querySelector(".planet-container img").src = loadImage();
+}
+
+function prevPara() {
+  i--;
+  if (i === 0) {
+    document.getElementById("prevButton").style.display = "none";
+  }
+  document.getElementById("nextButton").style.display = "block";
+  document.querySelector(".planet-container span").innerHTML =
+    spans[i];
+  document.querySelector(".planet-container p").innerHTML = paragraphs[i];
+  //document.querySelector(".planet-container img").src = loadImage();
 }
