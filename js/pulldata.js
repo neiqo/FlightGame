@@ -272,72 +272,154 @@ function updateContent(headers) {
     dropdown.className = "dropdown";
 
     const p = document.createElement("p");
-    p.innerHTML = findNextParagraph(headers[i]);
+    let content = "";
+    content = findNextParagraph(headers[i]);
+
+    if (content === "\n" || content === "") {
+      content = findNextParagraph2(headers[i]);
+    }
+
+    if (content.length > 1000) {
+      summarize(content)
+      //.then((response)
+      .then((result) => {
+        //console.log(result.summary);
+        p.innerHTML = result.summary;
+      })
+    }
+    else {
+      p.innerHTML = content;
+    }
+
+
+    //console.log(p);
+    // console.log(
+    //   headers[i].nextSibling.nextSibling.nextSibling.nextSibling.nextSibling
+    //     .nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.textContent
+    // );
+
+    //console.log(headers[i].nextSibling);
     dropdown.appendChild(p);
 
     let search = current_planet + ` ` + headers[i].textContent;
 
-    async function loadImage() {
-      try {
-        const imageUrl = await fetchImages(search);
-        console.log("Image URL:", imageUrl);
+    // async function loadImage() {
+    //   try {
+    //     const imageUrl = await fetchImages(search);
+    //     console.log("Image URL:", imageUrl);
 
-        // Set the src attribute after obtaining the image URL
-        let src = imageUrl;
-        // Append the image to the document or do whatever you need to do with it
-        if (src !== null) {
-          const image = document.createElement("img");
-          image.id = headers[i].textContent + "img";
-          image.src = imageUrl;
-          image.onload = function () {
-            resizeImageWithAspectRatio(image, 300);
-            image.onclick = function () {
-              handleImageClick(imageUrl);
-              //dropdown.appendChild(image);
-            };
-            dropdown.appendChild(image);
-          };
+    //     // Set the src attribute after obtaining the image URL
+    //     let src = imageUrl;
+    //     // Append the image to the document or do whatever you need to do with it
+    //     if (src !== null) {
+    //       const image = document.createElement("img");
+    //       image.id = headers[i].textContent + "img";
+    //       image.src = imageUrl;
+    //       image.onload = function () {
+    //         resizeImageWithAspectRatio(image, 300);
+    //         image.onclick = function () {
+    //           handleImageClick(imageUrl);
+    //           //dropdown.appendChild(image);
+    //         };
+    //         dropdown.appendChild(image);
+    //       };
 
-          // Set the src attribute after obtaining the image URL
+    //       // Set the src attribute after obtaining the image URL
 
-          console.log("Image Element:", image.src);
+    //       console.log("Image Element:", image.src);
 
-          //dropdown.appendChild(resizedimage);
-        }
-      } catch (error) {
-        console.error("Error fetching image:", error);
-      }
-    }
+    //       //dropdown.appendChild(resizedimage);
+    //     }
+    //   } catch (error) {
+    //     console.error("Error fetching image:", error);
+    //   }
+    // }
 
-    loadImage();
+    // loadImage();
 
     div.appendChild(dropdown);
     element.appendChild(div);
   }
 }
 
-async function fetchImages(search) {
-  const response = await fetch(
-    `https://www.googleapis.com/customsearch/v1?key=AIzaSyC6UOCo5PaHnSax9USYkN_e6ycE8gHFQlA&cx=0364b018377bd4cf1&searchType=image&q=${search}`
-  );
+// async function fetchImages(search) {
+//   const response = await fetch(
+//     `https://www.googleapis.com/customsearch/v1?key=AIzaSyC6UOCo5PaHnSax9USYkN_e6ycE8gHFQlA&cx=0364b018377bd4cf1&searchType=image&q=${search}`
+//   );
 
-  if (!response.ok) {
-    throw new Error(`HTTP error! Status: ${response.status}`);
-  }
+//   if (!response.ok) {
+//     throw new Error(`HTTP error! Status: ${response.status}`);
+//   }
 
-  const result = await response.json();
+//   const result = await response.json();
 
-  const substring = "https://science.nasa.gov";
-  for (let i = 0; i < result.items.length; i++) {
-    if (result.items[i].image.contextLink.includes(substring)) {
-      return result.items[i].link;
+//   const substring = "https://science.nasa.gov";
+//   for (let i = 0; i < result.items.length; i++) {
+//     if (result.items[i].image.contextLink.includes(substring)) {
+//       return result.items[i].link;
+//     }
+//   }
+//   return null;
+// }
+
+/////////////////////////////////////////////////
+
+function findNextParagraph2(element) {
+  let currentElement = element.nextSibling;
+  let savedElement;
+  let content = "";
+
+  //console.log(currentElement);
+
+  // Loop until a <p> tag is found or there are no more siblings
+  while (currentElement !== null) {
+    savedElement = currentElement;
+    //console.log("hello");
+    if (
+      currentElement.nodeName.toLowerCase() === "p" &&
+      currentElement.textContent.trim() !== ""
+    ) {
+      // If a <p> tag is found, return its text content
+      if (savedElement.nextSibling.nodeName.toLowerCase() !== "p") {
+        content += currentElement.textContent;
+        return content;
+      }
+    } else {
+      content += currentElement.textContent;
     }
+
+    // Move to the next sibling
+    currentElement = currentElement.nextSibling;
+
+    /*
+    if (
+      currentElement.nodeName.toLowerCase() === "p" &&
+      (currentElement.textContent === "\n" || currentElement.textContent === "")
+    )
+      console.log(currentElement);
+    // If a <p> tag is found, return its text content
+    savedElement = currentElement;
+    if (savedElement.nextSibling.nodeName.toLowerCase() === "p") {
+      console.log("hello");
+      content += currentElement.textContent;
+      return content;
+    } else {
+      content += currentElement.textContent;
+    }
+    */
   }
-  return null;
+  // Move to the next sibling
+
+  currentElement = currentElement.nextSibling;
+  console.log(content);
 }
 
 function findNextParagraph(element) {
   // Start from the next sibling of the provided element
+  // if ((element.textContent = "\n")) {
+  // console.log(element.nextSibling);
+  // }
+
   let currentElement = element.nextElementSibling;
   let savedElement;
   let content = "";
@@ -386,7 +468,6 @@ async function resizeImageWithAspectRatio(image, newWidth) {
   // Set the new dimensions
   image.width = newWidth;
   image.height = newHeight;
-  return "resized";
 }
 
 /*
@@ -457,3 +538,44 @@ function handleImageClick(imageSrc) {
 document.querySelector(".popup-image span").onclick = () => {
   document.querySelector(".popup-image").style.display = "none";
 };
+
+function summarize(content) {
+  const url = "https://text-summarize-pro.p.rapidapi.com/summarizeFromText";
+  const options = {
+    method: "POST",
+    headers: {
+      "content-type": "application/x-www-form-urlencoded",
+      "X-RapidAPI-Key": "b66d439b2dmsh8d2d879350d7b80p14ef43jsn7eb102f4eae3",
+      "X-RapidAPI-Host": "text-summarize-pro.p.rapidapi.com",
+    },
+    body: new URLSearchParams({
+      text: content,
+      percentage: "50",
+    }),
+  };
+
+  return fetch(url, options)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((result) => result) // Assuming the API response is JSON
+    .catch((error) => {
+      console.error("Error during summarization:", error);
+      throw error; // Rethrow the error or handle it according to your needs
+    });
+}
+
+//const content = "The blinking light caught her attention. She thought about it a bit and couldn't remember ever noticing it before. That was strange since it was obvious the flashing light had been there for years. Now she wondered how she missed it for that amount of time and what other things in her small town she had failed to notice.";
+
+// summarize(content)
+//   //.then((response)
+//   .then((result) => {
+//     console.log(result);
+//   })
+//   .catch((error) => {
+//     // Handle the error, e.g., show an error message to the user
+//     console.error('Error during summarization:', error);
+//   });
