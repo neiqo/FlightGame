@@ -1,6 +1,7 @@
 body {
   background-color: black;
   color: white;
+  font-family: "Electrolize", sans-serif;
   padding: 2vw;
 }
 
@@ -111,6 +112,64 @@ input[type="radio"] {
 
 #content input[type="radio"]:checked + label {
   content: "-";
+}
+
+.planet-container span {
+  font-size: 24px;
+}
+
+/* #content button {
+  background-color: #4b4baf;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  text-align: center;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#content button:hover,
+#content button:focus {
+  background-color: #5c5cc7;
+} */
+
+#content button {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  padding: 10px 16px;
+  background-color: #4b4baf;
+  outline: none;
+  border-style: none;
+}
+
+#content button:hover,
+#content button:focus {
+  background-color: #5c5cc7;
+}
+
+#prevButton {
+  display: none;
+  float: left;
+}
+
+#nextButton {
+  margin-left: auto;
+  float: right;
 }
 
 @keyframes rotate {
