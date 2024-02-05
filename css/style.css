@@ -139,12 +139,12 @@
   box-shadow: 0 0px 0px #000000;
 }
 
-#explore-button:hover {
+#liftoff-button:hover {
   box-shadow: 0px 0px 5px 0px #00ced1;
   background-color: #00ced1; /* Teal or Cyan color */
 }
 
-#explore-button:active {
+#liftoff-button:active {
   box-shadow: none;
   background-color: #002040; /* Darker shade on active/press */
 }

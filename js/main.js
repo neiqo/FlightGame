@@ -145,6 +145,14 @@ function explore() {
 
   // Set the new source for the iframe
   mainScreen.src = "explore.html"; // Change 'explore.html' to the desired page
+}
+
+function liftoff() {
+  // Get the main-screen iframe
+  var mainScreen = document.querySelector(".main-screen");
+
+  // Set the new source for the iframe
+  mainScreen.src = "quiz.html"; // Change 'explore.html' to the desired page
 
   // Play a sound (optional)
   document.getElementById("clickSound").play();
