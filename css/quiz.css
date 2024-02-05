@@ -1,0 +1,104 @@
+body {
+  font-family: "Electrolize", sans-serif;
+  background-color: #075e91;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10vw;
+}
+
+.container h1 {
+  font-weight: 1000;
+}
+
+.container label {
+  font-size: 24px;
+  padding: 10px;
+  font-weight: 500;
+}
+
+.quiz-question {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quiz-question ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-right: 5vw;
+}
+
+.quiz-question button {
+  width: 90%;
+}
+
+.col1 input[type="radio"] + label,
+.col2 input[type="radio"] + label {
+  margin-bottom: 10px; /* Adjust the value to set the desired gap */
+}
+
+/* ul input + ul label {
+
+} */
+
+input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #001d2e; /* Dark blue input background */
+  color: white; /* Input text color */
+}
+
+.btn-check + .btn {
+  min-width: 32.5vw;
+  padding: 5px;
+  border: none;
+  border-radius: 2px;
+  background-color: #004080; /* Darker blue button background */
+  color: white;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.btn-check:hover + .btn {
+  box-shadow: 0px 0px 5px 0px #00ced1;
+  background-color: #00ced1; /* Teal or Cyan color */
+}
+.btn-check:checked + .btn {
+  box-shadow: none;
+  background-color: #002040; /* Darker shade on active/press */
+}
+/* 
+label::before {
+  margin-right: 10px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+
+#content div {
+  padding: 0 10px;
+  line-height: 26px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s, padding 0.5s;
+}
+
+#content input[type="radio"]:checked + label + div {
+  max-height: 1000px;
+  padding: 10px 10px 20px;
+}
+
+.container .col1 * {
+  border: 1px solid green;
+} */

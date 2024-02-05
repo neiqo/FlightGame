@@ -65,25 +65,61 @@ function displayQuestion(question) {
 
   // display answer options
   const answerOptions = document.createElement("ul");
-  question.answers.forEach((answer, optionIndex) => {
-    const optionItem = document.createElement("li");
+
+  let div = null;
+  for (let i = 0; i < question.answers.length; i++) {
+    if (i === 0 || i === 2) {
+      div = document.createElement("div");
+      if (i === 0) {
+        div.className = "col" + "1";
+      } else {
+        div.className = "col" + "2";
+      }
+    }
+    // optionItem.appendChild(div);
+
+    // const optionItem = document.createElement("li");
     const radioBtn = document.createElement("input");
     radioBtn.type = "radio";
     radioBtn.name = "answer";
-    radioBtn.value = optionIndex;
-    optionItem.appendChild(radioBtn);
+    radioBtn.className = "btn-check";
+    radioBtn.value = i;
+    radioBtn.autocomplete = "off";
+    radioBtn.setAttribute("id", "option" + i);
+    div.appendChild(radioBtn);
 
     const label = document.createElement("label");
-    label.textContent = answer;
-    optionItem.appendChild(label);
+    label.className = "btn";
+    label.setAttribute("for", "option" + i);
+    label.textContent = question.answers[i];
+    div.appendChild(label);
 
-    answerOptions.appendChild(optionItem);
-  });
+    if (i === 0 || i === 2) {
+      answerOptions.appendChild(div);
+    }
+  }
+
+  // question.answers.forEach((answer, optionIndex) => {
+  //   const optionItem = document.createElement("li");
+  //   const radioBtn = document.createElement("input");
+  //   radioBtn.type = "radio";
+  //   radioBtn.name = "answer";
+  //   radioBtn.value = optionIndex;
+  //   optionItem.appendChild(radioBtn);
+
+  //   const label = document.createElement("label");
+  //   label.textContent = answer;
+  //   optionItem.appendChild(label);
+
+  //   answerOptions.appendChild(optionItem);
+  // });
   questionElement.appendChild(answerOptions);
 
   // add submit answer for every question
   const submitButton = document.createElement("button");
+  submitButton.type = "button";
   submitButton.textContent = "Submit Answer";
+  submitButton.className = "btn btn-primary";
   submitButton.addEventListener("click", () => submitAnswer(question));
   questionElement.appendChild(submitButton);
 
