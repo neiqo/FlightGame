@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Dashboard</title>
+    <!-- Electrolize google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Electrolize google fonts -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="css/class.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body class="cockpit">
+    <div id="loading-screen" class="initial-page" onclick="hideInitialPage()">
+      <h1 id="title">SOLAR QUEST</h1>
+      <h1 id="loading-message">Loading...</h1>
+      <p id="continueMessage">Press anywhere to continue</p>
+    </div>
+
+    <video autoplay loop muted plays-inline class="bg-vid">
+      <source src="images/bg/study.webm" , type="video/webm" />
+    </video>
+
+    <audio id="mouseoverSound" src="/images/audio/mouseover.opus"></audio>
+    <audio id="clickSound" src="/images/audio/click.opus"></audio>
+    <audio id="keyboardSound" src="/images/audio/keyboard.opus"></audio>
+
+    <div class="cockpit-terminal">
+      <div>
+        <div id="class-terminal" class="terminal">
+          <iframe id="main-scr" class="main-screen" src="orbit.html"></iframe>
+          <div class="terminal-side">
+            <div id="class-buttons" class="terminal-buttons">
+              <button id="orbit-button" onclick="orbit()">ORBIT</button>
+              <button onclick="">B2</button>
+              <button onclick="">B2</button>
+              <button id="logout-button" onclick="logout()">LOG OUT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--
+    <div class="planet">
+      <div class="moon"></div>
+    </div>
+  -->
+    <script src="js/usersavedata.js"></script>
+    <script src="js/main.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
