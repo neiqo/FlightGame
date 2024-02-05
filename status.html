@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landing Page</title>
+    <title>Status</title>
     <!-- Electrolize google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,35 +19,29 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/status.css" />
   </head>
-  <body class="cockpit">
-    <div id="loading-screen" class="initial-page" onclick="hideInitialPage()">
-      <h1 id="title">SOLAR QUEST</h1>
-      <h1 id="loading-message">Loading...</h1>
-      <p id="continueMessage">Press anywhere to continue</p>
-    </div>
+  <body>
+    <div class="container">
+      <h1>
+        <p>CURRENTLY ORBITING: <span id="player-current-planet"></span></p>
+      </h1>
 
-    <video autoplay loop plays-inline muted class="bg-vid">
-      <source src="images/bg/landing-vid.webm" , type="video/webm" />
-    </video>
+      <div id="planet"></div>
 
-    <div class="landing-container">
-      <h1 id="title">SOLAR QUEST</h1>
-    </div>
-
-    <div class="cockpit-terminal">
-      <div>
-        <img class="bgimg" src="images/bg/cockpit.png" alt="" />
-        <div class="terminal">
-          <iframe class="main-screen" src="login.html"></iframe>
-          <div class="terminal-side">
-            <div class="terminal-buttons">
-              <button onclick="">B1</button>
-              <button onclick="">B2</button>
-              <button onclick="">B3</button>
-              <button onclick="">B4</button>
-            </div>
-            <iframe class="side-screen" src="blank.html"></iframe>
+      <div id="player-savedata-display">
+        <div class="data">
+          <div class="data-container">
+            <p>
+              Welcome <span id="player-title"></span>
+              <span id="player-username-display"></span>
+            </p>
+          </div>
+          <div class="data-container">
+            <p>Level: <span id="player-level"></span></p>
+          </div>
+          <div class="data-container">
+            <p>Fuel: <span id="player-fuel"></span></p>
           </div>
         </div>
       </div>
@@ -58,6 +52,9 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="/js/main.js"></script>
+    <!-- Include external JavaScript file -->
+    <script src="js/pulldata.js"></script>
+    <script src="js/usersavedata.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

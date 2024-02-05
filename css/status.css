@@ -1,0 +1,11 @@
+body {
+  font-family: "Electrolize", sans-serif;
+  height: 100vh;
+  background-color: #075e91;
+  padding: 5vw;
+  color: white;
+}
+
+#player-current-planet {
+  text-transform: uppercase;
+}

@@ -19,10 +19,11 @@
 }
 
 .cockpit {
-  height: 100%;
+  height: 100vh;
   background-color: black;
   margin: 0; /* Reset margin to ensure consistency */
   font-family: "Electrolize", sans-serif;
+  overflow: hidden;
 }
 
 #loading-screen {
@@ -47,7 +48,9 @@
 }
 .bg-vid {
   position: absolute;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
   z-index: -2;
 }
 
@@ -76,42 +79,10 @@
   text-align: center;
 }
 
-button {
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-}
-
-#scroll-button {
-  background-color: #f0f0f0;
-  color: #000;
-  box-shadow: 0px 0px 10px 0px #000;
-  position: absolute;
-  margin-top: 50vh;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#scroll-button:hover {
-  box-shadow: 0px 0px 20px 0px #fff;
-}
-
-#scroll-button:active {
-  box-shadow: none;
-  background-color: #bbb;
-}
 .bgimg {
   position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  height: 170vh;
+  width: 100vw;
+  height: 100vh;
   object-fit: fill;
   z-index: -1; /* Ensure the image is behind other content */
 }
@@ -123,26 +94,106 @@ button {
 .terminal {
   display: flex;
   position: absolute;
-  top: 95.6vh;
-  left: 2.1vw;
-  width: 95.5vw;
-  height: 71%;
-  gap: 2.2vw;
+  flex-direction: row;
+  top: 28.5vh;
+  left: 0.7vw;
+  width: 98.9vw;
+  height: 70vh;
+  justify-content: space-between;
+}
+
+.terminal-side {
+  display: flex;
+  flex-direction: column;
+  width: 26vw;
+  height: 100%;
+}
+
+.terminal-side button {
+  width: 15vw;
+  height: 10vh;
+  border: 0;
+  border-radius: 1vw;
+  padding: 1vw;
+  text-align: center;
+  overflow: hidden; /* Hide any overflowing text */
+  box-shadow: 0 0px 0px #000000;
+}
+
+#liftoff-button:hover {
+  box-shadow: 0 0 0.6vw 0 #00ced1;
+  background-color: #00ced1; /* Teal or Cyan color */
+}
+
+#liftoff-button:active {
+  box-shadow: none;
+  background-color: #002040; /* Darker shade on active/press */
+}
+
+#logout-button {
+  background-color: #990000;
+  border: 0.3vw solid #ff3333;
+}
+#logout-button:hover {
+  box-shadow: 0 0 0.6vw 0 #ff3333; /* Red shadow on hover */
+  background-color: #ff3333; /* Red color on hover */
+}
+
+#logout-button:active {
+  box-shadow: none;
+  background-color: #990000; /* Darker red shade on active/press */
+}
+
+.terminal-buttons {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4vh;
+  align-items: center;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  height: 16vh;
+  width: 100%;
+  gap: 0.5vw;
+  border: #08d9dd 0.6vw solid;
+  border-radius: 4vw 1vw 4vw 1vw; /*top left, top right ,bottom right, bottom left*/
+  background-color: rgba(8, 217, 221, 0.2);
+  transition: box-shadow 500ms;
+  box-shadow: 0 0 0.6vw #000000;
+}
+
+.terminal-buttons:hover {
+  box-shadow: 0 0 0.6vw #00ced1;
 }
 
 .main-screen {
   position: relative;
-  width: 73vw;
-  border: #2f2f2f 8px solid;
-  border-radius: 25px;
+  width: 73.5vw;
+  height: 48.8vh;
+  margin-right: 1vw;
+  border: #08d9dd 0.6vw solid;
+  border-radius: 4vw 1vw 1vw 11vw; /*top left, top right ,bottom right, bottom left*/
+  margin-top: auto;
+  transition: box-shadow 500ms;
+  box-shadow: 0 0 0.6vw #000000;
+}
+
+.main-screen:hover {
+  box-shadow: 0 0 0.6vw #00ced1;
 }
 
 .side-screen {
   position: relative;
-  width: 25vw;
-  height: 54.8vh;
-  border: #2f2f2f 8px solid;
-  border-radius: 25px;
+  width: 100%;
+  height: 48.8vh;
+  border: #08d9dd 0.6vw solid;
+  border-radius: 1vw 4vw 11vw 1vw; /*top left, top right ,bottom right, bottom left*/
+  margin-top: auto;
+  transition: box-shadow 500ms;
+  box-shadow: 0 0 0.6vw #000000;
+}
+
+.side-screen:hover {
+  box-shadow: 0 0 0.6vw #00ced1;
 }
 
 .container {

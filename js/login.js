@@ -69,7 +69,6 @@ document
         if (response.ok) {
           document.getElementById("register-message").textContent =
             "Registration successful!";
-          showLogin();
         } else {
           throw new Error("Registration failed");
         }

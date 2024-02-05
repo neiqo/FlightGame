@@ -7,7 +7,7 @@ window.onload = function () {
     const usernameDisplay = document.getElementById("player-username-display");
     if (usernameDisplay) {
       //  usernameDisplay.textContent = user.username;
-      typeWriter(usernameDisplay, "Welcome, "+user.username);
+      typeWriter(usernameDisplay, user.username);
     }
 
     // Update other elements as before
@@ -44,7 +44,7 @@ window.onload = function () {
     }
   } else {
     // Redirect to login page if no session data
-    window.location.href = "login.html";
+    window.location.href = "index.html";
   }
 };
 
