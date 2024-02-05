@@ -1,132 +1,3 @@
-/*
-  const planets = [
-    "earth", // level 1
-    "venus", // level 2
-    "mercury", // level 3
-    "mars", // level 4
-    "jupiter", // level 5
-    "saturn", // level 6
-    "uranus", // level 7
-    "neptune", // level 8
-  ];
-
-  function fetchdata(id) {
-    fetch(`https://api.le-systeme-solaire.net/rest/bodies/${id}`).then(
-      (response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      }
-    );
-  }
-
-  function fetchplanet(id) {
-    fetch(
-      `https://en.wikipedia.org/w/api.php?action=query&origin=*&prop=extracts&format=json&titles=${id}`
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        const pages = data.query.pages;
-        const pageId = Object.keys(pages)[0];
-        const extract = pages[pageId].extract;
-
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(extract, "text/html");
-
-        const headers = doc.querySelectorAll("h2");
-
-        for (let i = 0; i < 5; i++) {
-          console.log(headers[i].textContent);
-        }
-
-        updateContent(headers);
-      });
-  }
-
-  function updateContent(headers) {
-    let element = document.getElementById("content");
-
-    for (let i = 0; i < 5; i++) {
-      const div = document.createElement("div");
-      div.className = headers[i].textContent;
-
-      const span = document.createElement("span");
-      span.innerHTML = headers[i].textContent;
-
-      div.appendChild(span);
-
-      const p = document.createElement("p");
-      p.innerHTML = findNextParagraph(headers[i]);
-      div.appendChild(p);
-
-      const image = document.createElement("img");
-      let search =
-        document.getElementById("player-current-planet").textContent +
-        ` ` + headers[i].textContent;
-
-      console.log(search);
-      image.src = fetchImages(search);
-      fetchImages(search);
-      element.appendChild(div);
-    }
-  }
-
-  function findNextParagraph(element) {
-    let currentElement = element.nextElementSibling;
-    let savedElement;
-    let content = "";
-
-    while (currentElement !== null) {
-      if (currentElement.tagName.toLowerCase() === "p") {
-        savedElement = currentElement;
-        if (savedElement.nextElementSibling.tagName.toLowerCase() !== "p") {
-          content += currentElement.textContent;
-          return content;
-        } else {
-          content += currentElement.textContent;
-        }
-      }
-      currentElement = currentElement.nextElementSibling;
-    }
-
-    return "No <p> tag found in the next siblings.";
-  }
-
-  function fetchDataForCurrentPlanet(planetName) {
-    if (planets.includes(planetName)) {
-      fetchplanet(planetName);
-    } else {
-      console.error("Invalid planet name:", planetName);
-    }
-  }
-
-  function fetchImages(search) {
-    fetch(
-      `https://www.googleapis.com/customsearch/v1?key=AIzaSyC5stymWLly1XZLE2vKTVSQchuijAkRJSk&cx=41aa1b31d82d54b6d&searchType=image&q=%27${search}`
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((result) => {
-        console.log(result.items);
-        console.log(result.items[0].link);
-      });
-  }
-
-  // Example: Fetch data for the planet "earth"
-  fetchDataForCurrentPlanet();
-
-*/
-
 let current_planet;
 
 const planets = [
@@ -162,31 +33,6 @@ function fetchplanet(id) {
       return response.json();
     })
     .then((data) => {
-      /*
-      // Extract relevant content
-      const pages = data.query.pages;
-      const pageId = Object.keys(pages)[0]; // Assuming there's only one page in the response
-      const extract = pages[pageId].extract;
-
-      // Display the extracted content
-      const spansWithIds = extract
-        .split("<span ")
-        .filter((span) => span.includes('id="'));
-
-      const content = [];
-
-      //console.log(spansWithIds);
-      for (let i = 0; i < spansWithIds.length; i++) {
-        let matches = spansWithIds[i].match(/<p>[\s\S]*?<\/p>/g);
-        if (matches && Array.isArray(matches)) {
-          content.push(matches);
-        }
-      }
-
-      //updateContent(content, spansWithIds);
-      updateContent(content, spansWithIds);
-      */
-
       const pages = data.query.pages;
       const pageId = Object.keys(pages)[0]; // Assuming there's only one page in the response
       const extract = pages[pageId].extract;
@@ -195,151 +41,107 @@ function fetchplanet(id) {
       const doc = parser.parseFromString(extract, "text/html");
 
       const headers = doc.querySelectorAll("h2");
-      const paragraphs = doc.querySelectorAll("h3");
-
-      /*
-      for (let i = 0; i < etymologySpan.length; i++) {
-        console.log(etymologySpan[i].childNodes);
-        console.log(etymologySpan[i].nextElementSibling.textContent);
-      }
-      */
-
-      for (let i = 0; i < 5; i++) {
-        //console.log(headers[i].childNodes);
-        //console.log(headers[i].textContent);
-        //console.log(findNextParagraph(headers[i]));
-      }
-
-      //console.log(etymologySpan[0].nextElementSibling.textContent);
-      //console.log(headers[1].nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent);
-      //console.log(findNextParagraph(headers[1]));
-      //console.log(etymologySpan[0].childNodes);
-      // Loop through each <p> tag and access its content
 
       updateContent(headers);
     });
 }
-/*
-    .catch((error) => {
-      console.error("Fetch error:", error);
-    })
-    */
 
 function updateContent(headers) {
-  /*
   let element = document.getElementById("content");
 
-  for (let i = 0; i < 5; i++) {
-    const div = document.createElement("div");
-    div.className = spansWithIds[i];
+  function processLoop(i) {
+    if (i < 5) {
+      const div = document.createElement("div");
+      div.className = headers[i].textContent;
 
-    const span = document.createElement("span");
-    span.innerHTML = spansWithIds[i].replace(/id=".*?">/, "");
+      const radio = document.createElement("input");
+      radio.name = current_planet;
+      radio.type = "radio";
+      radio.id = headers[i].textContent;
+      if (i === 0) {
+        radio.checked = true;
+      }
+      div.appendChild(radio);
 
-    div.appendChild(span);
+      const label = document.createElement("label");
+      //label.for = headers[i].textContent;
+      label.setAttribute("for", headers[i].textContent);
+      label.innerHTML = headers[i].textContent;
 
-    for (let n = 0; n < content[i].length; n++) {
+      div.appendChild(label);
+
+      const dropdown = document.createElement("div");
+      dropdown.className = "dropdown";
+
       const p = document.createElement("p");
-      p.innerHTML = content[i][n];
-      div.appendChild(p);
-    }
-    element.appendChild(div);
-  }
-  */
-  let element = document.getElementById("content");
+      let content = "";
+      content = findNextParagraph(headers[i]);
 
-  for (let i = 0; i < 5; i++) {
-    const div = document.createElement("div");
-    div.className = headers[i].textContent;
+      if (content === "\n" || content === "") {
+        content = findNextParagraph2(headers[i]);
+      }
 
-    const radio = document.createElement("input");
-    radio.name = current_planet;
-    radio.type = "radio";
-    radio.id = headers[i].textContent;
-    if (i === 0) {
-      radio.checked = true;
-    }
-    div.appendChild(radio);
+      console.log("content1:" + content);
+      //Summarize content (to be uncommented)
+      // if (content.length > 1000) {
+      //   summarize(content)
+      //     .then((result) => {
+      //       p.innerHTML = result.summary;
+      //     })
+      // } else {
+      //   p.innerHTML = content;
+      // }
 
-    const label = document.createElement("label");
-    //label.for = headers[i].textContent;
-    label.setAttribute("for", headers[i].textContent);
-    label.innerHTML = headers[i].textContent;
-
-    div.appendChild(label);
-
-    const dropdown = document.createElement("div");
-    dropdown.className = "dropdown";
-
-    const p = document.createElement("p");
-    let content = "";
-    content = findNextParagraph(headers[i]);
-
-    if (content === "\n" || content === "") {
-      content = findNextParagraph2(headers[i]);
-    }
-
-    if (content.length > 1000) {
-      summarize(content)
-      //.then((response)
-      .then((result) => {
-        //console.log(result.summary);
-        p.innerHTML = result.summary;
-      })
-    }
-    else {
       p.innerHTML = content;
+
+      dropdown.appendChild(p);
+
+      let search = current_planet + ` ` + headers[i].textContent;
+
+      // async function loadImage() {
+      //   try {
+      //     const imageUrl = await fetchImages(search);
+      //     console.log("Image URL:", imageUrl);
+
+      //     // Set the src attribute after obtaining the image URL
+      //     let src = imageUrl;
+      //     // Append the image to the document or do whatever you need to do with it
+      //     if (src !== null) {
+      //       const image = document.createElement("img");
+      //       image.id = headers[i].textContent + "img";
+      //       image.src = imageUrl;
+      //       image.onload = function () {
+      //         resizeImageWithAspectRatio(image, 300);
+      //         image.onclick = function () {
+      //           handleImageClick(imageUrl);
+      //           //dropdown.appendChild(image);
+      //         };
+      //         dropdown.appendChild(image);
+      //       };
+
+      //       // Set the src attribute after obtaining the image URL
+
+      //       console.log("Image Element:", image.src);
+
+      //       //dropdown.appendChild(resizedimage);
+      //     }
+      //   } catch (error) {
+      //     console.error("Error fetching image:", error);
+      //   }
+      // }
+
+      // loadImage();
+
+      div.appendChild(dropdown);
+      element.appendChild(div);
+      setTimeout(() => {
+        processLoop(i + 1);
+      }, 1000);
     }
-
-
-    //console.log(p);
-    // console.log(
-    //   headers[i].nextSibling.nextSibling.nextSibling.nextSibling.nextSibling
-    //     .nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.textContent
-    // );
-
-    //console.log(headers[i].nextSibling);
-    dropdown.appendChild(p);
-
-    let search = current_planet + ` ` + headers[i].textContent;
-
-    // async function loadImage() {
-    //   try {
-    //     const imageUrl = await fetchImages(search);
-    //     console.log("Image URL:", imageUrl);
-
-    //     // Set the src attribute after obtaining the image URL
-    //     let src = imageUrl;
-    //     // Append the image to the document or do whatever you need to do with it
-    //     if (src !== null) {
-    //       const image = document.createElement("img");
-    //       image.id = headers[i].textContent + "img";
-    //       image.src = imageUrl;
-    //       image.onload = function () {
-    //         resizeImageWithAspectRatio(image, 300);
-    //         image.onclick = function () {
-    //           handleImageClick(imageUrl);
-    //           //dropdown.appendChild(image);
-    //         };
-    //         dropdown.appendChild(image);
-    //       };
-
-    //       // Set the src attribute after obtaining the image URL
-
-    //       console.log("Image Element:", image.src);
-
-    //       //dropdown.appendChild(resizedimage);
-    //     }
-    //   } catch (error) {
-    //     console.error("Error fetching image:", error);
-    //   }
-    // }
-
-    // loadImage();
-
-    div.appendChild(dropdown);
-    element.appendChild(div);
   }
+
+  // Start the loop with the first iteration
+  processLoop(0);
 }
 
 // async function fetchImages(search) {
@@ -391,22 +193,6 @@ function findNextParagraph2(element) {
     // Move to the next sibling
     currentElement = currentElement.nextSibling;
 
-    /*
-    if (
-      currentElement.nodeName.toLowerCase() === "p" &&
-      (currentElement.textContent === "\n" || currentElement.textContent === "")
-    )
-      console.log(currentElement);
-    // If a <p> tag is found, return its text content
-    savedElement = currentElement;
-    if (savedElement.nextSibling.nodeName.toLowerCase() === "p") {
-      console.log("hello");
-      content += currentElement.textContent;
-      return content;
-    } else {
-      content += currentElement.textContent;
-    }
-    */
   }
   // Move to the next sibling
 
@@ -415,11 +201,6 @@ function findNextParagraph2(element) {
 }
 
 function findNextParagraph(element) {
-  // Start from the next sibling of the provided element
-  // if ((element.textContent = "\n")) {
-  // console.log(element.nextSibling);
-  // }
-
   let currentElement = element.nextElementSibling;
   let savedElement;
   let content = "";
@@ -470,112 +251,37 @@ async function resizeImageWithAspectRatio(image, newWidth) {
   image.height = newHeight;
 }
 
-/*
-async function fetchImages(search) {
-  try {
-    const response = await fetch(
-      `https://www.googleapis.com/customsearch/v1?key=AIzaSyC6UOCo5PaHnSax9USYkN_e6ycE8gHFQlA&cx=41aa1b31d82d54b6d&searchType=image&q=%27${search}`
-    );
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    const result = await response.json();
-
-    if (result.items && result.items.length > 0) {
-      console.log(result.items[0].link);
-      return result.items[0].link;
-    } else {
-      console.error('No images found for the search:', search);
-      return ''; // Return an empty string or a placeholder URL
-    }
-  } catch (error) {
-    console.error('Error fetching images:', error);
-    return ''; // Return an empty string or a placeholder URL
-  }
-}
-*/
-
-/*
-function fetchImages(search) {
-  fetch(
-    `https://www.googleapis.com/customsearch/v1?key=AIzaSyA8EMirlnHr71Wi2v96HH7lEKWNyZZV6LQ&cx=0364b018377bd4cf1&searchType=image&q=${search}`
-  )
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((result) => {
-      const substring = "https://science.nasa.gov";
-      for (let i = 0; i < result.items.length; i++) {
-        if (result.items[i].image.contextLink.includes(substring)) {
-          console.log(search);
-          console.log(result.items[i].link);
-          return result.items[i].link;
-        }
-      }
-    });
-}
-*/
-
-//fetchImages(`earth`);
-
 function handleImageClick(imageSrc) {
   document.querySelector(".popup-image").style.display = "block";
   document.querySelector(".popup-image img").src = imageSrc;
 }
 
-// document.querySelectorAll("#content img").forEach((image) => {
-//   image.onclick = () => {
-//     document.querySelector(".popup-image").style.display = "block";
-//     document.querySelector(".popup-image img").src = image.getAttribute("src");
-//   };
-// });
-
 document.querySelector(".popup-image span").onclick = () => {
   document.querySelector(".popup-image").style.display = "none";
 };
 
-function summarize(content) {
-  const url = "https://text-summarize-pro.p.rapidapi.com/summarizeFromText";
+async function summarize(content) {
+  const url = 'https://text-summarize-pro.p.rapidapi.com/summarizeFromText';
   const options = {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "content-type": "application/x-www-form-urlencoded",
-      "X-RapidAPI-Key": "b66d439b2dmsh8d2d879350d7b80p14ef43jsn7eb102f4eae3",
-      "X-RapidAPI-Host": "text-summarize-pro.p.rapidapi.com",
+      'content-type': 'application/x-www-form-urlencoded',
+      'X-RapidAPI-Key': '89bd6f2afbmshdcf0abe52204ecfp1c67dajsn80d79b55e8dc',
+      'X-RapidAPI-Host': 'text-summarize-pro.p.rapidapi.com'
     },
     body: new URLSearchParams({
       text: content,
-      percentage: "50",
-    }),
+      percentage: '50'
+    })
   };
 
-  return fetch(url, options)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((result) => result) // Assuming the API response is JSON
-    .catch((error) => {
-      console.error("Error during summarization:", error);
-      throw error; // Rethrow the error or handle it according to your needs
-    });
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
 }
-
-//const content = "The blinking light caught her attention. She thought about it a bit and couldn't remember ever noticing it before. That was strange since it was obvious the flashing light had been there for years. Now she wondered how she missed it for that amount of time and what other things in her small town she had failed to notice.";
-
-// summarize(content)
-//   //.then((response)
-//   .then((result) => {
-//     console.log(result);
-//   })
-//   .catch((error) => {
-//     // Handle the error, e.g., show an error message to the user
-//     console.error('Error during summarization:', error);
-//   });
