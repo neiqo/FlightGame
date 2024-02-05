@@ -79,24 +79,6 @@
   text-align: center;
 }
 
-#scroll-button {
-  background-color: #f0f0f0;
-  color: #000;
-  box-shadow: 0px 0px 10px 0px #000;
-  position: absolute;
-  margin-top: 50vh;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#scroll-button:hover {
-  box-shadow: 0px 0px 20px 0px #fff;
-}
-
-#scroll-button:active {
-  box-shadow: none;
-  background-color: #bbb;
-}
 .bgimg {
   position: absolute;
   width: 100vw;
@@ -128,19 +110,18 @@
 }
 
 .terminal-side button {
-  width: 5.7vw;
-  height: 11vh;
-  border: 0px;
-  border-radius: 25px;
+  width: 15vw;
+  height: 10vh;
+  border: 0;
+  border-radius: 1vw;
   padding: 1vw;
-  margin-left: 1vw;
   text-align: center;
   overflow: hidden; /* Hide any overflowing text */
   box-shadow: 0 0px 0px #000000;
 }
 
 #liftoff-button:hover {
-  box-shadow: 0px 0px 5px 0px #00ced1;
+  box-shadow: 0 0 0.6vw 0 #00ced1;
   background-color: #00ced1; /* Teal or Cyan color */
 }
 
@@ -151,10 +132,10 @@
 
 #logout-button {
   background-color: #990000;
-  border: 4px solid #ff3333;
+  border: 0.3vw solid #ff3333;
 }
 #logout-button:hover {
-  box-shadow: 0px 0px 5px 0px #ff3333; /* Red shadow on hover */
+  box-shadow: 0 0 0.6vw 0 #ff3333; /* Red shadow on hover */
   background-color: #ff3333; /* Red color on hover */
 }
 
@@ -168,18 +149,20 @@
   flex-direction: row;
   margin-top: 4vh;
   align-items: center;
+  padding-left: 1vw;
+  padding-right: 1vw;
   height: 16vh;
   width: 100%;
-  gap: 1.8vw;
-  border: #08d9dd 8px solid;
-  border-radius: 62px 5px 62px 5px; /*top left, top right ,bottom right, bottom left*/
+  gap: 0.5vw;
+  border: #08d9dd 0.6vw solid;
+  border-radius: 4vw 1vw 4vw 1vw; /*top left, top right ,bottom right, bottom left*/
   background-color: rgba(8, 217, 221, 0.2);
   transition: box-shadow 500ms;
-  box-shadow: 0 0px 15px #000000;
+  box-shadow: 0 0 0.6vw #000000;
 }
 
 .terminal-buttons:hover {
-  box-shadow: 0 0px 8px #00ced1;
+  box-shadow: 0 0 0.6vw #00ced1;
 }
 
 .main-screen {
@@ -187,30 +170,30 @@
   width: 73.5vw;
   height: 48.8vh;
   margin-right: 1vw;
-  border: #08d9dd 8px solid;
-  border-radius: 62px 5px 5px 160px; /*top left, top right ,bottom right, bottom left*/
+  border: #08d9dd 0.6vw solid;
+  border-radius: 4vw 1vw 1vw 11vw; /*top left, top right ,bottom right, bottom left*/
   margin-top: auto;
   transition: box-shadow 500ms;
-  box-shadow: 0 0px 15px #000000;
+  box-shadow: 0 0 0.6vw #000000;
 }
 
 .main-screen:hover {
-  box-shadow: 0 0px 8px #00ced1;
+  box-shadow: 0 0 0.6vw #00ced1;
 }
 
 .side-screen {
   position: relative;
   width: 100%;
   height: 48.8vh;
-  border: #08d9dd 8px solid;
-  border-radius: 5px 62px 160px 5px; /*top left, top right ,bottom right, bottom left*/
+  border: #08d9dd 0.6vw solid;
+  border-radius: 1vw 4vw 11vw 1vw; /*top left, top right ,bottom right, bottom left*/
   margin-top: auto;
   transition: box-shadow 500ms;
-  box-shadow: 0 0px 15px #000000;
+  box-shadow: 0 0 0.6vw #000000;
 }
 
 .side-screen:hover {
-  box-shadow: 0 0px 8px #00ced1;
+  box-shadow: 0 0 0.6vw #00ced1;
 }
 
 .container {
