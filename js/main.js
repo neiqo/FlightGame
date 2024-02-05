@@ -157,3 +157,11 @@ function liftoff() {
   // Play a sound (optional)
   document.getElementById("clickSound").play();
 }
+
+function orbit() {
+  window.location.href = "homepage.html";
+}
+
+function classroom() {
+  window.location.href = "class.html";
+}
