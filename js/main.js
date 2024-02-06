@@ -158,10 +158,10 @@ function liftoff() {
   document.getElementById("clickSound").play();
 }
 
-function orbit() {
-  window.location.href = "homepage.html";
+function toggleAnimation() {
+  const animatedElement = document.querySelector("contaiiner");
+  animatedElement.classList.add("flicker-out-1");
 }
 
-function classroom() {
-  window.location.href = "class.html";
-}
+// Set interval to toggle animation every 3 seconds
+setInterval(toggleAnimation, 5000);

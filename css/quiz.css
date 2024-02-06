@@ -78,27 +78,4 @@ input {
   box-shadow: none;
   background-color: #002040; /* Darker shade on active/press */
 }
-/* 
-label::before {
-  margin-right: 10px;
-  font-size: 24px;
-  font-weight: 600;
-}
 
-
-#content div {
-  padding: 0 10px;
-  line-height: 26px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 1s, padding 0.5s;
-}
-
-#content input[type="radio"]:checked + label + div {
-  max-height: 1000px;
-  padding: 10px 10px 20px;
-}
-
-.container .col1 * {
-  border: 1px solid green;
-} */

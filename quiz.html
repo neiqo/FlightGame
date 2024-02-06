@@ -34,17 +34,19 @@
       </div>
 
       <!-- result Section -->
-      <div id="result-section" style="display: none">
-        <h2>Quiz Result</h2>
-        <p id="correct-answers">
-          Correct Answers: <span id="correct-count">0</span>
-        </p>
-        <p id="total-questions">
-          Total Questions: <span id="questions-count">0</span>
-        </p>
+      <div class="result-leaderboard">
+        <div id="result-section" style="display: none">
+          <h2>Quiz Result</h2>
+          <p id="correct-answers">
+            Correct Answers: <span id="correct-count">0</span>
+          </p>
+          <p id="total-questions">
+            Total Questions: <span id="questions-count">0</span>
+          </p>
+        </div>
+        <!-- leaderboard section-->
+        <table class="table table-borderless" id="leaderboard-section"></table>
       </div>
-      <!-- leaderboard section-->
-      <div id="leaderboard-section"></div>
     </div>
 
     <script src="js/usersavedata.js"></script>
