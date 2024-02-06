@@ -205,6 +205,7 @@ function nextQuestion() {
 }
 
 function displayQuizResult() {
+  document.querySelector(".container h1").style.display = "none";
   const quizSection = document.getElementById("quiz-section");
   const resultSection = document.getElementById("result-section");
 
@@ -212,7 +213,7 @@ function displayQuizResult() {
   quizSection.style.display = "none";
 
   // display result
-  resultSection.style.display = "block";
+  resultSection.style.display = "flex";
 
   // update on document the number of correct ansers
   const correctCountElement = document.getElementById("correct-count");
@@ -249,7 +250,7 @@ function planetCheck() {
     // If the user doesn't have enough fuel, prompt and redirect
     displayQuizResult();
     alert("You don't have enough knowledge to proceed to the next planet!");
-    window.location.href = "explore.html"; // Redirect to explore.html
+    window.location.href = "orbit.html"; // Redirect to explore.html
     return;
   }
 }
@@ -363,6 +364,7 @@ function fetchLeaderboard() {
 }
 
 function displayLeaderboard(leaderboard) {
+  //document.querySelector(".container h1").style.display = "none";
   const leaderboardSection = document.getElementById("leaderboard-section");
   leaderboardSection.innerHTML = ""; // make sure its empty
 
@@ -370,25 +372,92 @@ function displayLeaderboard(leaderboard) {
   leaderboardTitle.textContent = "Leaderboard";
   leaderboardSection.appendChild(leaderboardTitle);
 
+  //h2
+  //leader container
+  //  div title
+  //      3 divs/p
+  //  div player 1
+  //      3 divs/p
+  //create leader container
+  // const leader_container = document.createElement("div");
+  // leader_container.className = "leader-container";
+
+  // const title_container = document.createElement("div");
+  // title_container.className = "title_container";
+
+  // const ranking = document.createElement("div");
+  // const name = document.createElement("div");
+  // const correct = document.createElement("div");
+
+  // title_container.appendChild(ranking);
+  // title_container.appendChild(name);
+  // title_container.appendChild(correct);
+
+  // ranking.className = "Ranking";
+  // name.className = "Name";
+  // correct.className = "Correct Answers";
+  const thead = document.createElement("thead");
+  const toprow = document.createElement("tr");
+
+  const r_title = document.createElement("th");
+  const n_title = document.createElement("th");
+  const c_title = document.createElement("th");
+
+  r_title.scope = "col";
+  n_title.scope = "col";
+  c_title.scope = "col";
+  r_title.innerHTML = "Ranking";
+  n_title.innerHTML = "Name";
+  c_title.innerHTML = "Coins";
+
+  toprow.appendChild(r_title);
+  toprow.appendChild(n_title);
+  toprow.appendChild(c_title);
+
+  thead.appendChild(toprow);
+  leaderboardSection.appendChild(thead);
+
+  const tbody = document.createElement("tbody");
   if (leaderboard.length > 0) {
     // sort the leaderboard array by number of correct answers higihest to low
     leaderboard.sort((a, b) => b.correct_answers - a.correct_answers);
 
-    const leaderboardList = document.createElement("ul");
+    //const leaderboardList = document.createElement("ul");
+
     leaderboard.forEach((entry, index) => {
-      const leaderboardItem = document.createElement("li");
-      leaderboardItem.textContent = `${index + 1}. ${
-        entry.username
-      } - Correct Answers: ${entry.correct_answers}/${currentQuestionIndex}`;
-      leaderboardList.appendChild(leaderboardItem);
+      let player_container = document.createElement("tr");
+      let number = index + 1;
+      //player_container.className = "player" + number;
+
+      let ranking_value = document.createElement("th");
+      ranking_value.scope = "row";
+      let name_value = document.createElement("td");
+      let correct_value = document.createElement("td");
+
+      ranking_value.innerHTML = number;
+      name_value.innerHTML = entry.username;
+      correct_value.innerHTML = entry.correct_answers;
+
+      player_container.appendChild(ranking_value);
+      player_container.appendChild(name_value);
+      player_container.appendChild(correct_value);
+
+      tbody.appendChild(player_container);
+      //const leaderboardItem = document.createElement("li");
+      // leaderboardItem.textContent = `${index + 1}. ${
+      //   entry.username
+      // } - Correct Answers: ${entry.correct_answers}/${currentQuestionIndex}`;
+      // leaderboardList.appendChild(leaderboardItem);
     });
-    leaderboardSection.appendChild(leaderboardList);
+    //leaderboardSection.appendChild(leaderboardList);
   } else {
     const noDataMessage = document.createElement("p");
     noDataMessage.textContent = "No leaderboard data available.";
     leaderboardSection.appendChild(noDataMessage);
   }
 
+  leaderboardSection.appendChild(tbody);
+
   // Show the leaderboard section
-  leaderboardSection.style.display = "block";
+  leaderboardSection.style.display = "flex";
 }

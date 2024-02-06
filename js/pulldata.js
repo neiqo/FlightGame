@@ -58,7 +58,7 @@ function updateContent(headers) {
   let element = document.getElementById("content");
 
   async function processLoop(i) {
-    if (i < 5) {
+    if (i < 1) {
       spans.push(headers[i].textContent);
 
       let content = "";
