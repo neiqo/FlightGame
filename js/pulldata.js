@@ -23,9 +23,13 @@ function fetchdata(id) {
 }
 
 function fetchplanet(id) {
-  fetch(
-    `https://en.wikipedia.org/w/api.php?action=query&origin=*&prop=extracts&format=json&titles=${id}`
-  )
+  let link = `https://en.wikipedia.org/w/api.php?action=query&origin=*&prop=extracts&format=json&titles=${id}`;
+
+  if (id === "mercury") {
+    link = link + "_(planet)";
+  }
+  //console.log(link);
+  fetch(link)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -53,7 +57,7 @@ const images = [];
 function updateContent(headers) {
   let element = document.getElementById("content");
 
-  function processLoop(i) {
+  async function processLoop(i) {
     if (i < 5) {
       spans.push(headers[i].textContent);
 
@@ -63,17 +67,69 @@ function updateContent(headers) {
       if (content === "\n" || content === "") {
         content = findNextParagraph2(headers[i]);
       }
-      paragraphs.push(content);
+
+      async function summarize(content) {
+        const url =
+          "https://text-summarize-pro.p.rapidapi.com/summarizeFromText";
+        const options = {
+          method: "POST",
+          headers: {
+            "content-type": "application/x-www-form-urlencoded",
+            "X-RapidAPI-Key":
+              "90a2413687mshbcece53dc93fdddp115b0cjsn055fab1c4a77",
+            "X-RapidAPI-Host": "text-summarize-pro.p.rapidapi.com",
+          },
+          body: new URLSearchParams({
+            text: content,
+            percentage: "40",
+          }),
+        };
+
+        try {
+          const response = await fetch(url, options);
+          const result = await response.json();
+
+          //console.log(result);
+          return result;
+        } catch (error) {
+          console.error(error);
+        }
+      }
 
       //Summarize content (to be uncommented)
-      // if (content.length > 1000) {
-      //   summarize(content)
-      //     .then((result) => {
-      //       p.innerHTML = result.summary;
-      //     })
-      // } else {
-      //   p.innerHTML = content;
-      // }
+      if (content.length > 1400) {
+        try {
+          const result = await summarize(content);
+          console.log(result);
+          content = result.summary;
+          if (content.length > 2000) {
+            
+            const result2 = await summarize(content);
+            console.log(result2);
+            content = result2.summary;
+          }
+        } catch (error) {
+          console.error("Error summarizing content:", error);
+        }
+      }
+
+      let sentences = content.match(/[^\.!\?]+[\.!\?]+/g);
+
+      // Check if the last sentence doesn't end with a full stop
+      if (
+        sentences.length > 0 &&
+        !sentences[sentences.length - 1].trim().endsWith(".")
+      ) {
+        // Remove the last sentence
+        sentences.pop();
+      }
+
+      // Join the sentences back into a string
+      content = sentences.join("");
+      paragraphs.push(content);
+      //console.log(content);
+      //console.log(paragraphs.length);
+      //paragraphs.push(content);
 
       let search = current_planet + ` ` + headers[i].textContent;
 
@@ -239,35 +295,9 @@ function handleImageClick(imageSrc) {
   document.querySelector(".popup-image img").src = imageSrc;
 }
 
-document.querySelector(".popup-image span").onclick = () => {
-  document.querySelector(".popup-image").style.display = "none";
-};
-
-async function summarize(content) {
-  const url = "https://text-summarize-pro.p.rapidapi.com/summarizeFromText";
-  const options = {
-    method: "POST",
-    headers: {
-      "content-type": "application/x-www-form-urlencoded",
-      "X-RapidAPI-Key": "89bd6f2afbmshdcf0abe52204ecfp1c67dajsn80d79b55e8dc",
-      "X-RapidAPI-Host": "text-summarize-pro.p.rapidapi.com",
-    },
-    body: new URLSearchParams({
-      text: content,
-      percentage: "50",
-    }),
-  };
-
-  try {
-    const response = await fetch(url, options);
-    const result = await response.json();
-
-    console.log(result);
-    return result;
-  } catch (error) {
-    console.error(error);
-  }
-}
+// document.querySelector(".popup-image span").onclick = () => {
+//   document.querySelector(".popup-image").style.display = "none";
+// };
 
 document.getElementById("nextButton").addEventListener("click", nextPara);
 document.getElementById("prevButton").addEventListener("click", prevPara);
@@ -280,8 +310,7 @@ function nextPara() {
     document.getElementById("nextButton").style.display = "none";
   }
   document.getElementById("prevButton").style.display = "block";
-  document.querySelector(".planet-container span").innerHTML =
-    spans[i];
+  document.querySelector(".planet-container span").innerHTML = spans[i];
   document.querySelector(".planet-container p").innerHTML = paragraphs[i];
   //document.querySelector(".planet-container img").src = loadImage();
 }
@@ -292,8 +321,7 @@ function prevPara() {
     document.getElementById("prevButton").style.display = "none";
   }
   document.getElementById("nextButton").style.display = "block";
-  document.querySelector(".planet-container span").innerHTML =
-    spans[i];
+  document.querySelector(".planet-container span").innerHTML = spans[i];
   document.querySelector(".planet-container p").innerHTML = paragraphs[i];
   //document.querySelector(".planet-container img").src = loadImage();
 }
