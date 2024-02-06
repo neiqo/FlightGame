@@ -36,17 +36,12 @@ document.addEventListener("DOMContentLoaded", function () {
     var initialPage = document.getElementById("loading-screen");
     initialPage.style.display = "none";
     playVideo(); // Trigger video play after hiding the initial page
+    playAudio();
   }
 
   document
     .getElementById("loading-screen")
     .addEventListener("click", hideInitialPage);
-
-  function playVideo() {
-    var video = document.querySelector(".bg-vid");
-    video.muted = false;
-    video.play();
-  }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -122,6 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var initialPage = document.getElementById("loading-screen");
     initialPage.style.display = "none";
     playVideo(); // Trigger video play after hiding the initial page
+    playAudio();
   }
 
   // Add event listener to hide loading screen when video is loaded
@@ -134,8 +130,17 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to play the video
   function playVideo() {
     var video = document.querySelector(".bg-vid");
+    var cockpitVid = document.querySelector("#cockpit-vid");
     video.muted = false;
+    cockpitVid.muted = true;
+    cockpitVid.play();
     video.play();
+  }
+
+  function playAudio() {
+    var cockpitSound = document.querySelector("#cockpitSound");
+    cockpitSound.play();
+    console.log("Audio");
   }
 });
 
