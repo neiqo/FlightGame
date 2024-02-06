@@ -3,11 +3,11 @@ document.getElementById("login-button").addEventListener("click", function () {
   const username = document.getElementById("login-username").value;
   const password = document.getElementById("login-password").value;
 
-  fetch("https://solarquest-a3da.restdb.io/rest/players", {
+  fetch("https://solarquest-5cd3.restdb.io/rest/players", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "x-apikey": "65c1fc2e72864dcbc2dcc60a",
+      "x-apikey": "65c1fc8472864d1ddbdcc6bc",
     },
   })
     .then((response) => response.json())
@@ -19,7 +19,7 @@ document.getElementById("login-button").addEventListener("click", function () {
         document.getElementById("login-message").textContent =
           "Login Successful!";
         sessionStorage.setItem("currentUser", JSON.stringify(user));
-        window.parent.location.href = "homepage.html";
+        window.parent.location.href = "class.html";
       } else {
         document.getElementById("login-message").textContent =
           "Invalid credentials!";
@@ -57,11 +57,11 @@ document
       creationdate: new Date().toISOString(), // current date and time
     };
 
-    fetch("https://solarquest-a3da.restdb.io/rest/players", {
+    fetch("https://solarquest-5cd3.restdb.io/rest/players", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-apikey": "65c1fc2e72864dcbc2dcc60a",
+        "x-apikey": "65c1fc8472864d1ddbdcc6bc",
       },
       body: JSON.stringify(newUser),
     })
