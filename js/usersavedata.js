@@ -19,6 +19,8 @@ window.onload = function () {
       typeWriter(currentPlanetDisplay, user.savedata.current_planet);
     }
 
+    updateCockpitVideo(user.savedata.current_planet);
+
     const levelDisplay = document.getElementById("player-level");
     if (levelDisplay) {
       //levelDisplay.textContent = user.savedata.level;
@@ -71,3 +73,18 @@ function typeWriter(element, text, i = 0) {
 
   setTimeout(() => typeWriter(element, text, i + 1), 150);
 }
+
+function updateCockpitVideo(planet) {
+  const cockpitVideo = document.getElementById("cockpit-vid");
+  if (cockpitVideo) {
+    // Construct the video source based on the planet
+    const videoSource = `images/bg/${planet.toLowerCase()}-vid.webm`;
+    cockpitVideo.src = videoSource;
+    cockpitVideo.muted = true;
+    console.log(cockpitVideo.muted);
+  }
+}
+
+cockpitVideo.addEventListener("loadedmetadata", function () {
+  cockpitVideo.muted = true;
+});
