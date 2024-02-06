@@ -9,3 +9,28 @@ body {
 #player-current-planet {
   text-transform: uppercase;
 }
+
+#planet {
+  width: 17em;
+  height: 16em;
+  background: url(/images/mercury-rectangle.jpg);
+  box-shadow: inset -2em -2em 2em #000, -0.5em -0.5em 1em #9c9696;
+  position: relative;
+  animation: rotate 30s linear infinite;
+}
+
+#planet {
+  border-radius: 50%;
+  background-repeat: repeat;
+  background-size: 200% 100%;
+}
+
+
+#planet {
+  z-index: -1;
+}
+
+.flicker-out-1 {
+  -webkit-animation: flicker-out-1 2s linear both;
+  animation: flicker-out-1 2s linear both;
+}
