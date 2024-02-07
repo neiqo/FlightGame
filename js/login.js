@@ -7,7 +7,7 @@ document.getElementById("login-button").addEventListener("click", function () {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "x-apikey": "65c29be3ae8d649c09f40114	",
+      "x-apikey": "65c29be3ae8d649c09f40114",
     },
   })
     .then((response) => response.json())
@@ -61,7 +61,7 @@ document
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-apikey": "65c29be3ae8d649c09f40114	",
+        "x-apikey": "65c29be3ae8d649c09f40114",
       },
       body: JSON.stringify(newUser),
     })
