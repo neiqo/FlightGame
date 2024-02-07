@@ -59,7 +59,7 @@ function displayQuestion(question) {
   questionElement.classList.add("quiz-question");
 
   // display question
-  const questionText = document.createElement("p");
+  const questionText = document.createElement("h1");
   questionText.textContent = question.question;
   questionElement.appendChild(questionText);
 
