@@ -11,7 +11,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 10vw;
+  margin-top: 2vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
 }
 
 .container h1 {
@@ -38,18 +40,44 @@ body {
 
 .quiz-question h1 {
   font-size: 2rem;
-  margin-bottom: 12vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10vh;
 }
 
 .quiz-question ul {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  margin-right: 5vw;
+  padding: 0px;
+  margin-left: 6vw;
 }
 
-.quiz-question button {
-  width: 90%;
+.quiz-submitButton {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 23vw;
+  height: 30vh;
+  background-color: #001d2e;
+  color: white;
+  font-size: 1.5rem;
+  border: solid 0.3vw #00ced1;
+  transition: box-shadow 500ms, background-color 500ms; /* Include background-color in the transition */
+  border-radius: 0 0.2vw 0.2vw 0; /*top left, top right ,bottom right, bottom left*/
+}
+
+.quiz-submitButton:hover {
+  box-shadow: 0 0 0.6vw 0 #00ced1;
+  background-color: #00ced1; /* Teal or Cyan color */
+}
+
+.quiz-submitButton:active {
+  box-shadow: none;
+  background-color: #002040; /* Darker shade on active/press */
 }
 
 #result-section {
@@ -79,7 +107,7 @@ input {
 }
 
 .btn-check + .btn {
-  min-width: 32.5vw;
+  width: 35vw;
   padding: 5px;
   border: none;
   border-radius: 2px;
@@ -87,6 +115,7 @@ input {
   color: white;
   cursor: pointer;
   justify-content: center;
+  transition: box-shadow 500ms, background-color 500ms; /* Include background-color in the transition */
 }
 
 .btn-check:hover + .btn {
@@ -94,6 +123,6 @@ input {
   background-color: #00ced1; /* Teal or Cyan color */
 }
 .btn-check:checked + .btn {
-  box-shadow: none;
-  background-color: #002040; /* Darker shade on active/press */
+  box-shadow: 0px 0px 10px 0px #00ced1;
+  background-color: #002040; /* Darker shade on active/dwpress */
 }
