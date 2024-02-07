@@ -20,6 +20,7 @@ window.onload = function () {
     }
 
     updateCockpitVideo(user.savedata.current_planet);
+    updateRotatingPlanet(user.savedata.current_planet);
 
     const levelDisplay = document.getElementById("player-level");
     if (levelDisplay) {
@@ -90,13 +91,27 @@ function updateCockpitVideo(planet) {
     cockpitVideo.src = videoSource;
     cockpitVideo.muted = true;
     console.log(cockpitVideo.muted);
-    const planetURL = document.getElementById("planet");
-    let url = `url("/images/${planet.toLowerCase()}-rectangle.jpg")`;
-    console.log(url);
-    planetURL.style.backgroundImage = url;
   }
 }
 
+function updateRotatingPlanet(planet) {
+  console.log("runadsadsdadas");
+  const elements = document.querySelectorAll("#planet");
+  console.log(elements.length);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      //console.log("helllo");
+      if (entry.isIntersecting) {
+        console.log("imdadasdadadadas adasdab");
+        let url = `./images/${planet.toLowerCase()}-rectangle.jpg`;
+        entry.target.setAttribute("style", `background-image: url('${url}')`);
+      }
+    });
+  });
+  elements.forEach((element) => {
+    observer.observe(element);
+  });
+}
 
 cockpitVideo.addEventListener("loadedmetadata", function () {
   cockpitVideo.muted = true;
