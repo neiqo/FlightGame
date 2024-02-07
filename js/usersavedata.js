@@ -44,15 +44,6 @@ window.onload = function () {
     if (typeof fetchDataForCurrentPlanet === "function") {
       fetchDataForCurrentPlanet(user.savedata.current_planet);
     }
-
-    const storedCurrentQuestionIndex = localStorage.getItem(
-      "currentQuestionIndex"
-    );
-    console.log(storedCurrentQuestionIndex);
-    if (storedCurrentQuestionIndex !== null) {
-      // If there's a stored value, parse it to integer and assign to currentQuestionIndex
-      currentQuestionIndex = parseInt(storedCurrentQuestionIndex);
-    }
   } else {
     // Redirect to login page if no session data
     window.location.href = "index.html";
