@@ -58,7 +58,7 @@ function updateContent(headers) {
   let element = document.getElementById("content");
 
   async function processLoop(i) {
-    if (i < 1) {
+    if (i < 5) {
       spans.push(headers[i].textContent);
 
       let content = "";
@@ -76,7 +76,7 @@ function updateContent(headers) {
           headers: {
             "content-type": "application/x-www-form-urlencoded",
             "X-RapidAPI-Key":
-              "6c930239c0msh9e068b31ec0d91ep1178f1jsn050f558ae6ff",
+              "27612cc8f2msh9e26d2b109e4ad7p15f860jsn47a1247452dd",
             "X-RapidAPI-Host": "text-summarize-pro.p.rapidapi.com",
           },
           body: new URLSearchParams({

@@ -3,11 +3,11 @@ document.getElementById("login-button").addEventListener("click", function () {
   const username = document.getElementById("login-username").value;
   const password = document.getElementById("login-password").value;
 
-  fetch("https://solarquest-1daf.restdb.io/rest/players", {
+  fetch("https://solarquest-de68.restdb.io/rest/players", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "x-apikey": "65c29be3ae8d649c09f40114",
+      "x-apikey": "65c38f98e15825f0c9b50acd",
     },
   })
     .then((response) => response.json())
@@ -57,11 +57,11 @@ document
       creationdate: new Date().toISOString(), // current date and time
     };
 
-    fetch("https://solarquest-1daf.restdb.io/rest/players", {
+    fetch("https://solarquest-de68.restdb.io/rest/players", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-apikey": "65c29be3ae8d649c09f40114",
+        "x-apikey": "65c38f98e15825f0c9b50acd",
       },
       body: JSON.stringify(newUser),
     })
