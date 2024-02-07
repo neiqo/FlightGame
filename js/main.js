@@ -185,34 +185,6 @@ function removeFlicker() {
   setTimeout(() => {
     //animatedElement.style.zIndex = "4";
     elementFlicker.classList.add("flicker-in-1");
-  }, 3000);
-}
-
-function flickerOut() {
-  const animatedElement = document.querySelector(".container");
-  animatedElement.classList.add("flicker-out-1");
-
-  // return new Promise(resolve => {
-  //   setTimeout(() => {
-  //     fadeIn().then(() => {
-  //       removeFlicker(animatedElement);
-  //       resolve(); // Resolve the promise after removeFlicker completes
-  //     });
-  //   }, 3000);
-  // });
-
-  setTimeout(fadeIn, 3000).then(() => {
-    removeFlicker(animatedElement);
-  });
-
-  //animatedElement.style.opacity = "0";
-  //animatedElement.classList.remove("flicker-out-1");
-  //setTimeout(flickerIn, 3000);
-  // setTimeout(() => {
-  //   animatedElement.classList.remove("flicker-out-1"), 5000
-  // })
-  // setTimeout(() => animatedElement.classList.add("flicker-in-1")
-  // , 2000);
   }, 2000);
 }
 
@@ -253,4 +225,37 @@ function flickerIn() {
   console.log("flciker in");
   const animatedElement = document.querySelector(".container");
   animatedElement.classList.add("flicker-in-1");
+}
+
+function loadingAnim() {
+  let loadingAnim = document.querySelector("#loading-animation");
+  let correctAnim = document.querySelector("#correct-animation");
+  let wrongAnim = document.querySelector("#wrong-animation");
+
+  loadingAnim.style.display = "inline";
+  correctAnim.style.display = "none";
+  wrongAnim.style.display = "none";
+  loadingAnim.currentTime = 0; // Reset loading animation to start
+}
+
+function correctAnim() {
+  let loadingAnim = document.querySelector("#loading-animation");
+  let correctAnim = document.querySelector("#correct-animation");
+  let wrongAnim = document.querySelector("#wrong-animation");
+
+  loadingAnim.style.display = "none";
+  correctAnim.style.display = "inline";
+  wrongAnim.style.display = "none";
+  correctAnim.currentTime = 0; // Reset correct animation to start
+}
+
+function wrongAnim() {
+  let loadingAnim = document.querySelector("#loading-animation");
+  let correctAnim = document.querySelector("#correct-animation");
+  let wrongAnim = document.querySelector("#wrong-animation");
+
+  loadingAnim.style.display = "none";
+  correctAnim.style.display = "none";
+  wrongAnim.style.display = "inline";
+  wrongAnim.currentTime = 0; // Reset wrong animation to start
 }
