@@ -5,12 +5,12 @@ const quizPlanet = user.savedata.current_planet;
 document.addEventListener("DOMContentLoaded", function () {
   // fetch quiz data for the current quiz planet
   fetch(
-    `https://solarquest-de68.restdb.io/rest/quiz?q={"quiz-planet":"${quizPlanet}"}`,
+    `https://solarquest-c849.restdb.io/rest/quiz?q={"quiz-planet":"${quizPlanet}"}`,
     {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "x-apikey": "65c38f98e15825f0c9b50acd",
+        "x-apikey": "65c3a0c5bd6533d8ff1137dd",
       },
     }
   )
@@ -129,7 +129,7 @@ function displayQuestion(question) {
   const submitButton = document.createElement("button");
   submitButton.type = "button";
   submitButton.textContent = "Submit Answer";
-  submitButton.className = "btn btn-primary";
+  submitButton.className = "quiz-submitButton";
   submitButton.addEventListener("click", () => submitAnswer(question));
   questionElement.appendChild(submitButton);
 
@@ -201,12 +201,12 @@ function nextQuestion() {
 
   setTimeout(() => {
     fetch(
-      `https://solarquest-de68.restdb.io/rest/quiz?q={"quiz-planet":"${quizPlanet}"}`,
+      `https://solarquest-c849.restdb.io/rest/quiz?q={"quiz-planet":"${quizPlanet}"}`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "x-apikey": "65c38f98e15825f0c9b50acd",
+          "x-apikey": "65c3a0c5bd6533d8ff1137dd",
         },
       }
     )
@@ -290,11 +290,11 @@ function fetchPlayer() {
   // Log the newPlanet value to check if it's correct
   console.log("New Planet:", newPlanet);
 
-  fetch(`https://solarquest-de68.restdb.io/rest/players/${user._id}`, {
+  fetch(`https://solarquest-c849.restdb.io/rest/players/${user._id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      "x-apikey": "65c38f98e15825f0c9b50acd",
+      "x-apikey": "65c3a0c5bd6533d8ff1137dd",
     },
     body: JSON.stringify({
       _id: user._id,
@@ -340,11 +340,11 @@ function submitQuiz() {
   console.log("Leaderboard Data:", leaderboardData); // Log the data to the console
 
   // Post results to the leaderboard
-  fetch(`https://solarquest-de68.restdb.io/rest/leaderboard`, {
+  fetch(`https://solarquest-c849.restdb.io/rest/leaderboard`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-apikey": "65c38f98e15825f0c9b50acd",
+      "x-apikey": "65c3a0c5bd6533d8ff1137dd",
     },
     body: JSON.stringify(leaderboardData),
   })
@@ -368,12 +368,12 @@ function submitQuiz() {
 function fetchLeaderboard() {
   // fetch leaderboard data
   fetch(
-    `https://solarquest-de68.restdb.io/rest/leaderboard?q={"quiz_planet":"${quizPlanet}"}`,
+    `https://solarquest-c849.restdb.io/rest/leaderboard?q={"quiz_planet":"${quizPlanet}"}`,
     {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "x-apikey": "65c38f98e15825f0c9b50acd",
+        "x-apikey": "65c3a0c5bd6533d8ff1137dd",
       },
     }
   )
