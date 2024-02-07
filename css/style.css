@@ -1,16 +1,16 @@
 /* For webkit browsers */
 ::-webkit-scrollbar {
-  width: 8px; /* Set the width of the scrollbar as a percentage of the viewport width */
+  width: 5px; /* Set the width of the scrollbar as a percentage of the viewport width */
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #333; /* Set the background color of the track */
+  background: #002040; /* Set the background color of the track */
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #666; /* Set the color of the scrollbar handle */
+  background: #00ced1; /* Set the color of the scrollbar handle */
 }
 
 /* Handle on hover */
@@ -97,9 +97,44 @@
   flex-direction: row;
   top: 28.5vh;
   left: 0.7vw;
-  width: 98.9vw;
+  width: 98.5vw;
   height: 70vh;
   justify-content: space-between;
+}
+
+.terminal-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-screen {
+  position: relative;
+  width: 71.5vw;
+  height: 48.8vh;
+  margin-right: 1vw;
+  border: #08d9dd 0.6vw solid;
+  border-radius: 4vw 1vw 1vw 11vw; /*top left, top right ,bottom right, bottom left*/
+  margin-top: auto;
+  transition: box-shadow 500ms;
+  box-shadow: 0 0 0.6vw #000000;
+}
+
+.main-screen:hover {
+  box-shadow: 0 0 0.6vw #00ced1;
+}
+
+.status-screen {
+  position: relative;
+  width: 30vw;
+  height: 21vh;
+  margin-left: 4vw;
+  border: #00ced1 0.3vw solid;
+  border-radius: 4vw 4vw 0.2vw 0.2vw; /*top left, top right ,bottom right, bottom left*/
+  transition: box-shadow 500ms;
+}
+
+.status-screen:hover {
+  box-shadow: 0 0 0.6vw #00ced1;
 }
 
 .terminal-side {
@@ -162,22 +197,6 @@
 }
 
 .terminal-buttons:hover {
-  box-shadow: 0 0 0.6vw #00ced1;
-}
-
-.main-screen {
-  position: relative;
-  width: 73.5vw;
-  height: 48.8vh;
-  margin-right: 1vw;
-  border: #08d9dd 0.6vw solid;
-  border-radius: 4vw 1vw 1vw 11vw; /*top left, top right ,bottom right, bottom left*/
-  margin-top: auto;
-  transition: box-shadow 500ms;
-  box-shadow: 0 0 0.6vw #000000;
-}
-
-.main-screen:hover {
   box-shadow: 0 0 0.6vw #00ced1;
 }
 

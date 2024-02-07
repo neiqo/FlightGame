@@ -3,6 +3,7 @@ body {
   background-color: #075e917e;
   color: white;
   overflow: hidden;
+  padding-top: 5vh;
 }
 
 .container {
@@ -27,6 +28,14 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#quiz-questions h2 {
+  display: none;
+}
+
+.quiz-question h1 {
+  font-size: 2rem;
 }
 
 .quiz-question ul {
@@ -79,4 +88,3 @@ input {
   box-shadow: none;
   background-color: #002040; /* Darker shade on active/press */
 }
-

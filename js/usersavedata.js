@@ -57,6 +57,14 @@ function logout() {
   window.location.href = "index.html";
 }
 
+function orbit() {
+  console.log("Orbit function called!");
+  window.location.href = "homepage.html";
+}
+function classroom() {
+  window.location.href = "class.html";
+}
+
 function typeWriter(element, text, i = 0) {
   if (i === 0) {
     element.textContent = "";
