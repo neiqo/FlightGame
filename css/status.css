@@ -18,9 +18,14 @@ body {
 #planet {
   width: 17em;
   height: 16em;
-  background: url(/images/mercury-rectangle.jpg);
   box-shadow: inset -2em -2em 2em #000, -0.5em -0.5em 1em #9c9696;
   animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    background-position: -200% 0;
+  }
 }
 
 #planet {
