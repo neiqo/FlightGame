@@ -39,7 +39,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: 0 auto;
+  margin-right: -30vw;
   border-left: 2px solid gray;
   width: 65vw;
   padding-left: 2vw;
@@ -102,8 +102,8 @@ tr {
 }
 
 .flicker-out-1 {
-	-webkit-animation: flicker-out-1 2s linear both;
-	        animation: flicker-out-1 2s linear both;
+  -webkit-animation: flicker-out-1 2s linear both;
+  animation: flicker-out-1 2s linear both;
 }
 /*
 tr {
@@ -115,4 +115,3 @@ tr {
   margin-bottom: 0.5vw;
 }
 */
-

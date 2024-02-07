@@ -34,6 +34,15 @@ body {
   height: 40vh;
 }
 
+#result-section {
+  position: fixed;
+  margin-right: 70vw;
+}
+
+#leaderboard-section {
+  margin-right: 90vw;
+}
+
 #quiz-questions h2 {
   display: none;
 }
@@ -80,12 +89,16 @@ body {
   background-color: #002040; /* Darker shade on active/press */
 }
 
-#result-section {
-  position: fixed;
-  float: left;
-  margin-right: 80vw;
+#return-home {
+  width: 100%;
+  height: 20vh;
+  border: 0;
+  border-radius: 1vw;
+  padding: 1vw;
+  text-align: center;
+  overflow: hidden; /* Hide any overflowing text */
+  box-shadow: 0 0px 0px #000000;
 }
-
 .col1 input[type="radio"] + label,
 .col2 input[type="radio"] + label {
   margin-bottom: 10px; /* Adjust the value to set the desired gap */
