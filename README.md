@@ -6,17 +6,16 @@ Players win by going to each planet in the solar system and finally leaving the 
 
 # Design Process
 
-We aim to create a user-friendly website that educates both young children and teenagers on the various planets in our solar system. By using eye-catching visuals and multiple sound effects, children and teenagers alike will be more interested to learn and explore the solar system. Information about planets are summarised into simple paragraphs for our target audience to easily understand the content. Furthermore, users' knowledge on planets will be tested using quizzes to ensure that they fully grasped the information before advancing to the next planet.
+We aim to create a user-friendly website that educates space enthusiasts on the various planets in our solar system. By using eye-catching visuals and multiple sound effects, users will be more interested to learn and explore the solar system. Information about planets are summarised into simple paragraphs for our target audience to easily understand the content. Furthermore, users' knowledge on planets will be tested using quizzes to ensure that they fully grasped the information before advancing to the next planet.
 
 User Stories:
 
 - As a young child or teenager, I want to explore the different planets in our solar system, so that I can learn more about them in an engaging and interactive way.
 - As a young learner, I want to access information about each planet summarized into simple paragraphs, so that I can easily understand the key facts about them.
-- As a user, I want the website to use eye-catching visuals and sound effects, so that I feel excited and motivated to explore the content about the planets.
+- As a space enthusiast, I want the website to use eye-catching visuals and sound effects, so that I feel excited and motivated to explore the content about the planets.
 - As a parent or educator, I want the website to be user-friendly and suitable for children and teenagers, so that I can confidently recommend it as an educational resource.
-- As a user, I want to test my knowledge about the planets through quizzes, so that I can assess my understanding and retention of the information presented.
+- As a space enthusiast, I want to test my knowledge about the planets through quizzes, so that I can assess my understanding and retention of the information presented.
 - As a young learner, I want the quizzes to be interactive and engaging, so that I can enjoy the learning process and feel rewarded for my progress.
-- As a user, I want the website to provide feedback on my quiz performance, so that I can identify areas where I need to review or improve my understanding.
 
 ## Desktop wireframe:
 
@@ -51,7 +50,7 @@ User Stories:
 - Customise Spaceship Feature\
   A follow up to the 'Space Game Feature' where users are able to customise their own spaceship to make their experience more immersive.
 - Explore Moons Feature\
-A feature which enables users to explore the numerous moons within our solar system, catering to the curiosity of children and teenagers who are eager to learn more.
+  A feature which enables users to explore the numerous moons within our solar system, catering to the curiosity of children and teenagers who are eager to learn more.
 
 # Technologies Used
 
