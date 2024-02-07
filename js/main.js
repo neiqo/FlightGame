@@ -185,7 +185,7 @@ function removeFlicker() {
   setTimeout(() => {
     //animatedElement.style.zIndex = "4";
     elementFlicker.classList.add("flicker-in-1");
-  }, 2000);
+  }, 3000);
 }
 
 function fadeIn() {
