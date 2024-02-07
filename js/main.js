@@ -144,25 +144,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-function explore() {
-  // Get the main-screen iframe
-  var mainScreen = document.querySelector(".main-screen");
-
-  // Set the new source for the iframe
-  mainScreen.src = "explore.html"; // Change 'explore.html' to the desired page
-}
-
-function liftoff() {
-  // Get the main-screen iframe
-  var mainScreen = document.querySelector(".main-screen");
-
-  // Set the new source for the iframe
-  mainScreen.src = "quiz.html"; // Change 'explore.html' to the desired page
-
-  // Play a sound (optional)
-  document.getElementById("clickSound").play();
-}
-
 // Call flickerOut once after a delay of 10 seconds
 setTimeout(flickerOut, 10000);
 // Call flickerOut every 35 seconds
