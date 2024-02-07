@@ -76,7 +76,7 @@ function updateContent(headers) {
           headers: {
             "content-type": "application/x-www-form-urlencoded",
             "X-RapidAPI-Key":
-              "b8da4fe16amshbd2fa641d64dec2p1bb0bbjsn96e5f68b3b70",
+              "6c930239c0msh9e068b31ec0d91ep1178f1jsn050f558ae6ff",
             "X-RapidAPI-Host": "text-summarize-pro.p.rapidapi.com",
           },
           body: new URLSearchParams({
@@ -103,7 +103,6 @@ function updateContent(headers) {
           console.log(result);
           content = result.summary;
           if (content.length > 2000) {
-            
             const result2 = await summarize(content);
             console.log(result2);
             content = result2.summary;

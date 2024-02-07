@@ -1,7 +1,8 @@
 body {
   font-family: "Electrolize", sans-serif;
-  background-color: #075e91;
+  background-color: #075e917e;
   color: white;
+  overflow: hidden;
 }
 
 .container {

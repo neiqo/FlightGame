@@ -16,8 +16,8 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="css/class.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/class.css" />
   </head>
   <body class="cockpit">
     <div id="loading-screen" class="initial-page" onclick="hideInitialPage()">
@@ -38,12 +38,20 @@
       <div>
         <div id="class-terminal" class="terminal">
           <iframe id="main-scr" class="main-screen" src="orbit.html"></iframe>
-          <div class="terminal-side">
+          <div id="terminal-side" class="terminal-side">
             <div id="class-buttons" class="terminal-buttons">
-              <button id="orbit-button" onclick="orbit()">ORBIT</button>
-              <button onclick="">B2</button>
-              <button onclick="">B2</button>
-              <button id="logout-button" onclick="logout()">LOG OUT</button>
+              <div id="class-buttonsrow">
+                <button type="button" class="btn btn-primary" id="prevButton">
+                  PREVIOUS
+                </button>
+                <button id="liftoff-button" onclick="orbit()">LIFT OFF</button>
+              </div>
+              <div id="class-buttonsrow">
+                <button type="button" class="btn btn-primary" id="nextButton">
+                  NEXT
+                </button>
+                <button id="logout-button" onclick="logout()">LOG OUT</button>
+              </div>
             </div>
           </div>
         </div>
