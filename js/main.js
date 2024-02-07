@@ -223,12 +223,9 @@ function flickerOut() {
   //   }, 3000);
   // });
 
-
-  setTimeout(fadeIn, 3000)
-  .then(() => {
+  setTimeout(fadeIn, 3000).then(() => {
     removeFlicker(animatedElement);
   });
-
 
   //animatedElement.style.opacity = "0";
   //animatedElement.classList.remove("flicker-out-1");
@@ -300,7 +297,7 @@ function fadeIn() {
 
           setTimeout(() => {
             entry.target.className = "fadein-center";
-            setTimeout(removeFlicker(), 8000)
+            setTimeout(removeFlicker(), 8000);
           }, 5000);
         }
       });
@@ -410,3 +407,36 @@ function fadeOut() {
 // elements.forEach((element) => {
 //   observer.observe(element);
 // });
+
+function loadingAnim() {
+  let loadingAnim = document.querySelector("#loading-animation");
+  let correctAnim = document.querySelector("#correct-animation");
+  let wrongAnim = document.querySelector("#wrong-animation");
+
+  loadingAnim.style.display = "inline";
+  correctAnim.style.display = "none";
+  wrongAnim.style.display = "none";
+  loadingAnim.currentTime = 0; // Reset loading animation to start
+}
+
+function correctAnim() {
+  let loadingAnim = document.querySelector("#loading-animation");
+  let correctAnim = document.querySelector("#correct-animation");
+  let wrongAnim = document.querySelector("#wrong-animation");
+
+  loadingAnim.style.display = "none";
+  correctAnim.style.display = "inline";
+  wrongAnim.style.display = "none";
+  correctAnim.currentTime = 0; // Reset correct animation to start
+}
+
+function wrongAnim() {
+  let loadingAnim = document.querySelector("#loading-animation");
+  let correctAnim = document.querySelector("#correct-animation");
+  let wrongAnim = document.querySelector("#wrong-animation");
+
+  loadingAnim.style.display = "none";
+  correctAnim.style.display = "none";
+  wrongAnim.style.display = "inline";
+  wrongAnim.currentTime = 0; // Reset wrong animation to start
+}

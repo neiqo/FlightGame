@@ -2,7 +2,7 @@ body {
   font-family: "Electrolize", sans-serif;
   background-color: #075e917e;
   color: white;
-  overflow: hidden;
+  overflow-x: hidden;
   padding-top: 5vh;
 }
 
@@ -28,6 +28,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 22vh;
+  height: 40vh;
 }
 
 #quiz-questions h2 {
@@ -36,6 +38,7 @@ body {
 
 .quiz-question h1 {
   font-size: 2rem;
+  margin-bottom: 12vh;
 }
 
 .quiz-question ul {
@@ -47,6 +50,12 @@ body {
 
 .quiz-question button {
   width: 90%;
+}
+
+#result-section {
+  position: fixed;
+  float: left;
+  margin-right: 80vw;
 }
 
 .col1 input[type="radio"] + label,

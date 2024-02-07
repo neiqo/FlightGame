@@ -95,10 +95,10 @@
   display: flex;
   position: absolute;
   flex-direction: row;
-  top: 28.5vh;
+  top: 19vh;
   left: 0.7vw;
   width: 98.5vw;
-  height: 70vh;
+  height: 80vh;
   justify-content: space-between;
 }
 
@@ -110,7 +110,7 @@
 .main-screen {
   position: relative;
   width: 71.5vw;
-  height: 48.8vh;
+  height: 55vh;
   margin-right: 1vw;
   border: #08d9dd 0.6vw solid;
   border-radius: 4vw 1vw 1vw 11vw; /*top left, top right ,bottom right, bottom left*/
@@ -124,10 +124,13 @@
 }
 
 .status-screen {
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: 30vw;
-  height: 21vh;
+  height: 32vh;
   margin-left: 4vw;
+  background-color: #075e917e;
   border: #00ced1 0.3vw solid;
   border-radius: 4vw 4vw 0.2vw 0.2vw; /*top left, top right ,bottom right, bottom left*/
   transition: box-shadow 500ms;
@@ -135,6 +138,42 @@
 
 .status-screen:hover {
   box-shadow: 0 0 0.6vw #00ced1;
+}
+
+#question-counter {
+  color: white;
+  margin-top: 1.2vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#answer-status {
+  color: white;
+  width: 10vw;
+  height: 10vw;
+  margin-top: 0vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#loading-animation {
+  display: inline;
+}
+
+#correct-animation {
+  display: none;
+}
+
+#wrong-animation {
+  display: none;
+}
+
+.progress {
+  border-radius: 0 0vw 0vw 0; /*top left, top right ,bottom right, bottom left*/
+  height: 0.8vh;
+}
+.progress-bar {
+  border-radius: 0 0.2vw 0.2vw 0; /*top left, top right ,bottom right, bottom left*/
 }
 
 .terminal-side {
@@ -182,7 +221,7 @@
 .terminal-buttons {
   display: flex;
   flex-direction: row;
-  margin-top: 4vh;
+  margin-top: 14vh;
   align-items: center;
   padding-left: 1vw;
   padding-right: 1vw;
