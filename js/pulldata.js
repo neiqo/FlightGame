@@ -76,7 +76,7 @@ function updateContent(headers) {
           headers: {
             "content-type": "application/x-www-form-urlencoded",
             "X-RapidAPI-Key":
-              "90a2413687mshbcece53dc93fdddp115b0cjsn055fab1c4a77",
+              "b8da4fe16amshbd2fa641d64dec2p1bb0bbjsn96e5f68b3b70",
             "X-RapidAPI-Host": "text-summarize-pro.p.rapidapi.com",
           },
           body: new URLSearchParams({
