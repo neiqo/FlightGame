@@ -1,19 +1,19 @@
+const link = `https://solarquest-cd0c.restdb.io`;
+const apikey = `65c3d16c8fe3ef61a17a32f1`;
+
 const user = JSON.parse(sessionStorage.getItem("currentUser"));
 let userfuel = user.savedata.fuel;
 const quizPlanet = user.savedata.current_planet;
 
 document.addEventListener("DOMContentLoaded", function () {
   // fetch quiz data for the current quiz planet
-  fetch(
-    `https://solarquest-c849.restdb.io/rest/quiz?q={"quiz-planet":"${quizPlanet}"}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "x-apikey": "65c3a0c5bd6533d8ff1137dd",
-      },
-    }
-  )
+  fetch(link + `/rest/quiz?q={"quiz-planet":"${quizPlanet}"}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "x-apikey": apikey,
+    },
+  })
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -200,16 +200,13 @@ function nextQuestion() {
   currentQuestionIndex++;
 
   setTimeout(() => {
-    fetch(
-      `https://solarquest-c849.restdb.io/rest/quiz?q={"quiz-planet":"${quizPlanet}"}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "x-apikey": "65c3a0c5bd6533d8ff1137dd",
-        },
-      }
-    )
+    fetch(link + `/rest/quiz?q={"quiz-planet":"${quizPlanet}"}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-apikey": apikey,
+      },
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -273,13 +270,14 @@ function planetCheck() {
     } else {
       // If the user is already on the last planet, go back to the first one (loop)
       currentPlanet = planets[0];
+      sessionStorage.setItem("currentUser", JSON.stringify(user));
     }
     return newPlanet;
   } else {
     // If the user doesn't have enough fuel, prompt and redirect
     displayQuizResult();
     alert("You don't have enough knowledge to proceed to the next planet!");
-    window.location.href = "orbit.html"; // Redirect to explore.html
+    window.parent.location.href = "class.html"; // Redirect to explore.html
     return;
   }
 }
@@ -290,11 +288,11 @@ function fetchPlayer() {
   // Log the newPlanet value to check if it's correct
   console.log("New Planet:", newPlanet);
 
-  fetch(`https://solarquest-c849.restdb.io/rest/players/${user._id}`, {
+  fetch(link + `/rest/players/${user._id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      "x-apikey": "65c3a0c5bd6533d8ff1137dd",
+      "x-apikey": apikey,
     },
     body: JSON.stringify({
       _id: user._id,
@@ -340,11 +338,11 @@ function submitQuiz() {
   console.log("Leaderboard Data:", leaderboardData); // Log the data to the console
 
   // Post results to the leaderboard
-  fetch(`https://solarquest-c849.restdb.io/rest/leaderboard`, {
+  fetch(link + `/rest/leaderboard`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-apikey": "65c3a0c5bd6533d8ff1137dd",
+      "x-apikey": apikey,
     },
     body: JSON.stringify(leaderboardData),
   })
@@ -367,16 +365,13 @@ function submitQuiz() {
 
 function fetchLeaderboard() {
   // fetch leaderboard data
-  fetch(
-    `https://solarquest-c849.restdb.io/rest/leaderboard?q={"quiz_planet":"${quizPlanet}"}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "x-apikey": "65c3a0c5bd6533d8ff1137dd",
-      },
-    }
-  )
+  fetch(link + `/rest/leaderboard?q={"quiz_planet":"${quizPlanet}"}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "x-apikey": apikey,
+    },
+  })
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

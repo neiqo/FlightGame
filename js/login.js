@@ -1,13 +1,17 @@
 // login form
+
+const link = `https://solarquest-cd0c.restdb.io`;
+const apikey = `65c3d16c8fe3ef61a17a32f1`;
+
 document.getElementById("login-button").addEventListener("click", function () {
   const username = document.getElementById("login-username").value;
   const password = document.getElementById("login-password").value;
 
-  fetch("https://solarquest-c849.restdb.io/rest/players", {
+  fetch(link + `/rest/players`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "x-apikey": "65c3a0c5bd6533d8ff1137dd",
+      "x-apikey": apikey,
     },
   })
     .then((response) => response.json())
@@ -57,11 +61,11 @@ document
       creationdate: new Date().toISOString(), // current date and time
     };
 
-    fetch("https://solarquest-c849.restdb.io/rest/players", {
+    fetch(link + `/rest/players`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-apikey": "65c3a0c5bd6533d8ff1137dd",
+        "x-apikey": apikey,
       },
       body: JSON.stringify(newUser),
     })
