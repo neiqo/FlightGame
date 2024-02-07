@@ -82,8 +82,13 @@ function updateCockpitVideo(planet) {
     cockpitVideo.src = videoSource;
     cockpitVideo.muted = true;
     console.log(cockpitVideo.muted);
+    const planetURL = document.getElementById("planet");
+    let url = `url("/images/${planet.toLowerCase()}-rectangle.jpg")`;
+    console.log(url);
+    planetURL.style.backgroundImage = url;
   }
 }
+
 
 cockpitVideo.addEventListener("loadedmetadata", function () {
   cockpitVideo.muted = true;
