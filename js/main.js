@@ -144,42 +144,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-let i = 0;
-
-document.addEventListener("DOMContentLoaded", function () {
-  var prevButton = document.getElementById("prevButton");
-  var nextButton = document.getElementById("nextButton");
-
-  console.log(i);
-  if (i === 0) {
-    prevButton.disabled = true;
-  } else {
-    prevButton.disabled = false;
-  }
-  prevButton.addEventListener("click", function () {
-    i--;
-    console.log(i);
-    var iframe = document.getElementById("main-scr");
-    iframe.contentWindow.prevPara();
-
-    if (i === 0) {
-      prevButton.disabled = true;
-    }
-    nextButton.disabled = false;
-  });
-
-  nextButton.addEventListener("click", function () {
-    i++;
-    console.log(i);
-    var iframe = document.getElementById("main-scr");
-    iframe.contentWindow.nextPara();
-    if (i === 4) {
-      nextButton.disabled = true;
-    }
-    prevButton.disabled = false;
-  });
-});
-
 function explore() {
   // Get the main-screen iframe
   var mainScreen = document.querySelector(".main-screen");
@@ -197,6 +161,20 @@ function liftoff() {
 
   // Play a sound (optional)
   document.getElementById("clickSound").play();
+}
+
+// Call flickerOut once after a delay of 10 seconds
+setTimeout(flickerOut, 10000);
+// Call flickerOut every 35 seconds
+setTimeout(() => {
+  setInterval(flickerOut, 35000), 20000;
+});
+
+function flickerOut() {
+  const animatedElement = document.querySelector(".container");
+  animatedElement.classList.add("flicker-out-1");
+
+  setTimeout(fadeIn, 2500);
 }
 
 function removeFlicker() {
@@ -235,46 +213,8 @@ function flickerOut() {
   // })
   // setTimeout(() => animatedElement.classList.add("flicker-in-1")
   // , 2000);
+  }, 2000);
 }
-
-// Set interval to toggle animation every 3 seconds
-flickerOut();
-setInterval(flickerOut, 125000);
-
-// Call the fadeIn function every 2000 milliseconds (2 seconds)
-//fadeIn();
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   console.log("hello-1");
-//   const elements = document.querySelectorAll("#planet");
-//   const observer = new IntersectionObserver(
-//     (entries) => {
-//       entries.forEach((entry) => {
-//         console.log("helllo");
-//         if (
-//           entry.isIntersecting &&
-//           !entry.target.classList.contains("animated")
-//         ) {
-//           console.log("hello2");
-//           entry.target.classList.add("animated");
-
-//           if (entry.target.classList.contains("fadein")) {
-//             entry.target.classList.add("fade-in");
-//             console.log("impt");
-//           }
-
-//           if (entry.target.classList.contains("fadein-right")) {
-//             entry.target.classList.add("fadein-right-animated");
-//           }
-//         }
-//       });
-//     },
-//     { threshold: 0.5 }
-//   );
-//   elements.forEach((element) => {
-//     observer.observe(element);
-//   });
-// });
 
 function fadeIn() {
   console.log("hello-1");
@@ -297,8 +237,8 @@ function fadeIn() {
 
           setTimeout(() => {
             entry.target.className = "fadein-center";
-            setTimeout(removeFlicker(), 8000);
-          }, 5000);
+          }, 10000);
+          setTimeout(removeFlicker, 13000);
         }
       });
     },
@@ -313,130 +253,4 @@ function flickerIn() {
   console.log("flciker in");
   const animatedElement = document.querySelector(".container");
   animatedElement.classList.add("flicker-in-1");
-}
-
-// function fadeOut() {
-//   //console.log("hello-1");
-//   const elements = document.querySelectorAll("#planet");
-//   const observer = new IntersectionObserver(
-//     (entries) => {
-//       entries.forEach((entry) => {
-//         //console.log("helllo");
-//         if (
-//           entry.isIntersecting &&
-//           !entry.target.classList.contains("animated")
-//         ) {
-//           //console.log("hello2");
-//           //entry.target.classList.add("animated");
-
-//           if (entry.target.classList.contains("fadein-center")) {
-//             entry.target.classList.add("fadein-center-animated");
-//             console.log("impt");
-//           }
-
-//           setTimeout(
-//             fadeOut
-//           , 5000);
-//         }
-//       });
-//     },
-//     { threshold: 0.5 }
-//   );
-//   elements.forEach((element) => {
-//     observer.observe(element);
-// })};
-
-function fadeOut() {
-  console.log("hello-1");
-  const elements = document.querySelectorAll("#planet");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        console.log("helllo");
-        if (
-          entry.isIntersecting &&
-          !entry.target.classList.contains("animated")
-        ) {
-          console.log("hello2");
-          //entry.target.classList.add("animated");
-
-          if (entry.target.classList.contains("fadein-center")) {
-            entry.target.className = "flicker-in-1";
-            entry.target.classList.add("fadein-center");
-            console.log("impt");
-          }
-
-          // setTimeout(
-          //   flickerIn
-          // , 5000);
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-  elements.forEach((element) => {
-    observer.observe(element);
-  });
-}
-// console.log("hello-1");
-// const elements = document.querySelectorAll("#planet");
-// const observer = new IntersectionObserver(
-//   (entries) => {
-//     entries.forEach((entry) => {
-//       console.log("helllo");
-//       if (
-//         entry.isIntersecting &&
-//         !entry.target.classList.contains("animated")
-//       ) {
-//         console.log("hello2");
-//         //entry.target.classList.add("animated");
-
-//         if (entry.target.classList.contains("fadein")) {
-//           entry.target.classList.add("fade");
-//           console.log("impt");
-//         }
-
-//         if (entry.target.classList.contains("fadein-right")) {
-//           entry.target.classList.add("fadein-right-animated");
-//         }
-//       }
-//     });
-//   },
-//   { threshold: 0.5 }
-// );
-// elements.forEach((element) => {
-//   observer.observe(element);
-// });
-
-function loadingAnim() {
-  let loadingAnim = document.querySelector("#loading-animation");
-  let correctAnim = document.querySelector("#correct-animation");
-  let wrongAnim = document.querySelector("#wrong-animation");
-
-  loadingAnim.style.display = "inline";
-  correctAnim.style.display = "none";
-  wrongAnim.style.display = "none";
-  loadingAnim.currentTime = 0; // Reset loading animation to start
-}
-
-function correctAnim() {
-  let loadingAnim = document.querySelector("#loading-animation");
-  let correctAnim = document.querySelector("#correct-animation");
-  let wrongAnim = document.querySelector("#wrong-animation");
-
-  loadingAnim.style.display = "none";
-  correctAnim.style.display = "inline";
-  wrongAnim.style.display = "none";
-  correctAnim.currentTime = 0; // Reset correct animation to start
-}
-
-function wrongAnim() {
-  let loadingAnim = document.querySelector("#loading-animation");
-  let correctAnim = document.querySelector("#correct-animation");
-  let wrongAnim = document.querySelector("#wrong-animation");
-
-  loadingAnim.style.display = "none";
-  correctAnim.style.display = "none";
-  wrongAnim.style.display = "inline";
-  wrongAnim.currentTime = 0; // Reset wrong animation to start
 }
