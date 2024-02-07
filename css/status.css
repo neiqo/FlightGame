@@ -16,9 +16,10 @@ body {
 }
 
 #planet {
-  width: 17em;
-  height: 16em;
+  width: 70vw;
+  height: 70vw;
   box-shadow: inset -2em -2em 2em #000, -0.5em -0.5em 1em #9c9696;
+  /* background: url(/images/mercury-rectangle.jpg); */
   animation: rotate 30s linear infinite;
 }
 
@@ -58,8 +59,6 @@ body {
   transform: translateY(0);
 }
 
-
-
 .flicker-in-1 {
   -webkit-animation: flicker-in-1 2s linear both;
   animation: flicker-in-1 2s linear both;
@@ -77,7 +76,7 @@ body {
  * @animation flicker-in-1
  * ----------------------------------------
  */
- @-webkit-keyframes flicker-in-1 {
+@-webkit-keyframes flicker-in-1 {
   0% {
     opacity: 0;
   }
@@ -267,7 +266,6 @@ body {
     opacity: 1;
   }
 }
-
 
 .flicker-out-1 {
   -webkit-animation: flicker-out-1 2s linear both;
