@@ -62,8 +62,20 @@ function orbit() {
   console.log("Orbit function called!");
   window.location.href = "homepage.html";
 }
+
+function liftoff() {
+  // Get the main-screen iframe
+  var mainScreen = document.querySelector(".main-screen");
+
+  // Set the new source for the iframe
+  mainScreen.src = "quiz.html"; // Change 'explore.html' to the desired page
+
+  // Play a sound (optional)
+  document.getElementById("clickSound").play();
+}
+
 function classroom() {
-  window.location.href = "class.html";
+  window.parent.location.href = "class.html";
 }
 
 function typeWriter(element, text, i = 0) {
