@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     prevButton.disabled = false;
   }
-  
+
   prevButton.addEventListener("click", function () {
     i--;
     console.log(i);
