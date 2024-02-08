@@ -1,0 +1,165 @@
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  .cockpit {
+    transform: rotate(90deg);
+    transform-origin: left top;
+    width: 100vh;
+    overflow-x: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+}
+
+.cockpit-terminal {
+  width: 99vw;
+}
+
+.terminal {
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  top: 28.5vh;
+  left: 0.7vw;
+  width: 98.9vw;
+  height: 70vh;
+  justify-content: space-between;
+}
+
+.terminal-side {
+  display: flex;
+  flex-direction: column;
+  width: 22vw;
+  height: 100%;
+  margin-right: auto;
+}
+
+.terminal-side button {
+  font-size: 1vw;
+  width: 8vw;
+  height: 10vh;
+  border: 0;
+  border-radius: 1vw;
+  padding: 1vw;
+  margin: 1vh;
+  text-align: center;
+  overflow: hidden; /* Hide any overflowing text */
+  box-shadow: 0 0px 0px #000000;
+}
+#prevButton {
+  background-color: #00b0b3;
+  border: 0.3vw solid #00ced1;
+  transition: box-shadow 0.5s, background-color 0.5s; /* Include box-shadow in transition */
+}
+
+#prevButton:hover {
+  box-shadow: 0 0 0.6vw 0 #00ced1;
+  background-color: #00ced1;
+}
+
+#prevButton:active {
+  box-shadow: none;
+  background-color: #006768;
+}
+
+#nextButton {
+  background-color: #00b0b3;
+  border: 0.3vw solid #00ced1;
+  transition: box-shadow 0.5s, background-color 0.5s; /* Include box-shadow in transition */
+}
+
+#nextButton:hover {
+  box-shadow: 0 0 0.6vw 0 #00ced1;
+  background-color: #00ced1;
+}
+
+#nextButton:active {
+  box-shadow: none;
+  background-color: #006768;
+}
+
+#liftoff-button {
+  color: white;
+  background-color: #008709;
+  border: 0.3vw solid greenyellow;
+  transition: box-shadow 0.5s, background-color 0.5s; /* Include box-shadow in transition */
+}
+
+#liftoff-button:hover {
+  color: black;
+  box-shadow: 0 0 0.6vw 0 greenyellow;
+  background-color: greenyellow; /* Teal or Cyan color */
+}
+
+#liftoff-button:active {
+  box-shadow: none;
+  background-color: #015306; /* Darker shade on active/press */
+}
+
+#logout-button {
+  color: white;
+  background-color: #990000;
+  border: 0.3vw solid #ff3333;
+  transition: box-shadow 0.5s, background-color 0.5s; /* Include box-shadow in transition */
+}
+#logout-button:hover {
+  box-shadow: 0 0 0.6vw 0 #ff3333; /* Red shadow on hover */
+  background-color: #ff3333; /* Red color on hover */
+}
+
+#logout-button:active {
+  box-shadow: none;
+  background-color: #990000; /* Darker red shade on active/press */
+}
+
+.terminal-buttons {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+  align-items: center;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  height: 30vh;
+  width: 100%;
+  gap: 0.5vw;
+  border: #08d9dd 0.6vw solid;
+  border-radius: 4vw 1vw 4vw 1vw; /*top left, top right ,bottom right, bottom left*/
+  background-color: rgba(8, 217, 221, 0.2);
+  transition: box-shadow 0.5s, background-color 0.5s; /* Include box-shadow in transition */
+  box-shadow: 0 0 0.6vw #000000;
+}
+
+.terminal-buttons:hover {
+  box-shadow: 0 0 0.6vw #00ced1;
+}
+
+.main-screen {
+  position: relative;
+  width: 65vw;
+  height: 70vh;
+  margin-right: 1vw;
+  border: #08d9dd 0.6vw solid;
+  border-radius: 4vw 1vw 1vw 11vw; /*top left, top right ,bottom right, bottom left*/
+  margin-top: auto;
+  transition: box-shadow 500ms;
+  box-shadow: 0 0 0.6vw #000000;
+}
+
+.main-screen:hover {
+  box-shadow: 0 0 0.6vw #00ced1;
+}
+
+.side-screen {
+  position: relative;
+  width: 100%;
+  height: 48.8vh;
+  border: #08d9dd 0.6vw solid;
+  border-radius: 1vw 4vw 11vw 1vw; /*top left, top right ,bottom right, bottom left*/
+  margin-top: auto;
+  transition: box-shadow 500ms;
+  box-shadow: 0 0 0.6vw #000000;
+}
+
+.side-screen:hover {
+  box-shadow: 0 0 0.6vw #00ced1;
+}

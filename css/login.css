@@ -1,39 +1,121 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Electrolize", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f4f4f4;
+  background-color: #075e917e;
 }
 
-.login-container {
-  background: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  text-align: center;
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(12, 82, 157, 0.1);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.form-container {
+  height: 85vh;
+  width: 70vw;
+  background-color: #075e91;
+  border: #00ced1 5px solid;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px;
+  transition: box-shadow 500ms;
+  padding-bottom: auto;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+#login-container {
+  border-left: 0.3vw solid #009194;
+  height: 100%;
+  width: 35vw;
+  padding-top: 5vh;
+  padding-left: 2vw;
+  padding-right: -2vw;
+  margin-left: auto;
+}
+
+.form-container:hover {
+  box-shadow: 0 0px 8px #00ced1;
+}
+
+#login-form,
+#registration-form {
+  width: 100%;
+}
+
+h2 {
+  color: white;
+  font-size: 2vw;
+}
+
+#toggle-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15vh;
+  margin-bottom: 15vh;
+}
+
+#toggle-buttons button {
+  height: 15vh;
+  width: 18vw;
+  font-size: 3vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 input {
   display: block;
   width: 100%;
   padding: 10px;
-  margin: 10px 0;
+  height: 14vh;
+  margin: 1vh 0;
   border-radius: 5px;
   border: 1px solid #ddd;
+  background-color: #001d2e; /* Dark blue input background */
+  color: white; /* Input text color */
 }
 
-button {
+.loginpage-button {
   width: 100%;
-  padding: 10px;
+  margin-top: 1vh;
+  height: 12vh;
+  padding: 0.2vw;
   border: none;
   border-radius: 5px;
-  background-color: blue;
+  background-color: #004080; /* Darker blue button background */
   color: white;
   cursor: pointer;
+  justify-content: center;
 }
 
-button:hover {
-  background-color: darkblue;
+.loginpage-button:hover {
+  box-shadow: 0px 0px 5px 0px #00ced1;
+  background-color: #00ced1; /* Teal or Cyan color */
+}
+
+.loginpage-button:active {
+  box-shadow: none;
+  background-color: #002040; /* Darker shade on active/press */
+}
+
+#login-message,
+#register-message {
+  color: white;
+}
+
+#login-animation {
+  position: fixed;
+  width: 77vw;
+  height: 77vh;
+  pointer-events: none;
+  padding-right: 35vw;
+  padding-bottom: 9vh;
 }

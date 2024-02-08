@@ -1,0 +1,335 @@
+/* For webkit browsers */
+::-webkit-scrollbar {
+  width: 5px; /* Set the width of the scrollbar as a percentage of the viewport width */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #002040; /* Set the background color of the track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #00ced1; /* Set the color of the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #999; /* Set the color of the scrollbar handle on hover */
+}
+
+/* CSS */
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  .cockpit {
+    transform: rotate(90deg);
+    transform-origin: left top;
+    width: 100vh;
+    overflow-x: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+}
+
+.cockpit {
+  height: 100vh;
+  background-color: black;
+  margin: 0; /* Reset margin to ensure consistency */
+  font-family: "Electrolize", sans-serif;
+  overflow: hidden;
+}
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #708090;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  z-index: 4;
+}
+
+#continueMessage {
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+.bg-vid {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+}
+
+#title {
+  position: absolute;
+  text-align: center;
+  top: 22%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 7vw;
+  font-weight: bold;
+  height: 38vh;
+  width: 30vw;
+  padding-top: 0.8vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 20%;
+}
+
+#loading-message {
+  padding-top: 15vh;
+}
+
+#loading-check {
+  margin-top: 15vh;
+  fill: greenyellow;
+  width: 50vw;
+  height: 20vh;
+}
+
+#loading-spinner {
+  height: 8vh;
+  width: 8vh;
+}
+
+#continueMessage {
+  display: none;
+  text-align: center;
+}
+
+.bgimg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  object-fit: fill;
+  z-index: -1; /* Ensure the image is behind other content */
+}
+
+.cockpit-terminal {
+  width: 99vw;
+}
+
+.terminal {
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  top: 19vh;
+  left: 0.7vw;
+  width: 98.5vw;
+  height: 80vh;
+  justify-content: space-between;
+}
+
+.terminal-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-screen {
+  position: relative;
+  width: 71.5vw;
+  height: 55vh;
+  margin-right: 1vw;
+  border: #08d9dd 0.6vw solid;
+  border-radius: 4vw 1vw 1vw 11vw; /*top left, top right ,bottom right, bottom left*/
+  margin-top: auto;
+  transition: box-shadow 500ms;
+  box-shadow: 0 0 0.6vw #000000;
+}
+
+.main-screen:hover {
+  box-shadow: 0 0 0.6vw #00ced1;
+}
+
+.status-screen {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 30vw;
+  height: 32vh;
+  margin-left: 4vw;
+  background-color: #075e917e;
+  border: #00ced1 0.3vw solid;
+  border-radius: 4vw 4vw 0.2vw 0.2vw; /*top left, top right ,bottom right, bottom left*/
+  transition: box-shadow 500ms;
+}
+
+.status-screen:hover {
+  box-shadow: 0 0 0.6vw #00ced1;
+}
+
+#question-counter {
+  color: white;
+  margin-top: 1.2vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#answer-status {
+  color: white;
+  width: 10vw;
+  height: 10vw;
+  margin-top: 0vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#loading-animation {
+  display: inline;
+}
+
+#correct-animation {
+  display: none;
+}
+
+#wrong-animation {
+  display: none;
+}
+
+.progress {
+  border-radius: 0 0vw 0vw 0; /*top left, top right ,bottom right, bottom left*/
+  height: 0.8vh;
+}
+.progress-bar {
+  border-radius: 0 0.2vw 0.2vw 0; /*top left, top right ,bottom right, bottom left*/
+}
+
+.terminal-side {
+  display: flex;
+  flex-direction: column;
+  width: 26vw;
+  height: 100%;
+}
+
+.terminal-side button {
+  width: 15vw;
+  height: 10vh;
+  border: 0;
+  border-radius: 1vw;
+  text-align: center;
+  overflow: hidden; /* Hide any overflowing text */
+  box-shadow: 0 0px 0px #000000;
+}
+
+#study-button {
+  font-size: 1.1vw;
+  padding-left: 0.5vw;
+  color: white;
+  background-color: #008709;
+  border: 0.3vw solid greenyellow;
+  transition: box-shadow 0.5s, background-color 0.5s; /* Include box-shadow in transition */
+}
+#study-button:hover {
+  color: black;
+  box-shadow: 0 0 0.6vw 0 greenyellow;
+  background-color: greenyellow; /* Teal or Cyan color */
+}
+
+#study-button:active {
+  box-shadow: none;
+  background-color: #015306; /* Darker shade on active/press */
+}
+#status-button {
+  font-size: 1vw;
+  padding-left: 0.4vw;
+  color: rgb(255, 255, 255);
+  background-color: #002040;
+  border: 0.3vw solid #08d9dd;
+  transition: box-shadow 0.5s, background-color 0.5s; /* Include box-shadow in transition */
+}
+
+#status-button:hover {
+  box-shadow: 0 0 0.6vw 0 #08d9dd; /* Red shadow on hover */
+  background-color: #08d9dd; /* Red color on hover */
+}
+
+#status-button:active {
+  box-shadow: none;
+  background-color: #002040; /* Darker red shade on active/press */
+}
+
+#map-button {
+  font-size: 1.2vw;
+  padding-left: 1.2vw;
+
+  color: rgb(255, 255, 255);
+  background-color: #002040;
+  border: 0.3vw solid #08d9dd;
+  transition: box-shadow 0.5s, background-color 0.5s; /* Include box-shadow in transition */
+}
+
+#map-button:hover {
+  box-shadow: 0 0 0.6vw 0 #08d9dd; /* Red shadow on hover */
+  background-color: #08d9dd; /* Red color on hover */
+}
+
+#map-button:active {
+  box-shadow: none;
+  background-color: #002040; /* Darker red shade on active/press */
+}
+
+#logout-button {
+  font-size: 1.2vw;
+  padding-left: 1.3vw;
+  background-color: #990000;
+  border: 0.3vw solid #ff3333;
+}
+#logout-button:hover {
+  box-shadow: 0 0 0.6vw 0 #ff3333; /* Red shadow on hover */
+  background-color: #ff3333; /* Red color on hover */
+}
+
+#logout-button:active {
+  box-shadow: none;
+  background-color: #990000; /* Darker red shade on active/press */
+}
+
+.terminal-buttons {
+  display: flex;
+  flex-direction: row;
+  margin-top: 14vh;
+  align-items: center;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  height: 16vh;
+  width: 100%;
+  gap: 0.5vw;
+  border: #08d9dd 0.6vw solid;
+  border-radius: 4vw 1vw 4vw 1vw; /*top left, top right ,bottom right, bottom left*/
+  background-color: rgba(8, 217, 221, 0.2);
+  transition: box-shadow 500ms;
+  box-shadow: 0 0 0.6vw #000000;
+}
+
+.terminal-buttons:hover {
+  box-shadow: 0 0 0.6vw #00ced1;
+}
+
+.side-screen {
+  position: relative;
+  width: 100%;
+  height: 48.8vh;
+  border: #08d9dd 0.6vw solid;
+  border-radius: 1vw 4vw 11vw 1vw; /*top left, top right ,bottom right, bottom left*/
+  margin-top: auto;
+  transition: box-shadow 500ms;
+  box-shadow: 0 0 0.6vw #000000;
+}
+
+.side-screen:hover {
+  box-shadow: 0 0 0.6vw #00ced1;
+}
+
+.container {
+  /* Adjust the container styles as needed */
+  position: relative;
+  z-index: 1; /* Ensure the container is above the background image */
+}

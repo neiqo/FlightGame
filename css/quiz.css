@@ -1,0 +1,174 @@
+body {
+  font-family: "Electrolize", sans-serif;
+  background-color: #075e917e;
+  color: white;
+  overflow-x: hidden;
+  padding-top: 5vh;
+}
+
+#loading-screen {
+  position: fixed;
+  top: 20;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(112, 128, 144, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  z-index: 4;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+.container h1 {
+  font-weight: 1000;
+}
+
+.container label {
+  font-size: 24px;
+  padding: 10px;
+  font-weight: 500;
+}
+
+.quiz-question {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 22vh;
+  height: 40vh;
+}
+
+#result-section {
+  position: fixed;
+  margin-right: 60vw;
+  z-index: 1000000000000;
+}
+
+#result-section h2 {
+  font-size: 1vw;
+}
+#leaderboard-section {
+  margin-right: 90vw;
+}
+
+#quiz-questions h2 {
+  display: none;
+}
+
+.quiz-question h1 {
+  font-size: 2.5vw;
+  margin-top: 20vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10vh;
+}
+
+.quiz-question ul {
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+  margin-left: 6vw;
+}
+
+.quiz-submitButton {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  margin-top: -5vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 23vw;
+  height: 30vh;
+  background-color: #001d2e;
+  color: white;
+  font-size: 3vw;
+  border: solid 0.3vw #00ced1;
+  transition: box-shadow 500ms, background-color 500ms; /* Include background-color in the transition */
+  border-radius: 0 0.2vw 0.2vw 0; /*top left, top right ,bottom right, bottom left*/
+}
+
+.quiz-submitButton:hover {
+  box-shadow: 0 0 0.6vw 0 #00ced1;
+  background-color: #00ced1; /* Teal or Cyan color */
+}
+
+.quiz-submitButton:active {
+  box-shadow: none;
+  background-color: #002040; /* Darker shade on active/press */
+}
+
+#return-home {
+  width: 100%;
+  height: 20vh;
+  border: 0;
+  border-radius: 1vw;
+  padding: 1vw;
+  text-align: center;
+  overflow: hidden; /* Hide any overflowing text */
+  box-shadow: 0 0px 0px #000000;
+}
+.col1 input[type="radio"] + label,
+.col2 input[type="radio"] + label {
+  margin-bottom: 10px; /* Adjust the value to set the desired gap */
+}
+
+/* ul input + ul label {
+
+} */
+
+input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #001d2e; /* Dark blue input background */
+  color: white; /* Input text color */
+}
+
+.btn-check + .btn {
+  font-size: 2vw;
+  width: 35vw;
+  padding: 5px;
+  border: none;
+  border-radius: 2px;
+  background-color: #004080; /* Darker blue button background */
+  color: white;
+  cursor: pointer;
+  justify-content: center;
+  transition: box-shadow 500ms, background-color 500ms; /* Include background-color in the transition */
+}
+
+.btn-check:hover + .btn {
+  box-shadow: 0px 0px 5px 0px #00ced1;
+  background-color: #00ced1; /* Teal or Cyan color */
+}
+.btn-check:checked + .btn {
+  box-shadow: 0px 0px 10px 0px #00ced1;
+  background-color: #002040; /* Darker shade on active/dwpress */
+}
+
+.congrats-container {
+  padding-left: 10vw;
+  padding-right: 10vw;
+  margin-top: -20vh;
+}
+
+#restart-button {
+  margin-left: 65vw;
+}

@@ -3,7 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>ERROR: SHIP LAUNCH UNSUCCESSFUL</title>
+    <title>Quiz</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap"
+      rel="stylesheet"
+    />
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -11,37 +18,71 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="satylesheet" type="text/css" href="css/game.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/quiz.css" />
+    <link rel="stylesheet" type="text/css" href="css/game.css" />
   </head>
 
   <body>
+    <div id="loading-screen">
+      <div id="loading-spinner" class="spinner-border" role="status"></div>
+      <p>Loading...</p>
+    </div>
     <div class="container">
-      <h1>MISSION CRITICAL SPACESHIP: LOW ON KNOWLEDGE</h1>
-
       <!-- quiz Section -->
       <div id="quiz-section">
-        <h2>Quiz Questions</h2>
         <div id="quiz-questions"></div>
       </div>
 
       <!-- result Section -->
-      <div id="result-section" style="display: none">
-        <h2>Quiz Result</h2>
-        <p id="correct-answers">
-          Correct Answers: <span id="correct-count">0</span>
-        </p>
-        <p id="total-questions">
-          Total Questions: <span id="questions-count">0</span>
-        </p>
+      <div class="result-leaderboard">
+        <div id="result-section" style="display: none">
+          <h2>Quiz Result</h2>
+          <p id="correct-answers">
+            Correct Answers: <span id="correct-count">0</span>
+          </p>
+          <p id="total-questions">
+            Total Questions: <span id="questions-count">0</span>
+          </p>
+          <button id="return-home" onclick="returnHome();">Return Home?</button>
+        </div>
+        <!-- leaderboard section-->
+        <table class="table table-borderless" id="leaderboard-section"></table>
       </div>
-      <!-- leaderboard section-->
-      <div id="leaderboard-section"></div>
     </div>
-    <button onclick="window.location.href='homepage.html'">Home</button>
+
+    <div class="congrats-container" style="display: none">
+      <h1 class="mt-5">Congratulations!</h1>
+      <div class="card mt-3">
+        <div class="card-body">
+          <p class="card-text">You have successfully completed SolarQuest!</p>
+          <p class="card-text">
+            By exploring each planet and answering questions, you have gained
+            valuable knowledge about our solar system. Your journey through
+            space has been filled with excitement and learning.
+          </p>
+          <p class="card-text">
+            Now, equipped with this newfound knowledge, you are ready to embark
+            on even greater adventures beyond the boundaries of our solar
+            system. The stars await your exploration!
+          </p>
+          <button
+            id="restart-button"
+            class="btn btn-primary"
+            onclick="restart()"
+          >
+            Restart
+          </button>
+        </div>
+      </div>
+    </div>
 
     <script src="js/usersavedata.js"></script>
     <script src="js/planetquiz.js"></script>
+    <script>
+      console.log("Sending message:", message);
+      window.parent.postMessage(message, "*");
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

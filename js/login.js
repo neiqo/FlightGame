@@ -1,13 +1,17 @@
 // login form
+
+const link = `https://solarquest-fde1.restdb.io`;
+const apikey = `65c4d7f69ec8d44e7c2d954d`;
+
 document.getElementById("login-button").addEventListener("click", function () {
   const username = document.getElementById("login-username").value;
   const password = document.getElementById("login-password").value;
 
-  fetch("https://solarquest-92b0.restdb.io/rest/players", {
+  fetch(link + `/rest/players`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "x-apikey": "65b71e655a960f6cc37795a0",
+      "x-apikey": apikey,
     },
   })
     .then((response) => response.json())
@@ -19,7 +23,7 @@ document.getElementById("login-button").addEventListener("click", function () {
         document.getElementById("login-message").textContent =
           "Login Successful!";
         sessionStorage.setItem("currentUser", JSON.stringify(user));
-        window.location.href = "homepage.html";
+        window.parent.location.href = "class.html";
       } else {
         document.getElementById("login-message").textContent =
           "Invalid credentials!";
@@ -57,11 +61,11 @@ document
       creationdate: new Date().toISOString(), // current date and time
     };
 
-    fetch("https://solarquest-92b0.restdb.io/rest/players", {
+    fetch(link + `/rest/players`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-apikey": "65b71e655a960f6cc37795a0",
+        "x-apikey": apikey,
       },
       body: JSON.stringify(newUser),
     })
@@ -69,7 +73,6 @@ document
         if (response.ok) {
           document.getElementById("register-message").textContent =
             "Registration successful!";
-          showLogin();
         } else {
           throw new Error("Registration failed");
         }
@@ -82,12 +85,22 @@ document
   });
 
 // toggle between registration and login form
-function showRegistration() {
-  document.getElementById("login-form").style.display = "none";
-  document.getElementById("registration-form").style.display = "block";
+// Function to show the login form and hide the registration form
+function showLoginForm() {
+  document.getElementById("login-form").style.display = "block";
+  document.getElementById("registration-form").style.display = "none";
+  document.getElementById("toggle-buttons").style.display = "none";
 }
 
-function showLogin() {
+// Function to show the registration form and hide the login form
+function showRegistrationForm() {
+  document.getElementById("login-form").style.display = "none";
+  document.getElementById("registration-form").style.display = "block";
+  document.getElementById("toggle-buttons").style.display = "none";
+}
+
+function backLoginForm() {
+  document.getElementById("login-form").style.display = "none";
   document.getElementById("registration-form").style.display = "none";
-  document.getElementById("login-form").style.display = "block";
+  document.getElementById("toggle-buttons").style.display = "flex";
 }

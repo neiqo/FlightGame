@@ -1,3 +1,122 @@
 #player-current-planet {
   text-transform: uppercase;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-leaderboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative; /* Ensure relative positioning */
+  z-index: 1; /* Ensure it's on top of other elements */
+  pointer-events: none;
+}
+
+#result-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  font-weight: 500;
+  width: 25vw;
+  padding-right: 2vw;
+  border-right: 2px solid gray;
+  pointer-events: auto;
+}
+
+#result-section h2,
+#leaderboard-section h2 {
+  font-size: 3vw;
+  font-weight: 800;
+  margin-bottom: 2vh;
+  font-size: 700;
+}
+
+#result-section * {
+  margin-bottom: 0 auto;
+}
+
+#leaderboard-section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: -30vw;
+  width: 65vw;
+  padding-left: 2vw;
+}
+
+#leaderboard-section h2 {
+  text-align: center;
+}
+
+#leaderboard-section thead th {
+  text-align: center;
+  font-weight: bold;
+  background-color: transparent;
+  text-align: center;
+  /*padding: 10px;*/
+}
+
+#leaderboard-section thead tr {
+  display: flex;
+  justify-content: space-around;
+  background-color: transparent;
+  border: 2px solid cyan;
+  border-radius: 20px;
+  box-shadow: 0 4px 2px -2px black;
+}
+
+#leaderboard-section thead td {
+  text-align: center;
+  background-color: transparent;
+  /*
+  padding: 8px;
+  */
+  background-color: none;
+}
+
+#leaderboard-section tbody tr {
+  display: flex;
+  justify-content: space-around;
+  background-color: transparent;
+  border: 2px solid cyan;
+  border-radius: 20px;
+  box-shadow: 0 4px 2px -2px black;
+}
+
+#leaderboard-section tbody td {
+  text-align: center;
+  background-color: transparent;
+}
+
+#leaderboard-section th,
+#leaderboard-section td {
+  text-align: center;
+  background-color: transparent;
+  color: white;
+  min-width: 100px;
+}
+
+tr {
+  margin-bottom: 10px;
+}
+
+.flicker-out-1 {
+  -webkit-animation: flicker-out-1 2s linear both;
+  animation: flicker-out-1 2s linear both;
+}
+/*
+tr {
+  display: flex;
+  justify-content: space-around;
+  border: 2px solid cyan;
+  color: rgb(43, 43, 192);
+  box-shadow: 0 4px 2px -2px black;
+  margin-bottom: 0.5vw;
+}
+*/
