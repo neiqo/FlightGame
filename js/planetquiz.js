@@ -1,5 +1,5 @@
-const link = `https://solarquest-7faa.restdb.io`;
-const apikey = `65c48ac4e208c28a91545d88`;
+const link = `https://solarquest-1a02.restdb.io`;
+const apikey = `65c4a7da5eab38861e9cbd69`;
 
 const user = JSON.parse(sessionStorage.getItem("currentUser"));
 let userfuel = user.savedata.fuel;
@@ -8,6 +8,7 @@ const quizPlanet = user.savedata.current_planet;
 document.addEventListener("DOMContentLoaded", function () {
   const loadingScreen = document.getElementById("loading-screen");
   const container = document.querySelector(".container");
+
   // fetch quiz data for the current quiz planet
   fetch(link + `/rest/quiz?q={"quiz-planet":"${quizPlanet}"}`, {
     method: "GET",
@@ -26,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
       // Display quiz questions
       displayQuizQuestions(questions);
       loadingScreen.style.display = "none";
-      container.style.display = "block"; /// last stopped
     })
     .catch((error) => {
       console.error("Error fetching quiz questions:", error);
@@ -488,4 +488,73 @@ function displayLeaderboard(leaderboard) {
 
   // Show the leaderboard section
   leaderboardSection.style.display = "flex";
+}
+
+function returnHome() {
+  const congratsContainer = document.querySelector(".congrats-container");
+  const resultSection = document.getElementById("result-section");
+  const leaderboardSection = document.getElementById("leaderboard-section");
+  const returnHomeButton = document.getElementById("return-home");
+
+  if (quizPlanet === "neptune") {
+    // Toggle visibility of congrats container
+    congratsContainer.style.display = "block";
+    resultSection.style.display = "none";
+    leaderboardSection.style.display = "none";
+
+    // Change text content of return home button
+    returnHomeButton.textContent = "Congratulations";
+  } else {
+    // Redirect to class.html
+    window.parent.location.href = "class.html";
+  }
+}
+
+function restart() {
+  // Set player's current planet as Earth
+  user.savedata.current_planet = "earth";
+
+  // Reset fuel to 20 as per your logic
+  user.savedata.fuel = 20;
+
+  // Save the updated user data to sessionStorage
+  sessionStorage.setItem("currentUser", JSON.stringify(user));
+
+  // Update the user's data in the restdb
+  fetch(link + `/rest/players/${user._id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "x-apikey": apikey,
+    },
+    body: JSON.stringify({
+      _id: user._id,
+      password: user.password,
+      username: user.username,
+      savedata: {
+        current_planet: user.savedata.current_planet,
+        level: 1,
+        fuel: 20,
+        title: "Space Cadet",
+      },
+      creationdate: user.creationdate,
+    }),
+  })
+    .then((response) => response.json())
+    .then((updatedPlayer) => {
+      // Handle the response if needed
+      console.log("Player updated:", updatedPlayer);
+
+      // Update user's data in-memory
+      user.savedata.current_planet = user.savedata.current_planet;
+      user.savedata.fuel = 0;
+
+      // Save the updated user data to sessionStorage
+      sessionStorage.setItem("currentUser", JSON.stringify(user));
+
+      // Use updatedPlayer to access the updated data
+      console.log("User new planet", updatedPlayer.savedata.current_planet);
+      console.log("User new fuel", updatedPlayer.savedata.fuel);
+    })
+    .catch((error) => console.error("Error updating player:", error));
 }
