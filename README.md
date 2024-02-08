@@ -20,7 +20,7 @@ User Stories:
 
 ## Desktop & Mobile wireframe:
 
-![Desktop Wireframe](https://i.imgur.com/QIC1ShS.png)
+![Desktop Wireframe](https://i.imgur.com/wJ9cRMk.png)
 
 ### Links
 
