@@ -145,8 +145,8 @@ Quiz questions generated using:\
 ### Media
 
 [Rotating Planet Images Link](https://planet-texture-maps.fandom.com)\
-[Background Video]\
-[Sound Effects]
+[Background Video](https://youtu.be/R-esosqN35w?si=CjWgtD8ih7yoSRSo)\
+[Sound Effects](https://www.youtube.com/watch?v=8qokt65f20o)
 
 ### Acknowledgements
 
