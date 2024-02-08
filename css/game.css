@@ -13,6 +13,9 @@
   justify-content: space-around;
   padding-top: 20px;
   padding-bottom: 20px;
+  position: relative; /* Ensure relative positioning */
+  z-index: 1; /* Ensure it's on top of other elements */
+  pointer-events: none;
 }
 
 #result-section {
@@ -20,14 +23,15 @@
   flex-direction: column;
   justify-content: start;
   font-weight: 500;
-  width: 20vw;
-  padding-right: 7vw;
+  width: 25vw;
+  padding-right: 2vw;
   border-right: 2px solid gray;
+  pointer-events: auto;
 }
 
 #result-section h2,
 #leaderboard-section h2 {
-  font-size: 24px;
+  font-size: 3vw;
   font-weight: 800;
   margin-bottom: 2vh;
   font-size: 700;
