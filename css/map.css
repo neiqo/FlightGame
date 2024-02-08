@@ -57,8 +57,8 @@ body {
 }
 
 #mercury-planet {
-  margin-top: -389.5px; /* (-189.5px - 200px) */
-  margin-left: -389.5px; /* (-189.5px - 200px) */
+  margin-top: -6.5px; /* (-189.5px - 200px) */
+  margin-left: 34.5px; /* (-189.5px - 200px) */
   height: 20px;
   width: 20px;
   border-radius: 50%;
@@ -84,7 +84,7 @@ body {
 
 #venus-planet {
   margin-top: -250px; /* (-50px - 200px) */
-  margin-left: -380px; /* (-180px - 200px) */
+  margin-left: 65px; /* (-180px - 200px) */
   height: 30px;
   width: 30px;
   border-radius: 50%;
@@ -105,15 +105,15 @@ body {
   left: 50%;
   height: 40px;
   width: 40px;
-  margin-left: -325px; /* (-125px - 200px) */
-  margin-top: -325px; /* (-125px - 200px) */
+  margin-left: 35px; /* (-125px - 200px) */
+  margin-top: -10px; /* (-125px - 200px) */
   border-radius: 50%;
   box-shadow: 0 0 34px #3a4385;
 }
 
 #mars-planet {
   margin-top: -160px; /* (40px - 200px) */
-  margin-left: -355px; /* (-155px - 200px) */
+  margin-left: 125px; /* (-155px - 200px) */
   height: 35px;
   width: 35px;
   border-radius: 50%;
@@ -129,8 +129,8 @@ body {
 }
 
 #jupiter-planet {
-  margin-top: -440px; /* (-240px - 200px) */
-  margin-left: -250px; /* (-50px - 200px) */
+  margin-top: 310px; /* (-240px - 200px) */
+  margin-left: 250px; /* (-50px - 200px) */
   height: 70px;
   width: 70px;
   border-radius: 50%;
@@ -145,8 +145,8 @@ body {
 }
 
 #saturn-planet {
-  margin-top: -55px; /* (145px - 200px) */
-  margin-left: -100px; /* (-100px - 200px) */
+  margin-top: -30px; /* (145px - 200px) */
+  margin-left: 200px; /* (-100px - 200px) */
   height: 70px;
   width: 140px;
 }
@@ -161,7 +161,7 @@ body {
 
 #uranus-planet {
   margin-top: 0px; /* (200px - 200px) */
-  margin-left: 40px; /* (240px - 200px) */
+  margin-left: 115px; /* (240px - 200px) */
   height: 55px;
   width: 55px;
   border-radius: 50%;
@@ -176,8 +176,8 @@ body {
 }
 
 #neptune-planet {
-  margin-top: -420px; /* (-220px - 200px) */
-  margin-left: -150px; /* (150px - 200px) */
+  margin-top: 220px; /* (-220px - 200px) */
+  margin-left: -20px; /* (150px - 200px) */
   height: 50px;
   width: 50px;
   border-radius: 50%;
