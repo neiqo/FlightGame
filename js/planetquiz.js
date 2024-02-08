@@ -1,5 +1,5 @@
-const link = `https://solarquest-1a02.restdb.io`;
-const apikey = `65c4a7da5eab38861e9cbd69`;
+const link = `https://solarquest-ffa6.restdb.io`;
+const apikey = `65c4cc7f2844e1b7fffb3ff3`;
 
 const user = JSON.parse(sessionStorage.getItem("currentUser"));
 let userfuel = user.savedata.fuel;
@@ -87,9 +87,7 @@ function displayQuestion(question) {
         div.className = "col" + "2";
       }
     }
-    // optionItem.appendChild(div);
 
-    // const optionItem = document.createElement("li");
     const radioBtn = document.createElement("input");
     radioBtn.type = "radio";
     radioBtn.name = "answer";
@@ -110,20 +108,6 @@ function displayQuestion(question) {
     }
   }
 
-  // question.answers.forEach((answer, optionIndex) => {
-  //   const optionItem = document.createElement("li");
-  //   const radioBtn = document.createElement("input");
-  //   radioBtn.type = "radio";
-  //   radioBtn.name = "answer";
-  //   radioBtn.value = optionIndex;
-  //   optionItem.appendChild(radioBtn);
-
-  //   const label = document.createElement("label");
-  //   label.textContent = answer;
-  //   optionItem.appendChild(label);
-
-  //   answerOptions.appendChild(optionItem);
-  // });
   questionElement.appendChild(answerOptions);
 
   // add submit answer for every question
@@ -374,30 +358,6 @@ function displayLeaderboard(leaderboard) {
   leaderboardTitle.textContent = "Leaderboard";
   leaderboardSection.appendChild(leaderboardTitle);
 
-  //h2
-  //leader container
-  //  div title
-  //      3 divs/p
-  //  div player 1
-  //      3 divs/p
-  //create leader container
-  // const leader_container = document.createElement("div");
-  // leader_container.className = "leader-container";
-
-  // const title_container = document.createElement("div");
-  // title_container.className = "title_container";
-
-  // const ranking = document.createElement("div");
-  // const name = document.createElement("div");
-  // const correct = document.createElement("div");
-
-  // title_container.appendChild(ranking);
-  // title_container.appendChild(name);
-  // title_container.appendChild(correct);
-
-  // ranking.className = "Ranking";
-  // name.className = "Name";
-  // correct.className = "Correct Answers";
   const thead = document.createElement("thead");
   const toprow = document.createElement("tr");
 
@@ -445,13 +405,7 @@ function displayLeaderboard(leaderboard) {
       player_container.appendChild(correct_value);
 
       tbody.appendChild(player_container);
-      //const leaderboardItem = document.createElement("li");
-      // leaderboardItem.textContent = `${index + 1}. ${
-      //   entry.username
-      // } - Correct Answers: ${entry.correct_answers}/${currentQuestionIndex}`;
-      // leaderboardList.appendChild(leaderboardItem);
     });
-    //leaderboardSection.appendChild(leaderboardList);
   } else {
     const noDataMessage = document.createElement("p");
     noDataMessage.textContent = "No leaderboard data available.";

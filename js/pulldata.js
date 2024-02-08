@@ -123,45 +123,10 @@ function updateContent(headers) {
       content = sentences.join("");
       paragraphs.push(content);
 
-      let search = current_planet + ` ` + headers[i].textContent;
-
-      async function loadImage() {
-        try {
-          const imageUrl = await fetchImages(search);
-
-          // Set the src attribute after obtaining the image URL
-          // Append the image to the document or do whatever you need to do with it
-          if (imageUrl !== null) {
-            //const image = document.createElement("img");
-            //image.id = headers[i].textContent + "img";
-            image.src = imageUrl;
-            images.push(imageUrl);
-            image.onload = function () {
-              resizeImageWithAspectRatio(image, 300);
-              image.onclick = function () {
-                handleImageClick(imageUrl);
-                //dropdown.appendChild(image);
-              };
-              dropdown.appendChild(image);
-            };
-
-            //dropdown.appendChild(resizedimage);
-          }
-          else {
-            images.push("");
-          }
-        } catch (error) {
-          console.error("Error fetching image:", error);
-        }
-      }
-
-      loadImage();
-
       if (i === 0) {
         document.querySelector(".planet-container span").innerHTML =
           headers[i].textContent;
         document.querySelector(".planet-container p").innerHTML = content;
-        document.querySelector(".planet-container img").src = imageUrl;
       }
 
       setTimeout(() => {
@@ -193,8 +158,6 @@ async function fetchImages(search) {
   }
   return null;
 }
-
-/////////////////////////////////////////////////
 
 function findNextParagraph2(element) {
   let currentElement = element.nextSibling;
@@ -261,30 +224,6 @@ function fetchDataForCurrentPlanet(planetName) {
   }
 }
 
-async function resizeImageWithAspectRatio(image, newWidth) {
-  const originalWidth = image.width;
-  const originalHeight = image.height;
-
-  // Calculate the aspect ratio
-  const aspectRatio = originalWidth / originalHeight;
-
-  // Calculate the new height based on the desired width and original aspect ratio
-  const newHeight = newWidth / aspectRatio;
-
-  // Set the new dimensions
-  image.width = newWidth;
-  image.height = newHeight;
-}
-
-function handleImageClick(imageSrc) {
-  document.querySelector(".popup-image").style.display = "block";
-  document.querySelector(".popup-image img").src = imageSrc;
-}
-
-// document.querySelector(".popup-image span").onclick = () => {
-//   document.querySelector(".popup-image").style.display = "none";
-// };
-
 document.getElementById("nextButton").addEventListener("click", nextPara);
 document.getElementById("prevButton").addEventListener("click", prevPara);
 
@@ -298,7 +237,6 @@ function nextPara() {
   document.getElementById("prevButton").style.display = "block";
   document.querySelector(".planet-container span").innerHTML = spans[i];
   document.querySelector(".planet-container p").innerHTML = paragraphs[i];
-  document.querySelector(".planet-container img").src = images[i];
 }
 
 function prevPara() {
@@ -309,5 +247,4 @@ function prevPara() {
   document.getElementById("nextButton").style.display = "block";
   document.querySelector(".planet-container span").innerHTML = spans[i];
   document.querySelector(".planet-container p").innerHTML = paragraphs[i];
-  document.querySelector(".planet-container img").src = images[i];
 }
