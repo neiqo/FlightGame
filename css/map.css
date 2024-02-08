@@ -4,10 +4,9 @@ body {
 }
 
 .solar-system {
-  position: relative;
+  position: absolute;
   width: 1600px;
   height: 1600px;
-  margin: auto;
   overflow: hidden;
 }
 
@@ -33,162 +32,163 @@ body {
   border-radius: 50%;
 }
 
-.mercury-orbit,
-.mercury-spin {
-  width: 240px;
-  height: 240px;
-  margin-left: -120px;
-  margin-top: -120px;
-}
-
 .orbit {
   border: 1px dashed white;
 }
 
 #sun {
-  height: 350px;
-  width: 350px;
-  margin-top: -155px;
-  margin-left: -174px;
+  height: 100px;
+  width: 100px;
+  margin-top: -480px; /* (-280px - 200px) */
+  margin-left: -475px; /* (-275px - 200px) */
   border-radius: 50%;
   animation-name: spin;
   animation-duration: 5000ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+  box-shadow: 0 0 60px #cf952a;
 }
 
 .sun-spin {
   width: 500px;
   height: 500px;
-  margin-left: 137.5px;
-  margin-top: 140px;
+  margin-left: -337.5px; /* (-62.5px - 200px) */
+  margin-top: -340px; /* (-60px - 200px) */
 }
 
 #mercury-planet {
-  margin-top: 25.5px;
-  margin-left: -18.5px;
-  height: 70px;
-  width: 70px;
+  margin-top: -389.5px; /* (-189.5px - 200px) */
+  margin-left: -389.5px; /* (-189.5px - 200px) */
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   background-size: cover;
   box-shadow: 0 0 34px #a65e22;
 }
 
+.mercury-orbit,
+.mercury-spin {
+  width: 145px;
+  height: 145px;
+  margin-left: -495px; /* (-295px - 200px) */
+  margin-top: -500px; /* (-300px - 200px) */
+}
+
 .earth-orbit,
 .earth-spin {
-  width: 500px;
-  height: 500px;
-  margin-left: -250px;
-  margin-top: -250px;
+  width: 230px;
+  height: 230px;
+  margin-left: -540px; /* (-340px - 200px) */
+  margin-top: -545px; /* (-345px - 200px) */
 }
 
 #venus-planet {
-  margin-top: 150px;
-  margin-left: -20px;
-  height: 40px;
-  width: 40px;
+  margin-top: -250px; /* (-50px - 200px) */
+  margin-left: -380px; /* (-180px - 200px) */
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
   box-shadow: 0 0 34px #eecb8b;
 }
 
 .venus-orbit,
 .venus-spin {
-  margin-top: -185px;
-  margin-left: -185px;
-  width: 370px;
-  height: 370px;
+  margin-top: -525px; /* (-325px - 200px) */
+  margin-left: -520px; /* (-320px - 200px) */
+  width: 190px;
+  height: 190px;
 }
 
 #earth-planet {
   position: fixed;
   top: 0;
   left: 50%;
-  height: 50px;
-  width: 50px;
-  margin-left: -25px;
-  margin-top: -25px;
+  height: 40px;
+  width: 40px;
+  margin-left: -325px; /* (-125px - 200px) */
+  margin-top: -325px; /* (-125px - 200px) */
   border-radius: 50%;
   box-shadow: 0 0 34px #3a4385;
 }
 
 #mars-planet {
-  margin-top: 240px;
-  margin-left: -16px;
-  height: 50px;
-  width: 50px;
+  margin-top: -160px; /* (40px - 200px) */
+  margin-left: -355px; /* (-155px - 200px) */
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
   box-shadow: 0 0 34px #c1440e;
 }
 
 .mars-orbit,
 .mars-spin {
-  width: 600px;
-  height: 600px;
-  margin-left: -300px;
-  margin-top: -300px;
+  width: 280px;
+  height: 280px;
+  margin-left: -565px; /* (-365px - 200px) */
+  margin-top: -568px; /* (-368px - 200px) */
 }
 
 #jupiter-planet {
-  margin-top: -40px;
-  margin-left: 450px;
-  height: 130px;
-  width: 130px;
+  margin-top: -440px; /* (-240px - 200px) */
+  margin-left: -250px; /* (-50px - 200px) */
+  height: 70px;
+  width: 70px;
   border-radius: 50%;
 }
 
 .jupiter-orbit,
 .jupiter-spin {
-  width: 750px;
-  height: 750px;
-  margin-left: -375px;
-  margin-top: -375px;
+  width: 375px;
+  height: 375px;
+  margin-left: -610px; /* (-410px - 200px) */
+  margin-top: -615px; /* (-415px - 200px) */
 }
 
 #saturn-planet {
-  margin-top: -45px;
-  margin-left: 450px;
-  height: 90px;
-  width: 180px;
+  margin-top: -55px; /* (145px - 200px) */
+  margin-left: -100px; /* (-100px - 200px) */
+  height: 70px;
+  width: 140px;
 }
 
 .saturn-orbit,
 .saturn-spin {
-  width: 900px;
-  height: 900px;
-  margin-left: -450px;
-  margin-top: -450px;
+  width: 440px;
+  height: 440px;
+  margin-left: -645px; /* (-445px - 200px) */
+  margin-top: -645px; /* (-445px - 200px) */
 }
 
 #uranus-planet {
-  margin-top: -80px;
-  margin-left: 450px;
-  height: 160px;
-  width: 170px;
+  margin-top: 0px; /* (200px - 200px) */
+  margin-left: 40px; /* (240px - 200px) */
+  height: 55px;
+  width: 55px;
   border-radius: 50%;
 }
 
 .uranus-orbit,
 .uranus-spin {
-  width: 1050px;
-  height: 1050px;
-  margin-left: -525px;
-  margin-top: -530px;
+  width: 525px;
+  height: 525px;
+  margin-left: -690px; /* (-490px - 200px) */
+  margin-top: -690px; /* (-490px - 200px) */
 }
 
 #neptune-planet {
-  margin-top: -70px;
-  margin-left: 450px;
-  height: 150px;
-  width: 145px;
+  margin-top: -420px; /* (-220px - 200px) */
+  margin-left: -150px; /* (150px - 200px) */
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
 }
 
 .neptune-orbit,
 .neptune-spin {
-  width: 1200px;
-  height: 1200px;
-  margin-left: -600px;
-  margin-top: -600px;
+  width: 600px;
+  height: 600px;
+  margin-left: -725px; /* (-525px - 200px) */
+  margin-top: -725px; /* (-525px - 200px) */
 }
 
 @keyframes spin-right {
