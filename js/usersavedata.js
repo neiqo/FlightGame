@@ -77,7 +77,27 @@ function liftoff() {
   // Play a sound (optional)
   document.getElementById("clickSound").play();
 }
+function map() {
+  // Get the main-screen iframe
+  var mainScreen = document.querySelector(".side-screen");
 
+  // Set the new source for the iframe
+  mainScreen.src = "map.html"; // Change 'explore.html' to the desired page
+
+  // Play a sound (optional)
+  document.getElementById("clickSound").play();
+}
+
+function status() {
+  // Get the main-screen iframe
+  var mainScreen = document.querySelector(".side-screen");
+
+  // Set the new source for the iframe
+  mainScreen.src = "status.html"; // Change 'explore.html' to the desired page
+
+  // Play a sound (optional)
+  document.getElementById("clickSound").play();
+}
 function classroom() {
   window.parent.location.href = "class.html";
 }
