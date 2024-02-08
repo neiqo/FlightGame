@@ -20,20 +20,54 @@ body::before {
 }
 
 .form-container {
-  padding: 4vh;
+  height: 85vh;
+  width: 70vw;
   background-color: #075e91;
   border: #00ced1 5px solid;
   border-radius: 6px;
   box-shadow: 0 4px 8px;
   transition: box-shadow 500ms;
+  padding-bottom: auto;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+#login-container {
+  border-left: 0.3vw solid #009194;
+  height: 100%;
+  width: 35vw;
+  padding-top: 5vh;
+  padding-left: 2vw;
+  padding-right: -2vw;
+  margin-left: auto;
 }
 
 .form-container:hover {
   box-shadow: 0 0px 8px #00ced1;
 }
 
+#login-form,
+#registration-form {
+  width: 100%;
+}
+
 h2 {
   color: white;
+}
+
+#toggle-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15vh;
+  margin-bottom: 15vh;
+}
+
+#toggle-buttons button {
+  height: 15vh;
+  width: 18vw;
+  font-size: 1.8rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 input {
@@ -72,4 +106,13 @@ input {
 #login-message,
 #register-message {
   color: white;
+}
+
+#login-animation {
+  position: fixed;
+  width: 77vw;
+  height: 77vh;
+  pointer-events: none;
+  padding-right: 35vw;
+  padding-bottom: 9vh;
 }

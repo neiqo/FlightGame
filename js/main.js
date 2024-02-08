@@ -92,11 +92,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var loadingScreen = document.getElementById("loading-screen");
     var loadingMessage = document.getElementById("loading-message");
     var continueMessage = document.getElementById("continueMessage");
-
+    var loadingSpinner = document.getElementById("loading-spinner");
+    var loadingCheck = document.getElementById("loading-check");
     // Change the h1 to "Completed"
-    loadingMessage.textContent = "Loading Complete!";
+    loadingMessage.style.display = "none";
+
+    loadingSpinner.style.display = "none";
 
     // Display the "Press anywhere to continue" message
+    loadingCheck.style.display = "block";
     continueMessage.style.display = "block";
 
     // Add click event listener to continue after pressing anywhere

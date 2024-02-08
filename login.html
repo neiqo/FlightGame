@@ -21,32 +21,63 @@
     <audio id="mouseoverSound" src="/images/audio/mouseover.opus"></audio>
     <audio id="clickSound" src="/images/audio/click.opus"></audio>
     <audio id="keyboardSound" src="/images/audio/keyboard.opus"></audio>
+    <div id="login-animation">
+      <div id="loading-animation">
+        <script
+          src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+          type="module"
+        ></script>
 
-    <div class="form-container">
-      <!-- Login Form -->
-      <div id="login-form">
-        <h2>Login</h2>
-        <input type="text" id="login-username" placeholder="Username" />
-        <input type="password" id="login-password" placeholder="Password" />
-        <button class="loginpage-button" id="login-button">Login</button>
-        <button class="loginpage-button" onclick="showRegistration()">
-          Register
-        </button>
-        <div id="login-message"></div>
+        <dotlottie-player
+          src="https://lottie.host/c871ce27-0856-48ee-bdbc-3b67ef02f1cb/AVMGUMrDRl.json"
+          background="transparent"
+          speed="1"
+          style="width: 100%; height: 100%"
+          loop
+          autoplay
+        ></dotlottie-player>
       </div>
+    </div>
+    <div class="form-container">
+      <div id="login-container">
+        <div id="toggle-buttons">
+          <button class="loginpage-button" onclick="showLoginForm()">
+            Login
+          </button>
+          <button class="loginpage-button" onclick="showRegistrationForm()">
+            Register
+          </button>
+        </div>
 
-      <!-- Registration Form -->
-      <div id="registration-form" style="display: none">
-        <h2>Register</h2>
-        <input type="text" id="register-username" placeholder="Username" />
-        <input type="password" id="register-password" placeholder="Password" />
-        <button class="loginpage-button" id="register-button">
-          Create Account
-        </button>
-        <button class="loginpage-button" onclick="showLogin()">
-          Back to Login
-        </button>
-        <div id="register-message"></div>
+        <!-- Login Form -->
+        <div id="login-form" style="display: none">
+          <h2>Login</h2>
+          <input type="text" id="login-username" placeholder="Username" />
+          <input type="password" id="login-password" placeholder="Password" />
+          <button class="loginpage-button" id="login-button">Login</button>
+          <button class="loginpage-button" onclick="backLoginForm()">
+            Back
+          </button>
+          <div id="login-message"></div>
+        </div>
+
+        <!-- Registration Form -->
+        <div id="registration-form" style="display: none">
+          <h2>Register</h2>
+          <input type="text" id="register-username" placeholder="Username" />
+          <input
+            type="password"
+            id="register-password"
+            placeholder="Password"
+          />
+          <button class="loginpage-button" id="register-button">
+            Create Account
+          </button>
+          <button class="loginpage-button" onclick="backLoginForm()">
+            Back
+          </button>
+          <div id="register-message"></div>
+        </div>
       </div>
     </div>
     <script src="js/login.js"></script>

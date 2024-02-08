@@ -85,12 +85,22 @@ document
   });
 
 // toggle between registration and login form
-function showRegistration() {
-  document.getElementById("login-form").style.display = "none";
-  document.getElementById("registration-form").style.display = "block";
+// Function to show the login form and hide the registration form
+function showLoginForm() {
+  document.getElementById("login-form").style.display = "block";
+  document.getElementById("registration-form").style.display = "none";
+  document.getElementById("toggle-buttons").style.display = "none";
 }
 
-function showLogin() {
+// Function to show the registration form and hide the login form
+function showRegistrationForm() {
+  document.getElementById("login-form").style.display = "none";
+  document.getElementById("registration-form").style.display = "block";
+  document.getElementById("toggle-buttons").style.display = "none";
+}
+
+function backLoginForm() {
+  document.getElementById("login-form").style.display = "none";
   document.getElementById("registration-form").style.display = "none";
-  document.getElementById("login-form").style.display = "block";
+  document.getElementById("toggle-buttons").style.display = "flex";
 }
