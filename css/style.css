@@ -18,6 +18,20 @@
   background: #999; /* Set the color of the scrollbar handle on hover */
 }
 
+/* CSS */
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  .cockpit {
+    transform: rotate(90deg);
+    transform-origin: left top;
+    width: 100vh;
+    overflow-x: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+}
+
 .cockpit {
   height: 100vh;
   background-color: black;
@@ -61,7 +75,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 7rem;
+  font-size: 7vw;
   font-weight: bold;
   height: 38vh;
   width: 30vw;
@@ -82,8 +96,8 @@
 }
 
 #loading-spinner {
-  height: 8rem;
-  width: 8rem;
+  height: 8vh;
+  width: 8vh;
 }
 
 #continueMessage {
@@ -206,7 +220,8 @@
 }
 
 #study-button {
-  padding-left: 0.3vw;
+  font-size: 1.1vw;
+  padding-left: 0.5vw;
   color: white;
   background-color: #008709;
   border: 0.3vw solid greenyellow;
@@ -223,8 +238,8 @@
   background-color: #015306; /* Darker shade on active/press */
 }
 #status-button {
-  font-size: 1rem;
-  padding-left: 0.3vw;
+  font-size: 1vw;
+  padding-left: 0.4vw;
   color: rgb(255, 255, 255);
   background-color: #002040;
   border: 0.3vw solid #08d9dd;
@@ -242,6 +257,9 @@
 }
 
 #map-button {
+  font-size: 1.2vw;
+  padding-left: 1.2vw;
+
   color: rgb(255, 255, 255);
   background-color: #002040;
   border: 0.3vw solid #08d9dd;
@@ -259,6 +277,8 @@
 }
 
 #logout-button {
+  font-size: 1.2vw;
+  padding-left: 1.3vw;
   background-color: #990000;
   border: 0.3vw solid #ff3333;
 }

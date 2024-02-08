@@ -53,8 +53,12 @@ body {
 #result-section {
   position: fixed;
   margin-right: 60vw;
+  z-index: 1000000000000;
 }
 
+#result-section h2 {
+  font-size: 1vw;
+}
 #leaderboard-section {
   margin-right: 90vw;
 }
@@ -64,7 +68,8 @@ body {
 }
 
 .quiz-question h1 {
-  font-size: 2rem;
+  font-size: 2.5vw;
+  margin-top: 20vh;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10vh;
@@ -83,13 +88,14 @@ body {
   z-index: 1;
   padding-top: 2vh;
   padding-bottom: 2vh;
+  margin-top: -5vh;
   margin-left: auto;
   margin-right: auto;
   width: 23vw;
   height: 30vh;
   background-color: #001d2e;
   color: white;
-  font-size: 1.5rem;
+  font-size: 3vw;
   border: solid 0.3vw #00ced1;
   transition: box-shadow 500ms, background-color 500ms; /* Include background-color in the transition */
   border-radius: 0 0.2vw 0.2vw 0; /*top left, top right ,bottom right, bottom left*/
@@ -136,6 +142,7 @@ input {
 }
 
 .btn-check + .btn {
+  font-size: 2vw;
   width: 35vw;
   padding: 5px;
   border: none;
@@ -154,4 +161,14 @@ input {
 .btn-check:checked + .btn {
   box-shadow: 0px 0px 10px 0px #00ced1;
   background-color: #002040; /* Darker shade on active/dwpress */
+}
+
+.congrats-container {
+  padding-left: 10vw;
+  padding-right: 10vw;
+  margin-top: -20vh;
+}
+
+#restart-button {
+  margin-left: 65vw;
 }

@@ -1,5 +1,5 @@
-const link = `https://solarquest-ffa6.restdb.io`;
-const apikey = `65c4cc7f2844e1b7fffb3ff3`;
+const link = `https://solarquest-fde1.restdb.io`;
+const apikey = `65c4d7f69ec8d44e7c2d954d`;
 
 const user = JSON.parse(sessionStorage.getItem("currentUser"));
 let userfuel = user.savedata.fuel;
@@ -429,7 +429,6 @@ function returnHome() {
     congratsContainer.style.display = "block";
     resultSection.style.display = "none";
     leaderboardSection.style.display = "none";
-
     // Change text content of return home button
     returnHomeButton.textContent = "Congratulations";
   } else {
