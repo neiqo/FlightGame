@@ -132,45 +132,49 @@ function updateContent(headers) {
 
       let search = current_planet + ` ` + headers[i].textContent;
 
-      // async function loadImage() {
-      //   try {
-      //     const imageUrl = await fetchImages(search);
-      //     console.log("Image URL:", imageUrl);
+      async function loadImage() {
+        try {
+          const imageUrl = await fetchImages(search);
+          console.log("Image URL:", imageUrl);
 
-      //     // Set the src attribute after obtaining the image URL
-      //     let src = imageUrl;
-      //     // Append the image to the document or do whatever you need to do with it
-      //     if (src !== null) {
-      //       const image = document.createElement("img");
-      //       image.id = headers[i].textContent + "img";
-      //       image.src = imageUrl;
-      //       image.onload = function () {
-      //         resizeImageWithAspectRatio(image, 300);
-      //         image.onclick = function () {
-      //           handleImageClick(imageUrl);
-      //           //dropdown.appendChild(image);
-      //         };
-      //         dropdown.appendChild(image);
-      //       };
+          // Set the src attribute after obtaining the image URL
+          //let src = imageUrl;
+          // Append the image to the document or do whatever you need to do with it
+          if (imageUrl !== null) {
+            //const image = document.createElement("img");
+            //image.id = headers[i].textContent + "img";
+            image.src = imageUrl;
+            images.push(imageUrl);
+            image.onload = function () {
+              resizeImageWithAspectRatio(image, 300);
+              image.onclick = function () {
+                handleImageClick(imageUrl);
+                //dropdown.appendChild(image);
+              };
+              dropdown.appendChild(image);
+            };
 
-      //       // Set the src attribute after obtaining the image URL
+            // Set the src attribute after obtaining the image URL
 
-      //       console.log("Image Element:", image.src);
+            console.log("Image Element:", image.src);
 
-      //       //dropdown.appendChild(resizedimage);
-      //     }
-      //   } catch (error) {
-      //     console.error("Error fetching image:", error);
-      //   }
-      // }
+            //dropdown.appendChild(resizedimage);
+          }
+          else {
+            images.push("");
+          }
+        } catch (error) {
+          console.error("Error fetching image:", error);
+        }
+      }
 
-      // loadImage();
+      loadImage();
 
       if (i === 0) {
         document.querySelector(".planet-container span").innerHTML =
           headers[i].textContent;
         document.querySelector(".planet-container p").innerHTML = content;
-        //document.querySelector(".planet-container img").src = loadImage();
+        document.querySelector(".planet-container img").src = imageUrl;
       }
 
       setTimeout(() => {
@@ -183,25 +187,25 @@ function updateContent(headers) {
   processLoop(0);
 }
 
-// async function fetchImages(search) {
-//   const response = await fetch(
-//     `https://www.googleapis.com/customsearch/v1?key=AIzaSyC6UOCo5PaHnSax9USYkN_e6ycE8gHFQlA&cx=0364b018377bd4cf1&searchType=image&q=${search}`
-//   );
+async function fetchImages(search) {
+  const response = await fetch(
+    `https://www.googleapis.com/customsearch/v1?key=AIzaSyC6UOCo5PaHnSax9USYkN_e6ycE8gHFQlA&cx=0364b018377bd4cf1&searchType=image&q=${search}`
+  );
 
-//   if (!response.ok) {
-//     throw new Error(`HTTP error! Status: ${response.status}`);
-//   }
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
 
-//   const result = await response.json();
+  const result = await response.json();
 
-//   const substring = "https://science.nasa.gov";
-//   for (let i = 0; i < result.items.length; i++) {
-//     if (result.items[i].image.contextLink.includes(substring)) {
-//       return result.items[i].link;
-//     }
-//   }
-//   return null;
-// }
+  const substring = "https://science.nasa.gov";
+  for (let i = 0; i < result.items.length; i++) {
+    if (result.items[i].image.contextLink.includes(substring)) {
+      return result.items[i].link;
+    }
+  }
+  return null;
+}
 
 /////////////////////////////////////////////////
 
@@ -311,7 +315,7 @@ function nextPara() {
   document.getElementById("prevButton").style.display = "block";
   document.querySelector(".planet-container span").innerHTML = spans[i];
   document.querySelector(".planet-container p").innerHTML = paragraphs[i];
-  //document.querySelector(".planet-container img").src = loadImage();
+  document.querySelector(".planet-container img").src = images[i];
 }
 
 function prevPara() {
@@ -322,5 +326,5 @@ function prevPara() {
   document.getElementById("nextButton").style.display = "block";
   document.querySelector(".planet-container span").innerHTML = spans[i];
   document.querySelector(".planet-container p").innerHTML = paragraphs[i];
-  //document.querySelector(".planet-container img").src = loadImage();
+  document.querySelector(".planet-container img").src = images[i];
 }
