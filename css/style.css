@@ -200,20 +200,62 @@
   height: 10vh;
   border: 0;
   border-radius: 1vw;
-  padding: 1vw;
   text-align: center;
   overflow: hidden; /* Hide any overflowing text */
   box-shadow: 0 0px 0px #000000;
 }
 
-#liftoff-button:hover {
-  box-shadow: 0 0 0.6vw 0 #00ced1;
-  background-color: #00ced1; /* Teal or Cyan color */
+#study-button {
+  padding-left: 0.3vw;
+  color: white;
+  background-color: #008709;
+  border: 0.3vw solid greenyellow;
+  transition: box-shadow 0.5s, background-color 0.5s; /* Include box-shadow in transition */
+}
+#study-button:hover {
+  color: black;
+  box-shadow: 0 0 0.6vw 0 greenyellow;
+  background-color: greenyellow; /* Teal or Cyan color */
 }
 
-#liftoff-button:active {
+#study-button:active {
   box-shadow: none;
-  background-color: #002040; /* Darker shade on active/press */
+  background-color: #015306; /* Darker shade on active/press */
+}
+#status-button {
+  font-size: 1rem;
+  padding-left: 0.3vw;
+  color: rgb(255, 255, 255);
+  background-color: #002040;
+  border: 0.3vw solid #08d9dd;
+  transition: box-shadow 0.5s, background-color 0.5s; /* Include box-shadow in transition */
+}
+
+#status-button:hover {
+  box-shadow: 0 0 0.6vw 0 #08d9dd; /* Red shadow on hover */
+  background-color: #08d9dd; /* Red color on hover */
+}
+
+#status-button:active {
+  box-shadow: none;
+  background-color: #002040; /* Darker red shade on active/press */
+}
+
+#map-button {
+  color: rgb(255, 255, 255);
+  background-color: #002040;
+  border: 0.3vw solid #08d9dd;
+  transition: box-shadow 0.5s, background-color 0.5s; /* Include box-shadow in transition */
+}
+
+#map-button:hover {
+  box-shadow: 0 0 0.6vw 0 #08d9dd; /* Red shadow on hover */
+  background-color: #08d9dd; /* Red color on hover */
+}
+
+#map-button:active {
+  box-shadow: none;
+  background-color: #002040; /* Darker red shade on active/press */
 }
 
 #logout-button {
