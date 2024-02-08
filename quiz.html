@@ -45,10 +45,30 @@
           <p id="total-questions">
             Total Questions: <span id="questions-count">0</span>
           </p>
-          <button id="return-home" onclick="classroom();">Return Home?</button>
+          <button id="return-home" onclick="returnHome();">Return Home?</button>
         </div>
         <!-- leaderboard section-->
         <table class="table table-borderless" id="leaderboard-section"></table>
+      </div>
+    </div>
+
+    <div class="congrats-container" style="display: none">
+      <h1 class="mt-5">Congratulations!</h1>
+      <div class="card mt-3">
+        <div class="card-body">
+          <p class="card-text">You have successfully completed SolarQuest!</p>
+          <p class="card-text">
+            By exploring each planet and answering questions, you have gained
+            valuable knowledge about our solar system. Your journey through
+            space has been filled with excitement and learning.
+          </p>
+          <p class="card-text">
+            Now, equipped with this newfound knowledge, you are ready to embark
+            on even greater adventures beyond the boundaries of our solar
+            system. The stars await your exploration!
+          </p>
+          <button class="btn btn-primary" onclick="restart()">Restart</button>
+        </div>
       </div>
     </div>
 
