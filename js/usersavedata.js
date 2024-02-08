@@ -77,6 +77,7 @@ function liftoff() {
   // Play a sound (optional)
   document.getElementById("clickSound").play();
 }
+
 function map() {
   // Get the main-screen iframe
   var mainScreen = document.querySelector(".side-screen");
@@ -98,6 +99,7 @@ function status() {
   // Play a sound (optional)
   document.getElementById("clickSound").play();
 }
+
 function classroom() {
   window.parent.location.href = "class.html";
 }
