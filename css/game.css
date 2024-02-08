@@ -21,6 +21,8 @@
   justify-content: start;
   font-weight: 500;
   width: 20vw;
+  padding-right: 7vw;
+  border-right: 2px solid gray;
 }
 
 #result-section h2,
@@ -40,7 +42,6 @@
   justify-content: center;
   flex-direction: column;
   margin-right: -30vw;
-  border-left: 2px solid gray;
   width: 65vw;
   padding-left: 2vw;
 }
