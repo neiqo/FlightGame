@@ -4,12 +4,6 @@ window.onload = function () {
   if (user) {
     // Check if the element exists before updating its content
 
-    const usernameDisplay = document.getElementById("player-username-display");
-    if (usernameDisplay) {
-      //  usernameDisplay.textContent = user.username;
-      typeWriter(usernameDisplay, user.username);
-    }
-
     // Update other elements as before
     const currentPlanetDisplay = document.getElementById(
       "player-current-planet"
@@ -17,6 +11,22 @@ window.onload = function () {
     if (currentPlanetDisplay) {
       //currentPlanetDisplay.textContent = user.savedata.current_planet;
       typeWriter(currentPlanetDisplay, user.savedata.current_planet);
+    }
+
+    const titleDisplay = document.getElementById("player-title");
+    if (titleDisplay) {
+      //titleDisplay.textContent = user.savedata.title;
+      typeWriter(titleDisplay, user.savedata.title);
+    }
+
+    const usernameDisplay = document.getElementById("player-username-display");
+    if (usernameDisplay) {
+      //  usernameDisplay.textContent = user.username;
+      console.log(user.username);
+
+      setTimeout(() => {
+        typeWriter(usernameDisplay, user.username);
+      }, 2000);
     }
 
     updateCockpitVideo(user.savedata.current_planet);
@@ -34,12 +44,6 @@ window.onload = function () {
       //fuelDisplay.textContent = user.savedata.fuel;
       let fuel = user.savedata.fuel.toString();
       typeWriter(fuelDisplay, fuel);
-    }
-
-    const titleDisplay = document.getElementById("player-title");
-    if (titleDisplay) {
-      //titleDisplay.textContent = user.savedata.title;
-      typeWriter(titleDisplay, user.savedata.title);
     }
 
     if (typeof fetchDataForCurrentPlanet === "function") {
