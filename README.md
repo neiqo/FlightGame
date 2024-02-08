@@ -1,3 +1,4 @@
+
 # Project Name: SolarQuest
 
 Our idea is to create a gamified learning experience about our solar system where the player starts on a planet and must answer questions to gain fuel for their rockets. Each correct answer gives them more fuel which enables them to travel to the next planet.
@@ -17,13 +18,9 @@ User Stories:
 - As a space enthusiast, I want to test my knowledge about the planets through quizzes, so that I can assess my understanding and retention of the information presented.
 - As a young learner, I want the quizzes to be interactive and engaging, so that I can enjoy the learning process and feel rewarded for my progress.
 
-## Desktop wireframe:
+## Desktop & Mobile wireframe:
 
-![Desktop Wireframe](https://i.imgur.com/kASCA5O.png)
-
-## Mobile Wireframe
-
-![Mobile Wireframe](https://i.imgur.com/TYhnh6W.png)
+![Desktop Wireframe](https://i.imgur.com/wJ9cRMk.png)
 
 ### Links
 
@@ -69,6 +66,9 @@ Bootstrap is used to help with the development process by usinhg its ready-to-us
 [Animista](https://animista.net/)\
 Animista is used to create a more difficult animation, in our case, we used 'Flicker In' and 'Flicker Out' animations to create seamless transitions between player save data and
 rotating planet.
+
+[Lottie Animations](https://lottiefiles.com/)
+Lottie Animations is used to add animations created by other users that relate to the space theme and that are more well made
 
 ## APIs
 
