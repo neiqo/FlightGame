@@ -1,5 +1,5 @@
-const link = `https://solarquest-fde1.restdb.io`;
-const apikey = `65c4d7f69ec8d44e7c2d954d`;
+const link = `https://solarquest-30ed.restdb.io`;
+const apikey = `65c4e4609ec8d4dbc12d9998`;
 
 const user = JSON.parse(sessionStorage.getItem("currentUser"));
 let userfuel = user.savedata.fuel;
