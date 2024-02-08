@@ -1,11 +1,13 @@
-const link = `https://solarquest-cd0c.restdb.io`;
-const apikey = `65c3d16c8fe3ef61a17a32f1`;
+const link = `https://solarquest-7faa.restdb.io`;
+const apikey = `65c48ac4e208c28a91545d88`;
 
 const user = JSON.parse(sessionStorage.getItem("currentUser"));
 let userfuel = user.savedata.fuel;
 const quizPlanet = user.savedata.current_planet;
 
 document.addEventListener("DOMContentLoaded", function () {
+  const loadingScreen = document.getElementById("loading-screen");
+  const container = document.querySelector(".container");
   // fetch quiz data for the current quiz planet
   fetch(link + `/rest/quiz?q={"quiz-planet":"${quizPlanet}"}`, {
     method: "GET",
@@ -23,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((questions) => {
       // Display quiz questions
       displayQuizQuestions(questions);
+      loadingScreen.style.display = "none";
+      container.style.display = "block"; /// last stopped
     })
     .catch((error) => {
       console.error("Error fetching quiz questions:", error);
