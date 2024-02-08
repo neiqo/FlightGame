@@ -15,6 +15,20 @@ body {
   position: absolute;
 }
 
+#orbiting-text {
+  font-size: 7vw;
+}
+#welcome-text {
+  font-size: 6vw;
+}
+
+#level-text {
+  font-size: 6vw;
+}
+
+#coin-text {
+  font-size: 6vw;
+}
 #planet {
   width: 80vw;
   height: 78vw;
