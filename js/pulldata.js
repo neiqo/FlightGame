@@ -28,7 +28,6 @@ function fetchplanet(id) {
   if (id === "mercury") {
     link = link + "_(planet)";
   }
-  //console.log(link);
   fetch(link)
     .then((response) => {
       if (!response.ok) {
@@ -89,7 +88,6 @@ function updateContent(headers) {
           const response = await fetch(url, options);
           const result = await response.json();
 
-          //console.log(result);
           return result;
         } catch (error) {
           console.error(error);
@@ -100,11 +98,9 @@ function updateContent(headers) {
       if (content.length > 1400) {
         try {
           const result = await summarize(content);
-          console.log(result);
           content = result.summary;
           if (content.length > 2000) {
             const result2 = await summarize(content);
-            console.log(result2);
             content = result2.summary;
           }
         } catch (error) {
@@ -126,19 +122,14 @@ function updateContent(headers) {
       // Join the sentences back into a string
       content = sentences.join("");
       paragraphs.push(content);
-      //console.log(content);
-      //console.log(paragraphs.length);
-      //paragraphs.push(content);
 
       let search = current_planet + ` ` + headers[i].textContent;
 
       async function loadImage() {
         try {
           const imageUrl = await fetchImages(search);
-          console.log("Image URL:", imageUrl);
 
           // Set the src attribute after obtaining the image URL
-          //let src = imageUrl;
           // Append the image to the document or do whatever you need to do with it
           if (imageUrl !== null) {
             //const image = document.createElement("img");
@@ -153,10 +144,6 @@ function updateContent(headers) {
               };
               dropdown.appendChild(image);
             };
-
-            // Set the src attribute after obtaining the image URL
-
-            console.log("Image Element:", image.src);
 
             //dropdown.appendChild(resizedimage);
           } else {
@@ -213,12 +200,9 @@ function findNextParagraph2(element) {
   let savedElement;
   let content = "";
 
-  //console.log(currentElement);
-
   // Loop until a <p> tag is found or there are no more siblings
   while (currentElement !== null) {
     savedElement = currentElement;
-    //console.log("hello");
     if (
       currentElement.nodeName.toLowerCase() === "p" &&
       currentElement.textContent.trim() !== ""
@@ -238,7 +222,6 @@ function findNextParagraph2(element) {
   // Move to the next sibling
 
   currentElement = currentElement.nextSibling;
-  console.log(content);
 }
 
 function findNextParagraph(element) {
