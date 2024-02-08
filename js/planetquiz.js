@@ -63,9 +63,6 @@ function displayQuestion(question) {
   questionElement.classList.add("quiz-question");
 
   if (currentQuestionIndex >= 0) {
-    console.log("Sending message to parent window:", {
-      currentQuestionIndex: currentQuestionIndex,
-    });
     window.parent.postMessage(
       { currentQuestionIndex: currentQuestionIndex },
       "*"
@@ -169,15 +166,9 @@ function submitAnswer(question) {
   if (isCorrect) {
     correctAnswersCount++;
     userfuel++;
-    console.log(correctAnswersCount);
-    console.log(userfuel);
   }
 
   isCorrectArray[currentQuestionIndex] = isCorrect;
-
-  console.log("1ending message to parent window:", {
-    isCorrect: isCorrect,
-  });
 
   // Send current question index and isCorrect value to parent window
   window.parent.postMessage(
@@ -187,11 +178,7 @@ function submitAnswer(question) {
     "*"
   );
 
-  console.log("2Sending message to parent window:", {
-    isCorrect: isCorrect,
-  });
-
-  // next question boom
+  // next question
   nextQuestion();
 }
 
@@ -270,7 +257,6 @@ function planetCheck() {
     const newPlanetIndex = planets.indexOf(newPlanet);
     if (newPlanetIndex < planets.length - 1) {
       newPlanet = planets[newPlanetIndex + 1];
-      console.log(newPlanet);
     } else {
       // If the user is already on the last planet, go back to the first one (loop)
       currentPlanet = planets[0];
@@ -288,9 +274,6 @@ function planetCheck() {
 
 function fetchPlayer() {
   const newPlanet = planetCheck();
-
-  // Log the newPlanet value to check if it's correct
-  console.log("New Planet:", newPlanet);
 
   fetch(link + `/rest/players/${user._id}`, {
     method: "PUT",
@@ -313,19 +296,12 @@ function fetchPlayer() {
   })
     .then((response) => response.json())
     .then((updatedPlayer) => {
-      // Handle the response if needed
-      console.log("Player updated:", updatedPlayer);
-
       // Update user's data in-memory
       user.savedata.current_planet = newPlanet;
       user.savedata.fuel = 0;
 
       // Save the updated user data to sessionStorage
       sessionStorage.setItem("currentUser", JSON.stringify(user));
-
-      // Use updatedPlayer to access the updated data
-      console.log("User new planet", updatedPlayer.savedata.current_planet);
-      console.log("User new fuel", updatedPlayer.savedata.fuel);
     })
     .catch((error) => console.error("Error updating player:", error));
 }
@@ -338,8 +314,6 @@ function submitQuiz() {
     correct_answers: correctAnswersCount,
     quiz_planet: quizPlanet,
   };
-
-  console.log("Leaderboard Data:", leaderboardData); // Log the data to the console
 
   // Post results to the leaderboard
   fetch(link + `/rest/leaderboard`, {
@@ -542,19 +516,12 @@ function restart() {
   })
     .then((response) => response.json())
     .then((updatedPlayer) => {
-      // Handle the response if needed
-      console.log("Player updated:", updatedPlayer);
-
       // Update user's data in-memory
       user.savedata.current_planet = user.savedata.current_planet;
       user.savedata.fuel = 0;
 
       // Save the updated user data to sessionStorage
       sessionStorage.setItem("currentUser", JSON.stringify(user));
-
-      // Use updatedPlayer to access the updated data
-      console.log("User new planet", updatedPlayer.savedata.current_planet);
-      console.log("User new fuel", updatedPlayer.savedata.fuel);
     })
     .catch((error) => console.error("Error updating player:", error));
 }

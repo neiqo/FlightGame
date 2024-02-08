@@ -144,7 +144,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function playAudio() {
     var cockpitSound = document.querySelector("#cockpitSound");
     cockpitSound.play();
-    console.log("Audio");
   }
 });
 
@@ -164,7 +163,6 @@ function flickerOut() {
 
 function removeFlicker() {
   const elementFlicker = document.querySelector(".container");
-  console.log("helloaddadsdasdsdada");
   elementFlicker.style.opacity = "0";
   elementFlicker.classList.remove("flicker-out-1");
   setTimeout(() => {
@@ -174,22 +172,16 @@ function removeFlicker() {
 }
 
 function fadeIn() {
-  console.log("hello-1");
   const elements = document.querySelectorAll("#planet");
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        console.log("helllo");
         if (
           entry.isIntersecting &&
           !entry.target.classList.contains("animated")
         ) {
-          console.log("hello2");
-          //entry.target.classList.add("animated");
-
           if (entry.target.classList.contains("fadein-center")) {
             entry.target.classList.add("fadein-center-animated");
-            console.log("impt");
           }
 
           setTimeout(() => {
@@ -207,7 +199,6 @@ function fadeIn() {
 }
 
 function flickerIn() {
-  console.log("flciker in");
   const animatedElement = document.querySelector(".container");
   animatedElement.classList.add("flicker-in-1");
 }

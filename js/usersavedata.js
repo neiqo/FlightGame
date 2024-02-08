@@ -21,9 +21,6 @@ window.onload = function () {
 
     const usernameDisplay = document.getElementById("player-username-display");
     if (usernameDisplay) {
-      //  usernameDisplay.textContent = user.username;
-      console.log(user.username);
-
       setTimeout(() => {
         typeWriter(usernameDisplay, user.username);
       }, 2000);
@@ -63,7 +60,6 @@ function logout() {
 }
 
 function orbit() {
-  console.log("Orbit function called!");
   window.location.href = "homepage.html";
 }
 
@@ -128,19 +124,14 @@ function updateCockpitVideo(planet) {
     const videoSource = `images/bg/${planet.toLowerCase()}-vid.webm`;
     cockpitVideo.src = videoSource;
     cockpitVideo.muted = true;
-    console.log(cockpitVideo.muted);
   }
 }
 
 function updateRotatingPlanet(planet) {
-  console.log("runadsadsdadas");
   const elements = document.querySelectorAll("#planet");
-  console.log(elements.length);
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      //console.log("helllo");
       if (entry.isIntersecting) {
-        console.log("imdadasdadadadas adasdab");
         let url = `./images/${planet.toLowerCase()}-rectangle.jpg`;
         entry.target.setAttribute("style", `background-image: url('${url}')`);
       }
