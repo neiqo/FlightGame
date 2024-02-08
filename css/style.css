@@ -57,7 +57,7 @@
 #title {
   position: absolute;
   text-align: center;
-  top: 25%;
+  top: 22%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -72,6 +72,18 @@
 
 #loading-message {
   padding-top: 15vh;
+}
+
+#loading-check {
+  margin-top: 15vh;
+  fill: greenyellow;
+  width: 50vw;
+  height: 20vh;
+}
+
+#loading-spinner {
+  height: 8rem;
+  width: 8rem;
 }
 
 #continueMessage {
