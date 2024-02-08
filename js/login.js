@@ -1,7 +1,7 @@
 // login form
 
-const link = `https://solarquest-1a02.restdb.io`;
-const apikey = `65c4a7da5eab38861e9cbd69`;
+const link = `https://solarquest-fde1.restdb.io`;
+const apikey = `65c4d7f69ec8d44e7c2d954d`;
 
 document.getElementById("login-button").addEventListener("click", function () {
   const username = document.getElementById("login-username").value;
